@@ -24,6 +24,7 @@ export function Header() {
   const [darkSection, setDarkSection] = useState(true);
   const [activeHref, setActiveHref] = useState(NAV[0].href);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -63,6 +64,17 @@ export function Header() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 1024) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
   const bg = scrolled
@@ -109,31 +121,73 @@ export function Header() {
               style={{ height: "34px", width: "auto", objectFit: "contain", filter: logoFilter, transition: "filter 0.4s" }} />
           </div>
 
-          {/* CTA mobile */}
-          <a href="mailto:support@denani.it"
-            className="lg:hidden rounded-lg px-3 py-1.5"
-            style={{
-              background: P.accent,
-              fontFamily: "'Montserrat', sans-serif",
-              fontSize: "10px", fontWeight: 700,
-              color: "#FFFFFF", letterSpacing: "0.02em",
-              textDecoration: "none",
-            }}>
-            Contattaci
-          </a>
+          <div className="lg:hidden flex items-center gap-2">
+            {/* CTA mobile */}
+            <a href="mailto:support@denani.it"
+              className="rounded-lg px-3 py-1.5"
+              style={{
+                background: P.accent,
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: "10px", fontWeight: 700,
+                color: "#FFFFFF", letterSpacing: "0.02em",
+                textDecoration: "none",
+              }}>
+              Contattaci
+            </a>
+
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              aria-label={mobileMenuOpen ? "Chiudi menu" : "Apri menu"}
+              aria-expanded={mobileMenuOpen}
+              className="rounded-lg px-2.5 py-2"
+              style={{
+                border: `1px solid ${darkSection ? "rgba(255,255,255,0.2)" : `${P.border}C0`}`,
+                background: darkSection ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.78)",
+                color: textCol,
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                {mobileMenuOpen ? (
+                  <>
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </>
+                ) : (
+                  <>
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                  </>
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Nav mobile */}
-        <nav className="lg:hidden w-full overflow-x-auto"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-          <div className="flex items-center gap-4 min-w-max pr-2">
+        <nav
+          className={`lg:hidden w-full overflow-hidden transition-all duration-300 ease-out ${mobileMenuOpen ? "max-h-80 opacity-100 pt-1" : "max-h-0 opacity-0 pt-0"}`}
+          aria-hidden={!mobileMenuOpen}
+        >
+          <div
+            className="rounded-xl p-2"
+            style={{
+              background: darkSection ? "rgba(9,32,41,0.92)" : "rgba(255,255,255,0.92)",
+              border: `1px solid ${darkSection ? "rgba(255,255,255,0.12)" : `${P.border}B0`}`,
+            }}
+          >
             {NAV.map(n => {
               const isActive = activeHref === n.href;
               const isPacchetti = n.href === "#pacchetti";
               return (
                 <button key={`m-${n.href}`}
-                  onClick={() => { scrollToSection(n.href); setActiveHref(n.href); }}
-                  className="relative transition-all duration-200"
+                  onClick={() => {
+                    scrollToSection(n.href);
+                    setActiveHref(n.href);
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full text-left rounded-lg transition-all duration-200"
                   style={{
                     fontFamily: "'Montserrat', sans-serif",
                     fontSize: "11px",
@@ -141,14 +195,13 @@ export function Header() {
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
                     color: textCol,
-                    opacity: isActive && !isPacchetti ? 1 : 0.82,
+                    opacity: isActive && !isPacchetti ? 1 : 0.84,
                     border: "none",
-                    background: "none",
+                    background: isActive && !isPacchetti
+                      ? darkSection ? "rgba(74,159,175,0.18)" : "rgba(74,159,175,0.12)"
+                      : "transparent",
                     cursor: "pointer",
-                    padding: "4px 1px 6px",
-                    borderBottom: isActive && !isPacchetti
-                      ? `2px solid ${darkSection ? P.accentLight : P.accent}`
-                      : "2px solid transparent",
+                    padding: "9px 10px",
                   }}>
                   {n.label}
                 </button>

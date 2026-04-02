@@ -49,17 +49,17 @@ export function ConclusionsSection() {
       </section>
 
       {/* ── Footer bar ── */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-6 md:px-10 lg:px-20 py-5"
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-6 md:px-10 lg:px-20 py-5 text-center sm:text-left"
         style={{ background: "#10232C", borderTop: `1px solid rgba(74,159,175,0.26)` }}>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-center gap-3">
           <img src={cosmedLogo} alt="Cosmed" style={{ height: "20px", objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.72 }} />
           <span style={{ color: "rgba(238,244,246,0.72)", fontSize: "11px", fontWeight: 700 }}>×</span>
           <img src={denaniLogo} alt="DeNani" style={{ height: "20px", objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.72 }} />
         </div>
-        <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: "rgba(238,244,246,0.84)", letterSpacing: "0.08em", textAlign: "center" }}>
+        <span className="max-w-[26rem]" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: "rgba(238,244,246,0.84)", letterSpacing: "0.08em", textAlign: "center" }}>
           PROPOSTA RISERVATA · DENANI PER COSMED
         </span>
-        <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accentLight, letterSpacing: "0.08em" }}>
+        <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accentLight, letterSpacing: "0.08em", textAlign: "center" }}>
           THE METABOLIC COMPANY
         </span>
       </div>

@@ -62,9 +62,9 @@ export function HeroSection() {
         </div>
 
         {/* Scroll cue only */}
-        <div className="flex justify-end">
+        <div className="flex justify-center md:justify-end">
           <div className="flex flex-col items-center gap-2">
-            <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8px", fontWeight: 700, color: "rgba(255,255,255,0.72)", letterSpacing: "0.1em" }}>SCORRI</span>
+            <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8px", fontWeight: 700, color: "rgba(255,255,255,0.72)", letterSpacing: "0.1em" }}>SCOPRI</span>
             <div className="flex items-center justify-center h-10 w-10 rounded-full border border-white/20 bg-white/6 shadow-[0_0_0_1px_rgba(255,255,255,0.03)] animate-bounce"
               style={{ backdropFilter: "blur(8px)" }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
