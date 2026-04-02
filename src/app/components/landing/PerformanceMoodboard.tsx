@@ -1,0 +1,170 @@
+import { IMGS, P } from "./images";
+
+const palette = [
+  { hex: "#0B0F14", name: "Anthracite" },
+  { hex: "#1A2438", name: "Dark Navy" },
+  { hex: "#0B6FFF", name: "Tech Blue" },
+  { hex: "#3D8BFF", name: "Blue Light" },
+  { hex: "#8BA4C0", name: "Slate" },
+  { hex: "#EEF2FF", name: "Ice White" },
+];
+
+const keywords = [
+  "Validazione Scientifica",
+  "Precisione Metabolica",
+  "Rigore Clinico",
+  "Dati Reali",
+  "Test VO₂ Max",
+  "Calorimetria Indiretta",
+  "Metabolismo a Riposo (REE)",
+  "Protocollo Clinico",
+];
+
+const target = ["Fisiatri ~5.000", "Fisioterapisti ~70.000", "Medici Sport ~5.000", "Palestre ~40.000", "Lab. Fisiologia ~1.500"];
+
+// 2 REALISTICHE + 2 ASTRATTE
+const mosaicImages = [
+  { url: IMGS.vo2test,   label: "Test VO₂ Max",       tag: "REALISTICA · Clinica",   sub: "Misurazione ossigeno in esercizio" },
+  { url: IMGS.dataflow,  label: "Flusso Dati",        tag: "ASTRATTA · Data Flow",   sub: "Visualizzazione parametri metabolici" },
+  { url: IMGS.physio,    label: "Fisioterapia",       tag: "REALISTICA · Clinica",   sub: "Riabilitazione professionale" },
+  { url: IMGS.molecular, label: "Struttura Molecolare",tag: "ASTRATTA · Molecolare", sub: "Rappresentazione biochimica" },
+];
+
+export function PerformanceMoodboard() {
+  return (
+    <section id="performance" className="relative w-full overflow-hidden" style={{ background: "#0B0F14", minHeight: "100vh" }}>
+
+      {/* Intro band */}
+      <div className="relative z-10 flex items-center justify-between px-6 md:px-20 py-8"
+        style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div className="flex items-center gap-3">
+          <div style={{ width: "2px", height: "40px", background: `linear-gradient(180deg, ${P.perfBlue}, transparent)` }} />
+          <div>
+            <p style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "8px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "2px" }}>Concept 01 / 02</p>
+            <p style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "9px", color: P.perfBlue, letterSpacing: "0.22em", textTransform: "uppercase" }}>Sub-brand · Dark Tech</p>
+          </div>
+        </div>
+        <span className="hidden md:block" style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "9px", color: "rgba(255,255,255,0.18)", letterSpacing: "0.2em", textTransform: "uppercase" }}>
+          Cosmed Performance · Moodboard Visivo
+        </span>
+      </div>
+
+      {/* Hero block */}
+      <div className="flex flex-col lg:flex-row" style={{ minHeight: "75vh" }}>
+
+        {/* LEFT: Image mosaic */}
+        <div className="relative lg:w-1/2 overflow-hidden" style={{ minHeight: "50vh" }}>
+          <div className="absolute inset-0 z-10 pointer-events-none" style={{
+            backgroundImage: `linear-gradient(${P.perfBlue}04 1px, transparent 1px), linear-gradient(90deg, ${P.perfBlue}04 1px, transparent 1px)`,
+            backgroundSize: "48px 48px",
+          }} />
+          <div className="absolute inset-0 z-10 pointer-events-none hidden lg:block" style={{
+            background: "linear-gradient(90deg, transparent 55%, #0B0F14 100%)",
+          }} />
+
+          <div className="grid h-full" style={{ gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr" }}>
+            {mosaicImages.map((img, i) => (
+              <div key={i} className="relative overflow-hidden" style={{ minHeight: "220px" }}>
+                <img src={img.url} alt={img.label} className="w-full h-full object-cover"
+                  style={{ filter: "brightness(0.45) saturate(0.55) hue-rotate(185deg)" }} />
+                <div className="absolute inset-0" style={{ background: `rgba(11,111,255,${i % 2 === 0 ? 0.08 : 0.05})` }} />
+                <div className="absolute bottom-0 left-0 right-0 p-3 z-10"
+                  style={{ background: "linear-gradient(180deg, transparent, rgba(11,15,20,0.85))" }}>
+                  <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "7px", color: P.perfBlue, letterSpacing: "0.18em", display: "block" }}>{img.tag}</span>
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "9px", color: "rgba(238,242,255,0.75)", fontWeight: 600 }}>{img.label}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT: Brand details */}
+        <div className="lg:w-1/2 flex flex-col justify-center px-8 md:px-16 py-12 gap-7"
+          style={{ background: "linear-gradient(135deg, #0B0F14 0%, #0D1520 100%)" }}>
+
+          <div className="flex flex-col gap-2">
+            <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "10px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.3em", textTransform: "uppercase" }}>COSMED</span>
+            <h2 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(36px, 5vw, 72px)", fontWeight: 900, color: "#EEF2FF", letterSpacing: "-0.05em", lineHeight: "0.88" }}>
+              PERFORMANCE
+            </h2>
+            <div style={{ width: "56px", height: "2px", background: `linear-gradient(90deg, ${P.perfBlue}, transparent)`, marginTop: "6px" }} />
+            <p style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "11px", color: P.perfBlue, letterSpacing: "0.12em", fontStyle: "italic", marginTop: "4px" }}>
+              "The Precision Lab"
+            </p>
+          </div>
+
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: "rgba(238,242,255,0.5)", lineHeight: "1.85", maxWidth: "420px" }}>
+            Brand identity dedicata al professionista clinico: fisiatri, fisioterapisti, medici dello sport. Il visual system comunica rigore scientifico, validazione clinica e precisione nella misurazione metabolica. Ogni elemento è progettato per instaurare fiducia in un contesto B2B altamente specializzato.
+          </p>
+
+          <div className="flex flex-col gap-2">
+            <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "8px", color: "rgba(255,255,255,0.2)", letterSpacing: "0.25em", textTransform: "uppercase" }}>Palette Cromatica</span>
+            <div className="flex flex-wrap items-center gap-2">
+              {palette.map(p => (
+                <div key={p.hex} className="flex flex-col items-center gap-1">
+                  <div style={{ width: "32px", height: "32px", borderRadius: "7px", background: p.hex, border: "1px solid rgba(255,255,255,0.09)" }} />
+                  <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "6px", color: "rgba(255,255,255,0.22)", textAlign: "center", maxWidth: "38px", lineHeight: "1.3" }}>{p.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-xl px-5 py-4" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
+            <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "8px", color: "rgba(255,255,255,0.18)", letterSpacing: "0.25em", textTransform: "uppercase", display: "block", marginBottom: "7px" }}>Tipografia</span>
+            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "20px", fontWeight: 900, color: "#EEF2FF", letterSpacing: "-0.03em", lineHeight: "1" }}>Inter ExtraBold</p>
+            <p style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "11px", color: P.perfBlue, letterSpacing: "0.12em", marginTop: "4px" }}>Roboto Mono · Dati & Label</p>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "8px", color: "rgba(255,255,255,0.2)", letterSpacing: "0.25em", textTransform: "uppercase" }}>Lessico Visivo</span>
+            <div className="flex flex-wrap gap-2">
+              {keywords.map(k => (
+                <span key={k} style={{
+                  fontFamily: "'Roboto Mono', monospace", fontSize: "9px", color: P.perfBlue,
+                  border: `1px solid ${P.perfBlue}28`, background: `${P.perfBlue}07`,
+                  borderRadius: "4px", padding: "4px 9px", letterSpacing: "0.05em",
+                }}>{k}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "8px", color: "rgba(255,255,255,0.2)", letterSpacing: "0.25em", textTransform: "uppercase" }}>Target Audience</span>
+            <div className="flex flex-wrap gap-2">
+              {target.map(t => (
+                <span key={t} style={{
+                  fontFamily: "'Inter', sans-serif", fontSize: "10px", fontWeight: 500,
+                  color: "rgba(238,242,255,0.5)", border: "1px solid rgba(255,255,255,0.08)",
+                  background: "rgba(255,255,255,0.03)", borderRadius: "4px", padding: "4px 9px",
+                }}>{t}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Full-width feature band */}
+      <div className="relative overflow-hidden" style={{ height: "300px" }}>
+        <img src={IMGS.dataflow} alt="" className="w-full h-full object-cover"
+          style={{ filter: "brightness(0.25) saturate(0.4) hue-rotate(195deg)", transform: "scale(1.04)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, #0B0F14 0%, transparent 20%, transparent 80%, #0B0F14 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #0B0F14 0%, transparent 18%, transparent 82%, #0B0F14 100%)" }} />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(12px, 2vw, 26px)", fontWeight: 900, color: "rgba(238,242,255,0.06)", letterSpacing: "0.35em", textTransform: "uppercase" }}>
+            VALIDAZIONE SCIENTIFICA · PRECISIONE METABOLICA · RIGORE CLINICO
+          </p>
+        </div>
+        <div className="absolute left-6 md:left-10 top-1/2 -translate-y-1/2 flex flex-col gap-2">
+          {["Calorimetria Indiretta", "Test VO₂ Max", "Metabolismo a Riposo"].map(l => (
+            <span key={l} style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "9px", color: `${P.perfBlue}70`, letterSpacing: "0.18em" }}>{l}</span>
+          ))}
+        </div>
+        <div className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 flex flex-col items-end gap-2">
+          {["Fisiatri & Fisioterapisti", "Medici dello Sport", "Laboratori Fisiologici"].map(l => (
+            <span key={l} style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "9px", color: "rgba(61,139,255,0.55)", letterSpacing: "0.18em" }}>{l}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
