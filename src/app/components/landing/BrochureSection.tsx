@@ -3,6 +3,49 @@ import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import { P } from "./images";
 
+function toDataUrl(blob: Blob): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(String(reader.result));
+    reader.onerror = () => reject(new Error("Impossibile convertire blob in data URL"));
+    reader.readAsDataURL(blob);
+  });
+}
+
+async function prepareImagesForCapture(root: HTMLElement) {
+  const images = Array.from(root.querySelectorAll("img"));
+
+  await Promise.all(images.map(async (img) => {
+    const src = img.getAttribute("src") ?? "";
+    if (!src || src.startsWith("data:")) {
+      return;
+    }
+
+    try {
+      const absolute = new URL(src, window.location.href);
+      if (absolute.origin !== window.location.origin) {
+        const response = await fetch(absolute.toString(), { mode: "cors" });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        const blob = await response.blob();
+        const dataUrl = await toDataUrl(blob);
+        img.src = dataUrl;
+      }
+    } catch {
+      // Avoid hard failure if a remote image cannot be embedded.
+      img.style.opacity = "0.92";
+    }
+
+    if (!img.complete) {
+      await new Promise<void>((resolve) => {
+        img.onload = () => resolve();
+        img.onerror = () => resolve();
+      });
+    }
+  }));
+}
+
 async function generateBrochurePDF() {
   const appRoot = document.querySelector("#root > div") as HTMLElement | null;
   if (!appRoot) {
@@ -50,16 +93,7 @@ async function generateBrochurePDF() {
       source.replaceWith(replacement);
     });
 
-    const images = Array.from(clone.querySelectorAll("img"));
-    await Promise.all(images.map((img) => {
-      if (img.complete) {
-        return Promise.resolve();
-      }
-      return new Promise<void>((resolve) => {
-        img.onload = () => resolve();
-        img.onerror = () => resolve();
-      });
-    }));
+    await prepareImagesForCapture(clone);
 
     const blocks = Array.from(clone.children).filter((node) => (node as HTMLElement).offsetHeight > 0) as HTMLElement[];
     const captureTargets = blocks.length > 0 ? blocks : [clone];
@@ -74,12 +108,25 @@ async function generateBrochurePDF() {
     let hasPage = false;
 
     for (const target of captureTargets) {
-      const canvas = await html2canvas(target, {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: "#FFFFFF",
-        logging: false,
-      });
+      let canvas: HTMLCanvasElement;
+      try {
+        canvas = await html2canvas(target, {
+          scale: 2,
+          useCORS: true,
+          imageTimeout: 0,
+          backgroundColor: "#FFFFFF",
+          logging: false,
+        });
+      } catch {
+        // Fallback for heavy sections or problematic images.
+        canvas = await html2canvas(target, {
+          scale: 1.4,
+          useCORS: true,
+          imageTimeout: 0,
+          backgroundColor: "#FFFFFF",
+          logging: false,
+        });
+      }
 
       if (!canvas.width || !canvas.height) {
         continue;
@@ -105,9 +152,13 @@ async function generateBrochurePDF() {
         if (hasPage) {
           doc.addPage();
         }
-        doc.addImage(slice.toDataURL("image/jpeg", 0.95), "JPEG", margin, margin, contentW, renderedH, undefined, "FAST");
+        doc.addImage(slice, "JPEG", margin, margin, contentW, renderedH, undefined, "FAST");
         hasPage = true;
       }
+    }
+
+    if (!hasPage) {
+      throw new Error("Nessun contenuto catturato per il PDF.");
     }
 
     doc.save("DeNani-per-COSMED-Brochure.pdf");
