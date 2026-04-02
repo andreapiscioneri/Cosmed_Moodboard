@@ -40,11 +40,11 @@ export function WellnessMoodboard() {
         <div className="flex items-center gap-3">
           <div style={{ width: "2px", height: "40px", background: `linear-gradient(180deg, ${P.wellTeal}, transparent)` }} />
           <div>
-            <p style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "8px", color: P.textMuted, letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "2px" }}>Concept 02 / 02</p>
-            <p style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "9px", color: P.wellTeal, letterSpacing: "0.22em", textTransform: "uppercase" }}>Sub-brand · Healthy Lifestyle</p>
+            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8px", fontWeight: 700, color: "#6E8798", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "2px" }}>Concept 02 / 02</p>
+            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.wellTeal, letterSpacing: "0.1em", textTransform: "uppercase" }}>Sub-brand · Healthy Lifestyle</p>
           </div>
         </div>
-        <span className="hidden md:block" style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "9px", color: P.textMuted, letterSpacing: "0.2em", textTransform: "uppercase" }}>
+        <span className="hidden md:block" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: "#6E8798", letterSpacing: "0.1em", textTransform: "uppercase" }}>
           Cosmed Wellness · Moodboard Visivo
         </span>
       </div>
@@ -57,7 +57,7 @@ export function WellnessMoodboard() {
           style={{ background: "linear-gradient(135deg, #F4F7F5 0%, #EDE9E2 100%)" }}>
 
           <div className="flex flex-col gap-2">
-            <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "10px", color: P.textMuted, letterSpacing: "0.3em", textTransform: "uppercase" }}>COSMED</span>
+            <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: "#6E8798", letterSpacing: "0.12em", textTransform: "uppercase" }}>COSMED</span>
             <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(38px, 5vw, 72px)", fontWeight: 700, fontStyle: "italic", color: "#0A1F1F", letterSpacing: "-0.02em", lineHeight: "0.92" }}>
               Wellness
             </h2>
@@ -67,48 +67,48 @@ export function WellnessMoodboard() {
             </p>
           </div>
 
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: "#4A6170", lineHeight: "1.85", maxWidth: "420px" }}>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: "#3E596A", lineHeight: "1.85", maxWidth: "420px" }}>
             Brand identity dedicata al professionista della nutrizione e del benessere. Un approccio legato alla cura di sé, al mantenersi in forma, al nutrirsi correttamente e a uno stile di vita sano. Il visual system comunica vitalità, equilibrio e longevità attraverso un'estetica luminosa e naturale.
           </p>
 
           <div className="flex flex-col gap-2">
-            <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "8px", color: P.textMuted, letterSpacing: "0.25em", textTransform: "uppercase" }}>Palette Cromatica</span>
+            <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8px", fontWeight: 700, color: "#6E8798", letterSpacing: "0.1em", textTransform: "uppercase" }}>Palette Cromatica</span>
             <div className="flex flex-wrap items-center gap-2">
               {palette.map(pp => (
                 <div key={pp.hex} className="flex flex-col items-center gap-1">
                   <div style={{ width: "32px", height: "32px", borderRadius: "7px", background: pp.hex, border: "1px solid rgba(0,0,0,0.08)" }} />
-                  <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "6px", color: P.textMuted, textAlign: "center", maxWidth: "40px", lineHeight: "1.3" }}>{pp.name}</span>
+                  <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "6px", fontWeight: 600, color: "#5B7383", textAlign: "center", maxWidth: "40px", lineHeight: "1.3" }}>{pp.name}</span>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="rounded-xl px-5 py-4" style={{ background: "#FFFFFF", border: `1px solid ${P.border}` }}>
-            <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "8px", color: P.textMuted, letterSpacing: "0.25em", textTransform: "uppercase", display: "block", marginBottom: "7px" }}>Tipografia</span>
+            <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8px", fontWeight: 700, color: "#6E8798", letterSpacing: "0.1em", textTransform: "uppercase", display: "block", marginBottom: "7px" }}>Tipografia</span>
             <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "20px", fontWeight: 700, fontStyle: "italic", color: "#0A1F1F", lineHeight: "1" }}>Playfair Display Italic</p>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 600, color: P.wellTeal, letterSpacing: "0.18em", marginTop: "5px", textTransform: "uppercase" }}>Montserrat · Corpo & UI</p>
+            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 700, color: P.wellTeal, letterSpacing: "0.08em", marginTop: "5px", textTransform: "uppercase" }}>Montserrat · Corpo & UI</p>
           </div>
 
           <div className="flex flex-col gap-2">
-            <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "8px", color: P.textMuted, letterSpacing: "0.25em", textTransform: "uppercase" }}>Lessico Visivo</span>
+            <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8px", fontWeight: 700, color: "#6E8798", letterSpacing: "0.1em", textTransform: "uppercase" }}>Lessico Visivo</span>
             <div className="flex flex-wrap gap-2">
               {keywords.map(k => (
                 <span key={k} style={{
-                  fontFamily: "'Roboto Mono', monospace", fontSize: "9px", color: P.wellTeal,
-                  border: `1px solid ${P.wellTeal}25`, background: `${P.wellTeal}06`,
-                  borderRadius: "4px", padding: "4px 9px", letterSpacing: "0.05em",
+                  fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 600, color: P.wellTeal,
+                  border: `1px solid ${P.wellTeal}25`, background: `${P.wellTeal}08`,
+                  borderRadius: "4px", padding: "4px 9px", letterSpacing: "0.03em",
                 }}>{k}</span>
               ))}
             </div>
           </div>
 
           <div className="flex flex-col gap-2">
-            <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "8px", color: P.textMuted, letterSpacing: "0.25em", textTransform: "uppercase" }}>Target Audience</span>
+            <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8px", fontWeight: 700, color: "#6E8798", letterSpacing: "0.1em", textTransform: "uppercase" }}>Target Audience</span>
             <div className="flex flex-wrap gap-2">
               {target.map(t => (
                 <span key={t} style={{
                   fontFamily: "'Inter', sans-serif", fontSize: "10px", fontWeight: 500,
-                  color: P.textSub, border: `1px solid ${P.border}`,
+                  color: "#526A7A", border: "1px solid rgba(110,135,152,0.38)",
                   background: "#FFFFFF", borderRadius: "4px", padding: "4px 9px",
                 }}>{t}</span>
               ))}
@@ -118,50 +118,19 @@ export function WellnessMoodboard() {
 
         {/* RIGHT: Image mosaic */}
         <div className="relative lg:w-1/2 overflow-hidden" style={{ minHeight: "50vh" }}>
-          <div className="absolute inset-0 z-10 pointer-events-none hidden lg:block" style={{
-            background: "linear-gradient(90deg, #F4F7F5 0%, transparent 15%)",
-          }} />
 
-          <div className="grid h-full" style={{ gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr" }}>
+          <div className="grid h-full grid-cols-1 sm:grid-cols-2" style={{ gridTemplateRows: "repeat(2, minmax(220px, 1fr))" }}>
             {mosaicImages.map((img, i) => (
               <div key={i} className="relative overflow-hidden" style={{ minHeight: "220px" }}>
                 <img src={img.url} alt={img.label} className="w-full h-full object-cover"
-                  style={{ filter: "brightness(0.72) saturate(0.8)" }} />
-                <div className="absolute inset-0" style={{ background: `rgba(14,107,107,${i % 2 === 0 ? 0.06 : 0.04})` }} />
-                <div className="absolute bottom-0 left-0 right-0 p-3 z-10"
-                  style={{ background: "linear-gradient(180deg, transparent, rgba(10,31,31,0.75))" }}>
-                  <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "7px", color: "#4A9090", letterSpacing: "0.15em", display: "block" }}>{img.tag}</span>
-                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "9px", color: "rgba(244,247,245,0.85)", fontWeight: 600 }}>{img.label}</span>
-                </div>
+                  style={{ filter: "brightness(0.82) saturate(0.9)" }} />
+                <div className="absolute inset-0" style={{ background: `rgba(14,107,107,${i % 2 === 0 ? 0.04 : 0.025})` }} />
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Full-width feature band */}
-      <div className="relative overflow-hidden" style={{ height: "300px" }}>
-        <img src={IMGS.running} alt="" className="w-full h-full object-cover"
-          style={{ filter: "brightness(0.55) saturate(0.7)", transform: "scale(1.04)", objectPosition: "center 35%" }} />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, #F4F7F5 0%, transparent 20%, transparent 80%, #F4F7F5 100%)" }} />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #F4F7F5 0%, transparent 18%, transparent 82%, #F4F7F5 100%)" }} />
-        <div className="absolute inset-0" style={{ background: "rgba(14,107,107,0.07)" }} />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(14px, 2.5vw, 32px)", fontWeight: 700, fontStyle: "italic", color: "rgba(10,31,31,0.07)", letterSpacing: "0.04em" }}>
-            Equilibrio Vitale · Healthy Lifestyle · Longevity · Wellbeing
-          </p>
-        </div>
-        <div className="absolute left-6 md:left-10 top-1/2 -translate-y-1/2 flex flex-col gap-2">
-          {["Nutrizione Clinica", "Metabolismo Basale", "Composizione Corporea"].map(l => (
-            <span key={l} style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "9px", color: `${P.wellTeal}70`, letterSpacing: "0.18em" }}>{l}</span>
-          ))}
-        </div>
-        <div className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 flex flex-col items-end gap-2">
-          {["Nutrizionisti & Dietologi", "Centri Wellness", "Spa & Benessere"].map(l => (
-            <span key={l} style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "9px", color: `${P.wellGold}80`, letterSpacing: "0.18em" }}>{l}</span>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }

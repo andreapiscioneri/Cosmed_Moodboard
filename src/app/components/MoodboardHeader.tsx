@@ -53,7 +53,7 @@ export function MoodboardHeader() {
             letterSpacing: "0.2em",
           }}
         >
-          BRAND MOODBOARD · CPF-MB-001 · 04.2026
+          BRAND MOODBOARD · CPF-MB-001 · 04
         </span>
       </div>
 

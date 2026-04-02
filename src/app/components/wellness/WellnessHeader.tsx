@@ -64,7 +64,7 @@ export function WellnessHeader() {
             letterSpacing: "0.2em",
           }}
         >
-          BRAND MOODBOARD · CWL-MB-001 · 04.2026
+          BRAND MOODBOARD · CWL-MB-001 · 04
         </span>
       </div>
 

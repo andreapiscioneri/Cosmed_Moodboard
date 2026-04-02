@@ -40,8 +40,8 @@ export const P = {
 
   // Text (deep navy-teal)
   text:        "#1C2E3A",
-  textSub:     "#4A6170",
-  textMuted:   "#7A9AA8",
+  textSub:     "#5F7684",
+  textMuted:   "#91A8B4",
   textInv:     "#EEF4F6",
 
   // Sub-brand specific (kept)

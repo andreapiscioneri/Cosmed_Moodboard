@@ -31,11 +31,11 @@ function generateBrochurePDF() {
 
   doc.setFontSize(10);
   doc.setTextColor(120, 160, 176);
-  doc.text("Proposta Marketing & Brand Identity 2026", W / 2, 77, { align: "center" });
+  doc.text("Proposta Marketing & Brand Identity", W / 2, 77, { align: "center" });
 
   doc.setFontSize(8);
   doc.setTextColor(74, 159, 175);
-  doc.text("DOCUMENTO RISERVATO · APRILE 2026", W / 2, pageH - 15, { align: "center" });
+  doc.text("DOCUMENTO RISERVATO · APRILE", W / 2, pageH - 15, { align: "center" });
 
   // ── PAGE 2: OBIETTIVI ────────────────────────────────────────────────
   addPage();
@@ -253,9 +253,9 @@ function generateBrochurePDF() {
 
   doc.setFontSize(8);
   doc.setTextColor(74, 159, 175);
-  doc.text("PROPOSTA RISERVATA · APRILE 2026 · DENANI PER COSMED", W / 2, pageH - 15, { align: "center" });
+  doc.text("PROPOSTA RISERVATA · APRILE · DENANI PER COSMED", W / 2, pageH - 15, { align: "center" });
 
-  doc.save("DeNani-per-COSMED-Proposta-2026.pdf");
+  doc.save("DeNani-per-COSMED-Proposta.pdf");
 }
 
 export function BrochureSection() {
@@ -265,16 +265,16 @@ export function BrochureSection() {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 rounded-3xl px-8 md:px-12 py-10"
           style={{ background: `${P.accent}0C`, border: `1px solid ${P.accent}20` }}>
           <div className="flex flex-col gap-3">
-            <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "9px", color: P.accent, letterSpacing: "0.28em", textTransform: "uppercase" }}>Documento Completo</span>
+            <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accentLight, letterSpacing: "0.14em", textTransform: "uppercase" }}>- Documento Completo</span>
             <h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.04em", lineHeight: "1" }}>
               Scarica la Brochure<br /><span style={{ color: P.accentLight }}>Riepilogativa</span>
             </h3>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: `${P.textInv}50`, lineHeight: "1.7", maxWidth: "480px" }}>
-              Un documento PDF completo con obiettivi, target, step operativi, piani d'investimento e prospetti ROI per la proposta DeNani per COSMED 2026.
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", fontWeight: 500, color: `${P.textInv}72`, lineHeight: "1.72", maxWidth: "500px" }}>
+              Un documento PDF completo con obiettivi, target, step operativi, piani d'investimento e prospetti ROI per la proposta DeNani per COSMED.
             </p>
             <div className="flex flex-wrap gap-2 mt-1">
               {["6 sezioni", "3 piani pricing", "Prospetti ROI", "Pronto per la stampa"].map(t => (
-                <span key={t} style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "8px", color: P.accentLight, border: `1px solid ${P.accentLight}25`, background: `${P.accentLight}07`, borderRadius: "4px", padding: "3px 8px", letterSpacing: "0.08em" }}>{t}</span>
+                <span key={t} style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 600, color: `${P.accentLight}F0`, border: `1px solid ${P.accentLight}50`, background: `${P.accentLight}14`, borderRadius: "5px", padding: "5px 10px", letterSpacing: "0.05em" }}>{t}</span>
               ))}
             </div>
           </div>
@@ -290,7 +290,6 @@ export function BrochureSection() {
             </svg>
             <div className="text-left">
               <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 800, color: "#FFFFFF", display: "block", lineHeight: "1.1" }}>Scarica PDF</span>
-              <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "8px", color: "rgba(255,255,255,0.65)", letterSpacing: "0.1em" }}>BROCHURE RIEPILOGATIVA</span>
             </div>
           </button>
         </div>

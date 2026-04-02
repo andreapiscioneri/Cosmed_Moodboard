@@ -14,7 +14,7 @@ export function ObiettiviSection() {
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-3 mb-5">
           <div style={{ width: "28px", height: "1px", background: P.accent }} />
-          <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "9px", color: P.accent, letterSpacing: "0.28em", textTransform: "uppercase" }}>La Proposta</span>
+          <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accent, letterSpacing: "0.14em", textTransform: "uppercase" }}>La Proposta</span>
         </div>
 
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-12">
@@ -22,7 +22,7 @@ export function ObiettiviSection() {
             Obiettivi<br />Strategici
           </h2>
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: P.textSub, lineHeight: "1.75", maxWidth: "420px" }}>
-            Cinque punti fondamentali che guidano l'architettura di comunicazione, posizionamento e crescita commerciale di Cosmed per il 2026.
+            Cinque punti fondamentali che guidano l'architettura di comunicazione, posizionamento e crescita commerciale di Cosmed.
           </p>
         </div>
 
@@ -30,7 +30,7 @@ export function ObiettiviSection() {
           {obiettivi.map((o) => (
             <div key={o.n} className="flex flex-col gap-4 rounded-2xl p-6"
               style={{ background: P.surface, border: `1px solid ${P.border}`, borderTop: `3px solid ${o.c}` }}>
-              <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "12px", color: o.c, letterSpacing: "0.14em" }}>{o.n}</span>
+              <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "12px", color: o.c, letterSpacing: "0.14em" }}>{o.n}</span>
               <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 700, color: P.text, letterSpacing: "-0.01em", lineHeight: "1.4" }}>
                 {o.t}
               </p>

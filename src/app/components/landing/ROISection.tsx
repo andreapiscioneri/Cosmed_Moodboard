@@ -52,7 +52,7 @@ export function ROISection() {
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-3 mb-5">
           <div style={{ width: "28px", height: "1px", background: P.accent }} />
-          <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "9px", color: P.accent, letterSpacing: "0.28em", textTransform: "uppercase" }}>Proiezioni</span>
+          <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accent, letterSpacing: "0.14em", textTransform: "uppercase" }}>Proiezioni</span>
         </div>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-12">
           <h2 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 4vw, 50px)", fontWeight: 900, color: P.text, letterSpacing: "-0.04em", lineHeight: "0.95" }}>
@@ -76,17 +76,17 @@ export function ROISection() {
                     Prospetto <span style={{ color: pr.c }}>«{pr.nome}»</span>
                   </h3>
                   {pr.highlight && (
-                    <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "7px", color: pr.c, border: `1px solid ${pr.c}30`, background: `${pr.c}08`, borderRadius: "3px", padding: "2px 7px", letterSpacing: "0.15em", textTransform: "uppercase" }}>✦ Più Scelto</span>
+                    <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 800, color: "#1D5F72", border: `1px solid ${pr.c}55`, background: `${pr.c}18`, borderRadius: "6px", padding: "4px 10px", letterSpacing: "0.06em", lineHeight: 1, textTransform: "uppercase" }}>PIÙ SCELTO</span>
                   )}
                 </div>
                 <div className="flex items-center gap-4">
                   <div>
-                    <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "7px", color: P.textMuted, letterSpacing: "0.2em", display: "block" }}>BUDGET ANNUO ADS</span>
+                    <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.textSub, letterSpacing: "0.13em", display: "block" }}>BUDGET ANNUO ADS</span>
                     <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "15px", fontWeight: 900, color: pr.c, letterSpacing: "-0.02em" }}>{pr.budgetAnno}</span>
                   </div>
                   <div style={{ width: "1px", height: "28px", background: P.border }} />
                   <div>
-                    <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "7px", color: P.textMuted, letterSpacing: "0.2em", display: "block" }}>BUDGET MENSILE ADS</span>
+                    <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.textSub, letterSpacing: "0.13em", display: "block" }}>BUDGET MENSILE ADS</span>
                     <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "14px", fontWeight: 700, color: P.text, letterSpacing: "-0.02em" }}>{pr.budgetMese}</span>
                   </div>
                 </div>
@@ -99,7 +99,7 @@ export function ROISection() {
                     <tr style={{ borderBottom: `1px solid ${P.border}` }}>
                       {cols.map(c => (
                         <th key={c} className="text-left px-5 py-3"
-                          style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "8px", color: P.textMuted, letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 400 }}>
+                          style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", color: P.textSub, letterSpacing: "0.13em", textTransform: "uppercase", fontWeight: 700 }}>
                           {c}
                         </th>
                       ))}
@@ -115,7 +115,7 @@ export function ROISection() {
                           </div>
                         </td>
                         <td className="px-5 py-3.5">
-                          <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "10px", color: P.textSub, letterSpacing: "0.04em" }}>{r.canale}</span>
+                          <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", color: P.textSub, letterSpacing: "0.04em" }}>{r.canale}</span>
                         </td>
                         <td className="px-5 py-3.5">
                           <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "12px", fontWeight: 600, color: P.text }}>{r.budget}</span>
@@ -125,14 +125,14 @@ export function ROISection() {
                           <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", color: P.textMuted, marginLeft: "3px" }}>lead</span>
                         </td>
                         <td className="px-5 py-3.5">
-                          <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "11px", color: P.textSub }}>{r.cpl}</span>
+                          <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", color: P.textSub }}>{r.cpl}</span>
                         </td>
                       </tr>
                     ))}
                     {/* Totale row */}
                     <tr style={{ background: pr.bg, borderTop: `2px solid ${pr.border}` }}>
                       <td className="px-5 py-3.5" colSpan={2}>
-                        <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "9px", color: pr.c, letterSpacing: "0.2em", textTransform: "uppercase" }}>TOTALE</span>
+                        <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", color: pr.c, letterSpacing: "0.2em", textTransform: "uppercase" }}>TOTALE</span>
                       </td>
                       <td className="px-5 py-3.5">
                         <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 800, color: pr.c }}>{pr.totale.budget}</span>
@@ -152,7 +152,7 @@ export function ROISection() {
           ))}
         </div>
 
-        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: P.textMuted, marginTop: "16px", lineHeight: "1.6" }}>
+        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", fontWeight: 500, color: "#5F7788", marginTop: "16px", lineHeight: "1.65" }}>
           * Le stime sono orientative e basate su benchmark di settore B2B (LinkedIn) e B2C/B2B2C (Meta). Il CPL effettivo dipende dalla qualità del contenuto, dall'ottimizzazione continua delle campagne e dalla stagionalità. Il budget ads è aggiuntivo rispetto al canone di gestione.
         </p>
       </div>

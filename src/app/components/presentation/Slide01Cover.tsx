@@ -47,7 +47,7 @@ export function Slide01Cover() {
           {/* Eyebrow */}
           <div className="flex items-center gap-3">
             <div style={{ width: "40px", height: "1px", background: `linear-gradient(90deg, ${T.gold}, transparent)` }} />
-            <span style={{ fontFamily: T.mono, fontSize: "10px", color: T.gold, letterSpacing: "0.3em", textTransform: "uppercase" }}>
+            <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: T.gold, letterSpacing: "0.16em", textTransform: "uppercase" }}>
               Proposta Commerciale Riservata
             </span>
           </div>
@@ -76,7 +76,7 @@ export function Slide01Cover() {
           {/* Subtitle + meta */}
           <div className="flex flex-col gap-3">
             <p style={{ fontFamily: T.sans, fontSize: "clamp(14px, 1.6vw, 20px)", fontWeight: 500, color: "rgba(242,239,233,0.75)", letterSpacing: "0.02em" }}>
-              Proposta Marketing & Brand Identity 2026
+              Proposta Marketing & Brand Identity
             </p>
             <div className="flex flex-wrap gap-2">
               {["Brand Strategy", "Web Development", "SEO/GEO", "Social Media", "Lead Generation", "Sponsorizzazioni"].map(t => (
@@ -93,7 +93,7 @@ export function Slide01Cover() {
         {/* Bottom: date + confidential */}
         <div className="flex items-end justify-between">
           <div className="flex flex-col gap-1">
-            <span style={{ fontFamily: T.mono, fontSize: "9px", color: "rgba(242,239,233,0.2)", letterSpacing: "0.2em" }}>APRILE 2026</span>
+            <span style={{ fontFamily: T.mono, fontSize: "9px", color: "rgba(242,239,233,0.2)", letterSpacing: "0.2em" }}>APRILE</span>
             <span style={{ fontFamily: T.mono, fontSize: "9px", color: "rgba(242,239,233,0.2)", letterSpacing: "0.2em" }}>DOCUMENTO RISERVATO</span>
           </div>
           <div style={{ width: "90px", height: "1px", background: `linear-gradient(90deg, transparent, ${T.gold}50)` }} />

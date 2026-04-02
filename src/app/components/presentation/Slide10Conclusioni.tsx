@@ -141,7 +141,7 @@ export function Slide10Conclusioni() {
       {/* Footer */}
       <div className="relative z-20 flex items-center justify-between px-10 py-2 shrink-0"
         style={{ borderTop: `1px solid ${T.borderDark}`, background: "rgba(28,31,38,0.9)", backdropFilter: "blur(12px)" }}>
-        <span style={{ fontFamily: T.mono, fontSize: "7px", color: "rgba(242,239,233,0.2)", letterSpacing: "0.2em" }}>PROPOSTA RISERVATA · APRILE 2026</span>
+        <span style={{ fontFamily: T.mono, fontSize: "7px", color: "rgba(242,239,233,0.2)", letterSpacing: "0.2em" }}>PROPOSTA RISERVATA · APRILE</span>
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <div style={{ width: "56px", height: "2px", borderRadius: "1px", background: "rgba(255,255,255,0.08)", overflow: "hidden" }}>
             <div style={{ height: "100%", width: "100%", background: T.gold, borderRadius: "1px" }} />
