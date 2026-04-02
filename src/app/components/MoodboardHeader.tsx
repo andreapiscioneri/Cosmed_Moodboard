@@ -1,4 +1,4 @@
-import cosmedLogo from "figma:asset/cffaa0cb0f7ab92966e997ad7cded19cf46e55a0.png";
+import cosmedLogo from "../../assets/cffaa0cb0f7ab92966e997ad7cded19cf46e55a0.png";
 
 export function MoodboardHeader() {
   return (

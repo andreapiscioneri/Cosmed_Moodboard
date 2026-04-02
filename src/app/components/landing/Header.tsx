@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import cosmedLogo from "figma:asset/cffaa0cb0f7ab92966e997ad7cded19cf46e55a0.png";
-import denaniLogo from "figma:asset/b711fde9faacb53317b265711a97126b5de19ae1.png";
+import cosmedLogo from "../../../assets/cffaa0cb0f7ab92966e997ad7cded19cf46e55a0.png";
+import denaniLogo from "../../../assets/b711fde9faacb53317b265711a97126b5de19ae1.png";
 import { P } from "./images";
 
 const NAV = [
