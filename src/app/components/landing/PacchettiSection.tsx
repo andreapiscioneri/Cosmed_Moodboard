@@ -127,7 +127,7 @@ export function PacchettiSection() {
                 borderTop: `4px solid ${pp.c}`,
                 background: pp.golden ? P.dark : P.surface,
                 boxShadow: pp.highlight ? "0 8px 40px rgba(30,122,138,0.12)" : "none",
-                transform: pp.highlight ? "scale(1.02)" : "scale(1)",
+                transform: "scale(1)",
               }}>
 
               {pp.highlight && (

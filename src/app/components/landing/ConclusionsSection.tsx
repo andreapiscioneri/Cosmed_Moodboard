@@ -57,7 +57,7 @@ export function ConclusionsSection() {
           <img src={denaniLogo} alt="DeNani" style={{ height: "20px", objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.72 }} />
         </div>
         <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: "rgba(238,244,246,0.84)", letterSpacing: "0.08em", textAlign: "center" }}>
-          PROPOSTA RISERVATA · APRILE · DENANI PER COSMED
+          PROPOSTA RISERVATA · DENANI PER COSMED
         </span>
         <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accentLight, letterSpacing: "0.08em" }}>
           THE METABOLIC COMPANY

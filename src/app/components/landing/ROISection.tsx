@@ -68,9 +68,9 @@ export function ROISection() {
             <div key={pr.nome} className="rounded-3xl overflow-hidden"
               style={{ border: `1px solid ${pr.border}`, boxShadow: pr.highlight ? "0 6px 32px rgba(30,122,138,0.09)" : "none" }}>
               {/* Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-6 py-4"
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-4 sm:px-6 py-4"
                 style={{ background: pr.bg, borderBottom: `1px solid ${pr.border}` }}>
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                   <div style={{ width: "10px", height: "10px", borderRadius: "50%", background: pr.c, flexShrink: 0 }} />
                   <h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "16px", fontWeight: 800, color: P.text, letterSpacing: "-0.02em" }}>
                     Prospetto <span style={{ color: pr.c }}>«{pr.nome}»</span>
@@ -79,7 +79,7 @@ export function ROISection() {
                     <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 800, color: "#1D5F72", border: `1px solid ${pr.c}55`, background: `${pr.c}18`, borderRadius: "6px", padding: "4px 10px", letterSpacing: "0.06em", lineHeight: 1, textTransform: "uppercase" }}>PIÙ SCELTO</span>
                   )}
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4">
                   <div>
                     <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.textSub, letterSpacing: "0.13em", display: "block" }}>BUDGET ANNUO ADS</span>
                     <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "15px", fontWeight: 900, color: pr.c, letterSpacing: "-0.02em" }}>{pr.budgetAnno}</span>
@@ -94,11 +94,11 @@ export function ROISection() {
 
               {/* Table */}
               <div className="overflow-x-auto">
-                <table className="w-full" style={{ borderCollapse: "collapse", background: P.surface }}>
+                <table className="w-full min-w-[700px]" style={{ borderCollapse: "collapse", background: P.surface }}>
                   <thead>
                     <tr style={{ borderBottom: `1px solid ${P.border}` }}>
                       {cols.map(c => (
-                        <th key={c} className="text-left px-5 py-3"
+                        <th key={c} className="text-left px-3 sm:px-5 py-2.5 sm:py-3"
                           style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", color: P.textSub, letterSpacing: "0.13em", textTransform: "uppercase", fontWeight: 700 }}>
                           {c}
                         </th>
@@ -108,40 +108,40 @@ export function ROISection() {
                   <tbody>
                     {pr.righe.map((r, i) => (
                       <tr key={r.area} style={{ borderBottom: `1px solid ${P.border}`, background: i % 2 === 0 ? P.surface : P.surfaceAlt }}>
-                        <td className="px-5 py-3.5">
+                        <td className="px-3 sm:px-5 py-3 sm:py-3.5">
                           <div className="flex items-center gap-2">
                             <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: r.area === "Performance" ? P.perfBlue : P.wellTeal, flexShrink: 0 }} />
                             <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "12px", fontWeight: 700, color: P.text }}>{r.area}</span>
                           </div>
                         </td>
-                        <td className="px-5 py-3.5">
+                        <td className="px-3 sm:px-5 py-3 sm:py-3.5">
                           <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", color: P.textSub, letterSpacing: "0.04em" }}>{r.canale}</span>
                         </td>
-                        <td className="px-5 py-3.5">
+                        <td className="px-3 sm:px-5 py-3 sm:py-3.5">
                           <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "12px", fontWeight: 600, color: P.text }}>{r.budget}</span>
                         </td>
-                        <td className="px-5 py-3.5">
+                        <td className="px-3 sm:px-5 py-3 sm:py-3.5">
                           <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 700, color: pr.c }}>{r.leads}</span>
                           <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", color: P.textMuted, marginLeft: "3px" }}>lead</span>
                         </td>
-                        <td className="px-5 py-3.5">
+                        <td className="px-3 sm:px-5 py-3 sm:py-3.5">
                           <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", color: P.textSub }}>{r.cpl}</span>
                         </td>
                       </tr>
                     ))}
                     {/* Totale row */}
                     <tr style={{ background: pr.bg, borderTop: `2px solid ${pr.border}` }}>
-                      <td className="px-5 py-3.5" colSpan={2}>
+                      <td className="px-3 sm:px-5 py-3 sm:py-3.5" colSpan={2}>
                         <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", color: pr.c, letterSpacing: "0.2em", textTransform: "uppercase" }}>TOTALE</span>
                       </td>
-                      <td className="px-5 py-3.5">
+                      <td className="px-3 sm:px-5 py-3 sm:py-3.5">
                         <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 800, color: pr.c }}>{pr.totale.budget}</span>
                       </td>
-                      <td className="px-5 py-3.5">
+                      <td className="px-3 sm:px-5 py-3 sm:py-3.5">
                         <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "14px", fontWeight: 900, color: pr.c }}>{pr.totale.leads}</span>
                         <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", color: P.textSub, marginLeft: "3px" }}>lead/mese</span>
                       </td>
-                      <td className="px-5 py-3.5">
+                      <td className="px-3 sm:px-5 py-3 sm:py-3.5">
                         <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 700, color: pr.c }}>{pr.totale.cpl}</span>
                       </td>
                     </tr>

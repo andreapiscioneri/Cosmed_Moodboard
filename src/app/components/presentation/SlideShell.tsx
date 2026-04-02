@@ -87,7 +87,7 @@ export function SlideShell({ slideNum, slideTitle, dark = false, bg, children, n
         style={{ borderTop: `1px solid ${headerBorder}`, background: headerBg, backdropFilter: "blur(12px)" }}
       >
         <span style={{ fontFamily: T.mono, fontSize: "7px", color: subCol, letterSpacing: "0.2em" }}>
-          PROPOSTA RISERVATA · APRILE
+          PROPOSTA RISERVATA
         </span>
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <div style={{ width: "56px", height: "2px", borderRadius: "1px", background: dark ? "rgba(242,239,233,0.1)" : T.border, overflow: "hidden" }}>

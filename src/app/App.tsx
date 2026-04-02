@@ -92,7 +92,7 @@ export default function App() {
   useScrollReveal();
 
   return (
-    <div className="w-full" style={{ fontFamily: "'Inter', sans-serif" }}>
+    <div className="w-full overflow-x-hidden" style={{ fontFamily: "'Inter', sans-serif" }}>
       {/* Sticky navigation */}
       <Header />
 

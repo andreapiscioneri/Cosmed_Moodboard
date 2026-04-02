@@ -93,7 +93,6 @@ export function Slide01Cover() {
         {/* Bottom: date + confidential */}
         <div className="flex items-end justify-between">
           <div className="flex flex-col gap-1">
-            <span style={{ fontFamily: T.mono, fontSize: "9px", color: "rgba(242,239,233,0.2)", letterSpacing: "0.2em" }}>APRILE</span>
             <span style={{ fontFamily: T.mono, fontSize: "9px", color: "rgba(242,239,233,0.2)", letterSpacing: "0.2em" }}>DOCUMENTO RISERVATO</span>
           </div>
           <div style={{ width: "90px", height: "1px", background: `linear-gradient(90deg, transparent, ${T.gold}50)` }} />

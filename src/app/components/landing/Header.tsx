@@ -91,7 +91,7 @@ export function Header() {
       </div>
 
       <header
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 py-3"
+        className="fixed top-0 left-0 right-0 z-50 flex flex-col lg:flex-row lg:items-center lg:justify-between px-4 sm:px-6 md:px-10 py-2.5 lg:py-3 gap-2 lg:gap-0"
         style={{
           background: bg,
           borderBottom: scrolled ? `1px solid ${borderCol}` : "none",
@@ -99,17 +99,66 @@ export function Header() {
           transition: "all 0.4s ease",
         }}
       >
-      {/* Logo pair — più grandi */}
-      <div className="flex items-center gap-4">
-        <img src={cosmedLogo} alt="Cosmed"
-          style={{ height: "44px", width: "auto", objectFit: "contain", filter: logoFilter, transition: "filter 0.4s" }} />
-        <div style={{ width: "1px", height: "24px", background: darkSection ? "rgba(255,255,255,0.15)" : P.border }} />
-        <img src={denaniLogo} alt="DeNani"
-          style={{ height: "44px", width: "auto", objectFit: "contain", filter: logoFilter, transition: "filter 0.4s" }} />
-      </div>
+        <div className="w-full lg:w-auto flex items-center justify-between lg:justify-start lg:gap-4">
+          {/* Logo pair */}
+          <div className="flex items-center gap-3 sm:gap-4">
+            <img src={cosmedLogo} alt="Cosmed"
+              style={{ height: "34px", width: "auto", objectFit: "contain", filter: logoFilter, transition: "filter 0.4s" }} />
+            <div style={{ width: "1px", height: "20px", background: darkSection ? "rgba(255,255,255,0.15)" : P.border }} />
+            <img src={denaniLogo} alt="DeNani"
+              style={{ height: "34px", width: "auto", objectFit: "contain", filter: logoFilter, transition: "filter 0.4s" }} />
+          </div>
 
-      {/* Nav desktop */}
-      <nav className="hidden lg:flex items-center gap-6">
+          {/* CTA mobile */}
+          <a href="mailto:support@denani.it"
+            className="lg:hidden rounded-lg px-3 py-1.5"
+            style={{
+              background: P.accent,
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: "10px", fontWeight: 700,
+              color: "#FFFFFF", letterSpacing: "0.02em",
+              textDecoration: "none",
+            }}>
+            Contattaci
+          </a>
+        </div>
+
+        {/* Nav mobile */}
+        <nav className="lg:hidden w-full overflow-x-auto"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+          <div className="flex items-center gap-4 min-w-max pr-2">
+            {NAV.map(n => {
+              const isActive = activeHref === n.href;
+              const isPacchetti = n.href === "#pacchetti";
+              return (
+                <button key={`m-${n.href}`}
+                  onClick={() => { scrollToSection(n.href); setActiveHref(n.href); }}
+                  className="relative transition-all duration-200"
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: textCol,
+                    opacity: isActive && !isPacchetti ? 1 : 0.82,
+                    border: "none",
+                    background: "none",
+                    cursor: "pointer",
+                    padding: "4px 1px 6px",
+                    borderBottom: isActive && !isPacchetti
+                      ? `2px solid ${darkSection ? P.accentLight : P.accent}`
+                      : "2px solid transparent",
+                  }}>
+                  {n.label}
+                </button>
+              );
+            })}
+          </div>
+        </nav>
+
+        {/* Nav desktop */}
+        <nav className="hidden lg:flex items-center gap-6">
         {NAV.map(n => {
           const isActive = activeHref === n.href;
           const isPacchetti = n.href === "#pacchetti";
@@ -133,11 +182,11 @@ export function Header() {
               style={{ background: P.accent }} />
           </button>
         );})}
-      </nav>
+        </nav>
 
-      {/* CTA */}
+        {/* CTA desktop */}
         <a href="mailto:support@denani.it"
-          className="rounded-lg px-5 py-2 transition-all duration-200 hover:opacity-90 hover:scale-105"
+          className="hidden lg:inline-flex rounded-lg px-5 py-2 transition-all duration-200 hover:opacity-90 hover:scale-105"
           style={{
             background: P.accent,
             fontFamily: "'Montserrat', sans-serif",
