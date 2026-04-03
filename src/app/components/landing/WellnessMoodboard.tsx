@@ -1,4 +1,7 @@
 import { IMGS, P } from "./images";
+import wellLongevity2 from "../../../assets/WELLNESS - LONGEVITY 2.jpg";
+import wellLongevity3 from "../../../assets/WELLNESS - LONGEVITY 3.jpg";
+import wellNatura     from "../../../assets/WELLNESS - NATURA.jpg";
 
 const palette = [
   { hex: "#0E6B6B", name: "Deep Teal" },
@@ -22,12 +25,12 @@ const keywords = [
 
 const target = ["Nutrizionisti ~15.000", "Dietologi ~6.000", "Spa & Centri ~4.000", "Centri Estetici ~8.000", "Endocrinologi ~4.000"];
 
-// Immagini healthy lifestyle
+// Griglia 2x2: riga top → cibo | fiori/natura — riga bottom → persone | persone
 const mosaicImages = [
-  { url: IMGS.food,     label: "Nutrizione",        tag: "Alimentazione Sana",     sub: "Cibo sano e bilanciato" },
-  { url: IMGS.running,  label: "Attività Fisica",   tag: "Sport all'Aperto",       sub: "Running e fitness outdoor" },
-  { url: IMGS.yoga,     label: "Mindfulness",       tag: "Meditazione & Yoga",     sub: "Equilibrio mente-corpo" },
-  { url: IMGS.wellness, label: "Benessere",         tag: "Wellness Premium",       sub: "Cura di sé e longevità" },
+  { url: IMGS.food,      label: "Nutrizione",   tag: "Alimentazione Sana",  sub: "Cibo sano e bilanciato" },
+  { url: wellNatura,     label: "Natura",       tag: "Ambiente Naturale",   sub: "Connessione con la natura" },
+  { url: wellLongevity2, label: "Longevity",    tag: "Stile di Vita",       sub: "Longevità e benessere" },
+  { url: wellLongevity3, label: "Longevity",    tag: "Equilibrio Vitale",   sub: "Cura di sé e longevità" },
 ];
 
 export function WellnessMoodboard() {

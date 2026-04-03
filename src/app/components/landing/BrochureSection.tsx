@@ -15,68 +15,50 @@ function toDataUrl(blob: Blob): Promise<string> {
 }
 
 /**
- * html2canvas v1.x cannot parse the `oklch()` colour function used by
- * Tailwind v4.  This function:
- *   1. Scans every accessible stylesheet for CSS custom-property declarations
- *      whose value contains "oklch".
- *   2. Resolves each one to rgb() by setting it as the `color` of a hidden
- *      probe element and reading back the browser-computed style.
- *   3. Injects a temporary `:root` override <style> so html2canvas only sees
- *      rgb values.
+ * html2canvas v1.x cannot parse `oklch()` colours used by Tailwind v4.
+ * Tailwind injects oklch both inside CSS-variable declarations AND directly
+ * inside class rules (e.g. `.bg-slate-100 { background-color: oklch(...) }`).
+ * The only reliable fix is to replace every `oklch(…)` literal inside every
+ * <style> element with its browser-resolved rgb() equivalent, then restore the
+ * originals after capture.
  *
- * Returns a cleanup callback that removes the injected <style>.
+ * Returns a cleanup callback that restores the original stylesheet text.
  */
-async function patchOklchForCapture(): Promise<() => void> {
-  const oklchVarNames = new Set<string>();
-
-  const collectFromRules = (list: CSSRuleList) => {
-    for (const rule of Array.from(list)) {
-      // Recurse into @media, @supports, @layer, etc.
-      if ("cssRules" in rule && (rule as CSSGroupingRule).cssRules) {
-        collectFromRules((rule as CSSGroupingRule).cssRules);
-      }
-      if (rule instanceof CSSStyleRule) {
-        // Match any `--custom-prop: oklch(...)` declarations in this rule.
-        const matches = rule.cssText.matchAll(/(--[\w-]+)\s*:\s*oklch\([^)]+\)/g);
-        for (const m of matches) {
-          oklchVarNames.add(m[1]);
-        }
-      }
-    }
-  };
-
-  for (const sheet of Array.from(document.styleSheets)) {
-    try {
-      collectFromRules(sheet.cssRules);
-    } catch {
-      // Cross-origin stylesheet — skip.
-    }
-  }
-
-  if (oklchVarNames.size === 0) return () => {};
-
-  // Use a hidden probe element to let the browser resolve oklch → rgb.
+function patchOklchForCapture(): () => void {
+  // Probe element: browser resolves oklch → rgb via getComputedStyle.
   const probe = document.createElement("div");
   probe.style.cssText = "position:absolute;left:-9999px;top:-9999px;visibility:hidden;";
   document.body.appendChild(probe);
 
-  const overrides: string[] = [];
-  for (const varName of oklchVarNames) {
-    probe.style.color = `var(${varName})`;
-    const resolved = getComputedStyle(probe).color; // always rgb()/rgba()
-    if (resolved) {
-      overrides.push(`${varName}: ${resolved}`);
-    }
-  }
+  const cache = new Map<string, string>();
+  const resolveOklch = (oklch: string): string => {
+    if (cache.has(oklch)) return cache.get(oklch)!;
+    probe.style.color = oklch;
+    const rgb = getComputedStyle(probe).color; // always rgb()/rgba()
+    cache.set(oklch, rgb);
+    return rgb;
+  };
+
+  // Replace every oklch(…) in a CSS text string with its rgb equivalent.
+  const replaceAll = (text: string) =>
+    text.replace(/oklch\([^)]+\)/g, resolveOklch);
+
+  // Patch all <style> elements that contain oklch.
+  const backups: Array<{ el: HTMLStyleElement; original: string }> = [];
+  document.querySelectorAll("style").forEach((el) => {
+    const style = el as HTMLStyleElement;
+    const original = style.textContent ?? "";
+    if (!original.includes("oklch")) return;
+    backups.push({ el: style, original });
+    style.textContent = replaceAll(original);
+  });
 
   probe.remove();
 
-  const style = document.createElement("style");
-  style.id = "__pdf-oklch-fix__";
-  style.textContent = `:root { ${overrides.join("; ")} }`;
-  document.head.appendChild(style);
-
-  return () => document.getElementById("__pdf-oklch-fix__")?.remove();
+  // Return cleanup that restores original stylesheet text.
+  return () => {
+    backups.forEach(({ el, original }) => { el.textContent = original; });
+  };
 }
 
 async function prepareImagesForCapture(root: HTMLElement) {
@@ -154,7 +136,7 @@ async function generateBrochurePDF() {
   if (document.fonts?.ready) await document.fonts.ready;
 
   // Patch oklch colours before any html2canvas call.
-  const removeOklchPatch = await patchOklchForCapture();
+  const removeOklchPatch = patchOklchForCapture();
 
   const host = document.createElement("div");
   host.style.cssText = `
