@@ -6,10 +6,9 @@ const STATIC_BROCHURE_URL = "/assets/Denani-Cosmed-Brochure.pdf";
 
 function openStaticBrochure() {
   const popup = window.open(STATIC_BROCHURE_URL, "_blank", "noopener,noreferrer");
-  if (popup) return;
-
-  // Fallback: se il popup è bloccato, apri il PDF nella tab corrente.
-  window.location.href = STATIC_BROCHURE_URL;
+  if (!popup) {
+    console.warn("Popup bloccato dal browser: impossibile aprire la brochure in una nuova scheda.");
+  }
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────
@@ -56,6 +55,7 @@ export function BrochureSection() {
           </div>
 
           <button
+            type="button"
             onClick={onGeneratePDF}
             disabled={isOpening}
             className="flex items-center gap-3 rounded-2xl px-8 py-4 transition-all duration-200 hover:opacity-90 hover:scale-105 shrink-0"
