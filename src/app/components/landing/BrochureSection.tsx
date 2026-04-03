@@ -1,139 +1,31 @@
 import { useState } from "react";
-import html2canvas from "html2canvas";
-import { jsPDF } from "jspdf";
 import { P } from "./images";
 
-async function generateBrochurePDF() {
-  const appRoot = document.querySelector("#root > div") as HTMLElement | null;
-  if (!appRoot) {
-    throw new Error("Contenuto brochure non trovato");
-  }
+const PDF_FILE_NAME = "Denani-Cosmed-Proposal_Brochure.pdf";
+const STATIC_BROCHURE_URL = "/assets/Denani-Cosmed-Brochure.pdf";
 
-  document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale").forEach((el) => {
-    (el as HTMLElement).classList.add("visible");
-  });
+function openStaticBrochure() {
+  const popup = window.open(STATIC_BROCHURE_URL, "_blank", "noopener,noreferrer");
+  if (popup) return;
 
-  // Apriamo subito la tab dal click utente per evitare blocchi popup.
-  const previewWindow = window.open("about:blank", "_blank");
-
-  const staging = document.createElement("div");
-  staging.id = "__pdf-staging__";
-  staging.style.position = "fixed";
-  staging.style.left = "-10000px";
-  staging.style.top = "0";
-  staging.style.width = "1280px";
-  staging.style.background = "#ffffff";
-  staging.style.zIndex = "-1";
-  staging.style.pointerEvents = "none";
-
-  const cleanup = () => {
-    staging.remove();
-  };
-
-  document.body.appendChild(staging);
-
-  const blocks = Array.from(appRoot.children).filter((el) => {
-    const htmlEl = el as HTMLElement;
-    return htmlEl.tagName.toLowerCase() !== "header" && !htmlEl.querySelector('[data-pdf-exclude="true"]') && !htmlEl.matches('[data-pdf-exclude="true"]');
-  }) as HTMLElement[];
-
-  if (blocks.length === 0) {
-    cleanup();
-    throw new Error("Nessuna sezione disponibile per il PDF");
-  }
-
-  const pdf = new jsPDF({
-    orientation: "portrait",
-    unit: "mm",
-    format: "a4",
-    compress: true,
-    putOnlyUsedFonts: true,
-  });
-
-  const pageWidth = pdf.internal.pageSize.getWidth();
-  const pageHeight = pdf.internal.pageSize.getHeight();
-  const margin = 8;
-  const contentWidth = pageWidth - margin * 2;
-  const contentHeight = pageHeight - margin * 2;
-
-  try {
-    for (let i = 0; i < blocks.length; i += 1) {
-      const clone = blocks[i].cloneNode(true) as HTMLElement;
-
-      clone.querySelectorAll('[data-pdf-exclude="true"]').forEach((excluded) => excluded.remove());
-      clone.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale").forEach((el) => {
-        const node = el as HTMLElement;
-        node.classList.add("visible");
-        node.style.opacity = "1";
-        node.style.transform = "none";
-        node.style.transition = "none";
-      });
-
-      clone.style.width = "1280px";
-      clone.style.maxWidth = "1280px";
-      clone.style.margin = "0";
-      clone.style.background = "#ffffff";
-      clone.style.breakInside = "avoid";
-
-      staging.appendChild(clone);
-
-      const canvas = await html2canvas(clone, {
-        backgroundColor: "#ffffff",
-        useCORS: true,
-        allowTaint: false,
-        scale: Math.min(window.devicePixelRatio || 1, 2),
-        logging: false,
-        windowWidth: 1280,
-        windowHeight: clone.scrollHeight,
-      });
-
-      clone.remove();
-
-      if (i > 0) {
-        pdf.addPage();
-      }
-
-      const imgData = canvas.toDataURL("image/jpeg", 0.95);
-      const ratio = Math.min(contentWidth / canvas.width, contentHeight / canvas.height);
-      const renderWidth = canvas.width * ratio;
-      const renderHeight = canvas.height * ratio;
-      const x = (pageWidth - renderWidth) / 2;
-      const y = (pageHeight - renderHeight) / 2;
-
-      pdf.addImage(imgData, "JPEG", x, y, renderWidth, renderHeight, undefined, "FAST");
-    }
-
-    const blob = pdf.output("blob");
-    const blobUrl = URL.createObjectURL(blob);
-    if (previewWindow) {
-      previewWindow.location.replace(blobUrl);
-    } else {
-      window.open(blobUrl, "_blank");
-    }
-
-    // Evita leak di memoria mantenendo il blob disponibile abbastanza a lungo.
-    window.setTimeout(() => URL.revokeObjectURL(blobUrl), 60000);
-  } finally {
-    cleanup();
-  }
+  // Fallback: se il popup è bloccato, apri il PDF nella tab corrente.
+  window.location.href = STATIC_BROCHURE_URL;
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export function BrochureSection() {
-  const [isGenerating, setIsGenerating] = useState(false);
+  const [isOpening, setIsOpening] = useState(false);
 
-  const onGeneratePDF = async () => {
-    if (isGenerating) return;
-    setIsGenerating(true);
-
+  const onGeneratePDF = () => {
+    if (isOpening) return;
+    setIsOpening(true);
     try {
-      await generateBrochurePDF();
+      openStaticBrochure();
     } catch (error) {
-      // Manteniamo il fallback semplice: log diagnostico in console.
-      console.error("Errore durante la generazione PDF:", error);
+      console.error("Errore durante l'apertura del PDF:", error);
     } finally {
-      setIsGenerating(false);
+      window.setTimeout(() => setIsOpening(false), 500);
     }
   };
 
@@ -165,9 +57,9 @@ export function BrochureSection() {
 
           <button
             onClick={onGeneratePDF}
-            disabled={isGenerating}
+            disabled={isOpening}
             className="flex items-center gap-3 rounded-2xl px-8 py-4 transition-all duration-200 hover:opacity-90 hover:scale-105 shrink-0"
-            style={{ background: P.accent, border: `1px solid ${P.accentLight}40`, cursor: isGenerating ? "wait" : "pointer", transform: "scale(1)", opacity: isGenerating ? 0.82 : 1 }}
+            style={{ background: P.accent, border: `1px solid ${P.accentLight}40`, cursor: isOpening ? "wait" : "pointer", transform: "scale(1)", opacity: isOpening ? 0.82 : 1 }}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
@@ -176,7 +68,7 @@ export function BrochureSection() {
             </svg>
             <div className="text-left">
               <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 800, color: "#FFFFFF", display: "block", lineHeight: "1.1" }}>
-                {isGenerating ? "Generazione PDF..." : "Scarica PDF"}
+                {isOpening ? "Apertura PDF..." : "Scarica PDF"}
               </span>
             </div>
           </button>
