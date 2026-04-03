@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import cosmedLogo from "../../../assets/cffaa0cb0f7ab92966e997ad7cded19cf46e55a0.png";
-import denaniLogo from "../../../assets/b711fde9faacb53317b265711a97126b5de19ae1.png";
+import denaniLogoBianco from "../../../assets/LOGO DENANI - bianco.png";
+import denaniLogoBlu from "../../../assets/LOGO DENANI - blu.png";
 import { P } from "./images";
 
 const NAV = [
@@ -13,10 +14,15 @@ const NAV = [
 
 function scrollToSection(href: string) {
   const id = href.replace("#", "");
-  const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+  const doScroll = () => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const headerH = 72;
+    const top = el.getBoundingClientRect().top + window.scrollY - headerH;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  };
+  // rAF ensures layout is settled (important on first load)
+  requestAnimationFrame(doScroll);
 }
 
 export function Header() {
@@ -36,28 +42,37 @@ export function Header() {
         : 0;
       setScrollProgress(progress);
 
+      // Use getBoundingClientRect() + scrollY for absolute document position
+      // (offsetTop breaks on sections with position:relative as own offsetParent)
+      const absTop = (id: string) => {
+        const el = document.getElementById(id);
+        return el ? el.getBoundingClientRect().top + window.scrollY : null;
+      };
+
       const marker = window.scrollY + window.innerHeight * 0.35;
       let currentHref = NAV[0].href;
       NAV.forEach((item) => {
         const id = item.href.replace("#", "");
-        const section = document.getElementById(id);
-        if (section && marker >= section.offsetTop - 80) {
+        const top = absTop(id);
+        if (top !== null && marker >= top - 80) {
           currentHref = item.href;
         }
       });
       setActiveHref(currentHref);
 
-      const perfEl = document.getElementById("performance");
-      const heroEl = document.getElementById("hero");
       const y = window.scrollY + 40;
-      if (heroEl && y < heroEl.offsetHeight) { setDarkSection(true); return; }
-      if (perfEl) {
-        const top = perfEl.offsetTop;
-        const bot = top + perfEl.offsetHeight;
-        if (y >= top && y < bot) { setDarkSection(true); return; }
+      const heroTop   = absTop("hero");
+      const heroEl    = document.getElementById("hero");
+      const perfTop   = absTop("performance");
+      const perfEl    = document.getElementById("performance");
+      const ctaTop    = absTop("contatti");
+
+      if (heroEl && heroTop !== null && y < heroTop + heroEl.offsetHeight) { setDarkSection(true); return; }
+      if (perfEl && perfTop !== null) {
+        const bot = perfTop + perfEl.offsetHeight;
+        if (y >= perfTop && y < bot) { setDarkSection(true); return; }
       }
-      const ctaEl = document.getElementById("contatti");
-      if (ctaEl && y >= ctaEl.offsetTop) { setDarkSection(true); return; }
+      if (ctaTop !== null && y >= ctaTop) { setDarkSection(true); return; }
       setDarkSection(false);
     };
 
@@ -83,7 +98,7 @@ export function Header() {
 
   const textCol = darkSection ? "rgba(238,244,246,0.92)" : P.textSub;
   const borderCol = darkSection ? P.darkBorder : `${P.border}80`;
-  const logoFilter = darkSection ? "brightness(0) invert(1)" : "none";
+  const cosmedFilter = darkSection ? "brightness(0) invert(1)" : "none";
 
   return (
     <>
@@ -115,10 +130,10 @@ export function Header() {
           {/* Logo pair */}
           <div className="flex items-center gap-3 sm:gap-4">
             <img src={cosmedLogo} alt="Cosmed"
-              style={{ height: "34px", width: "auto", objectFit: "contain", filter: logoFilter, transition: "filter 0.4s" }} />
-            <div style={{ width: "1px", height: "20px", background: darkSection ? "rgba(255,255,255,0.15)" : P.border }} />
-            <img src={denaniLogo} alt="DeNani"
-              style={{ height: "34px", width: "auto", objectFit: "contain", filter: logoFilter, transition: "filter 0.4s" }} />
+              style={{ height: "44px", width: "auto", objectFit: "contain", filter: cosmedFilter, transition: "filter 0.4s" }} />
+            <div style={{ width: "1px", height: "26px", background: darkSection ? "rgba(255,255,255,0.15)" : P.border }} />
+            <img src={darkSection ? denaniLogoBianco : denaniLogoBlu} alt="DeNani"
+              style={{ height: "62px", width: "auto", objectFit: "contain", transition: "opacity 0.4s" }} />
           </div>
 
           <div className="lg:hidden flex items-center gap-2">
@@ -179,7 +194,6 @@ export function Header() {
           >
             {NAV.map(n => {
               const isActive = activeHref === n.href;
-              const isPacchetti = n.href === "#pacchetti";
               return (
                 <button key={`m-${n.href}`}
                   onClick={() => {
@@ -195,9 +209,9 @@ export function Header() {
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
                     color: textCol,
-                    opacity: isActive && !isPacchetti ? 1 : 0.84,
+                    opacity: isActive ? 1 : 0.84,
                     border: "none",
-                    background: isActive && !isPacchetti
+                    background: isActive
                       ? darkSection ? "rgba(74,159,175,0.18)" : "rgba(74,159,175,0.12)"
                       : "transparent",
                     cursor: "pointer",
@@ -214,7 +228,6 @@ export function Header() {
         <nav className="hidden lg:flex items-center gap-6">
         {NAV.map(n => {
           const isActive = activeHref === n.href;
-          const isPacchetti = n.href === "#pacchetti";
           return (
           <button key={n.href}
             onClick={() => { scrollToSection(n.href); setActiveHref(n.href); }}
@@ -223,10 +236,10 @@ export function Header() {
             style={{
               fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em",
               textTransform: "uppercase", color: textCol,
-              opacity: isActive && !isPacchetti ? 1 : 0.78,
+              opacity: isActive ? 1 : 0.78,
               border: "none", background: "none", cursor: "pointer",
               padding: "4px 2px 6px",
-              borderBottom: isActive && !isPacchetti
+              borderBottom: isActive
                 ? `2px solid ${darkSection ? P.accentLight : P.accent}`
                 : "2px solid transparent",
             }}>

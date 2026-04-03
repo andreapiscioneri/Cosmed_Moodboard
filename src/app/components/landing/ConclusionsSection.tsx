@@ -1,5 +1,5 @@
 import cosmedLogo from "../../../assets/cffaa0cb0f7ab92966e997ad7cded19cf46e55a0.png";
-import denaniLogo from "../../../assets/b711fde9faacb53317b265711a97126b5de19ae1.png";
+import denaniLogo from "../../../assets/LOGO DENANI - bianco.png";
 import { IMGS, P } from "./images";
 
 export function ConclusionsSection() {
@@ -38,6 +38,7 @@ export function ConclusionsSection() {
               </blockquote>
               <a
                 href="mailto:support@denani.it"
+                data-pdf-exclude="true"
                 className="rounded-xl px-8 py-3.5 flex items-center justify-center gap-2 transition-all duration-200 hover:opacity-90 hover:scale-105"
                 style={{ background: P.accent, fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 700, color: "#FFFFFF", textDecoration: "none", letterSpacing: "0.02em", transform: "scale(1)" }}
               >
@@ -52,9 +53,9 @@ export function ConclusionsSection() {
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-6 md:px-10 lg:px-20 py-5 text-center sm:text-left"
         style={{ background: "#10232C", borderTop: `1px solid rgba(74,159,175,0.26)` }}>
         <div className="flex items-center justify-center gap-3">
-          <img src={cosmedLogo} alt="Cosmed" style={{ height: "20px", objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.72 }} />
+          <img src={cosmedLogo} alt="Cosmed" style={{ height: "44px", objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.72 }} />
           <span style={{ color: "rgba(238,244,246,0.72)", fontSize: "11px", fontWeight: 700 }}>×</span>
-          <img src={denaniLogo} alt="DeNani" style={{ height: "20px", objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.72 }} />
+          <img src={denaniLogo} alt="DeNani" style={{ height: "62px", objectFit: "contain", opacity: 0.72 }} />
         </div>
         <span className="max-w-[26rem]" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: "rgba(238,244,246,0.84)", letterSpacing: "0.08em", textAlign: "center" }}>
           PROPOSTA RISERVATA · DENANI PER COSMED
