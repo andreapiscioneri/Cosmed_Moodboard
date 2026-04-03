@@ -3,237 +3,122 @@ import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import { P } from "./images";
 
-// ─── Helpers ────────────────────────────────────────────────────────────────
-
-function toDataUrl(blob: Blob): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onloadend = () => resolve(String(reader.result));
-    reader.onerror = () => reject(new Error("Impossibile convertire blob in data URL"));
-    reader.readAsDataURL(blob);
-  });
-}
-
-/**
- * html2canvas v1.x cannot parse `oklch()` colours used by Tailwind v4.
- * Tailwind injects oklch both inside CSS-variable declarations AND directly
- * inside class rules (e.g. `.bg-slate-100 { background-color: oklch(...) }`).
- * The only reliable fix is to replace every `oklch(…)` literal inside every
- * <style> element with its browser-resolved rgb() equivalent, then restore the
- * originals after capture.
- *
- * Returns a cleanup callback that restores the original stylesheet text.
- */
-function patchOklchForCapture(): () => void {
-  // Probe element: browser resolves oklch → rgb via getComputedStyle.
-  const probe = document.createElement("div");
-  probe.style.cssText = "position:absolute;left:-9999px;top:-9999px;visibility:hidden;";
-  document.body.appendChild(probe);
-
-  const cache = new Map<string, string>();
-  const resolveOklch = (oklch: string): string => {
-    if (cache.has(oklch)) return cache.get(oklch)!;
-    probe.style.color = oklch;
-    const rgb = getComputedStyle(probe).color; // always rgb()/rgba()
-    cache.set(oklch, rgb);
-    return rgb;
-  };
-
-  // Replace every oklch(…) in a CSS text string with its rgb equivalent.
-  const replaceAll = (text: string) =>
-    text.replace(/oklch\([^)]+\)/g, resolveOklch);
-
-  // Patch all <style> elements that contain oklch.
-  const backups: Array<{ el: HTMLStyleElement; original: string }> = [];
-  document.querySelectorAll("style").forEach((el) => {
-    const style = el as HTMLStyleElement;
-    const original = style.textContent ?? "";
-    if (!original.includes("oklch")) return;
-    backups.push({ el: style, original });
-    style.textContent = replaceAll(original);
-  });
-
-  probe.remove();
-
-  // Return cleanup that restores original stylesheet text.
-  return () => {
-    backups.forEach(({ el, original }) => { el.textContent = original; });
-  };
-}
-
-async function prepareImagesForCapture(root: HTMLElement) {
-  const images = Array.from(root.querySelectorAll("img"));
-
-  await Promise.all(images.map(async (img) => {
-    const src = img.getAttribute("src") ?? "";
-    if (!src || src.startsWith("data:")) return;
-
-    try {
-      const absolute = new URL(src, window.location.href);
-      if (absolute.origin !== window.location.origin) {
-        const response = await fetch(absolute.toString(), { mode: "cors" });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const blob = await response.blob();
-        img.src = await toDataUrl(blob);
-      }
-    } catch {
-      img.style.opacity = "0.92";
-    }
-
-    if (!img.complete) {
-      await new Promise<void>((resolve) => {
-        img.onload = () => resolve();
-        img.onerror = () => resolve();
-      });
-    }
-  }));
-}
-
-function isMobileLikeDevice() {
-  return (
-    window.matchMedia("(max-width: 900px)").matches ||
-    window.matchMedia("(pointer: coarse)").matches
-  );
-}
-
-function getAdaptiveScale(target: HTMLElement, mobileLike: boolean) {
-  const width  = Math.max(1, target.scrollWidth  || target.clientWidth  || 1);
-  const height = Math.max(1, target.scrollHeight || target.clientHeight || 1);
-  const area   = width * height;
-  const preferred  = mobileLike ? 1.1 : 1.7;
-  const maxPixels  = mobileLike ? 4_800_000 : 10_000_000;
-  const safeScale  = Math.sqrt(maxPixels / area);
-  return Math.max(0.75, Math.min(2, Math.min(preferred, safeScale)));
-}
-
-async function captureTarget(target: HTMLElement, mobileLike: boolean) {
-  const baseScale = getAdaptiveScale(target, mobileLike);
-  const attempts  = [baseScale, Math.max(0.9, baseScale * 0.82), 0.75];
-
-  let lastError: unknown;
-  for (const scale of attempts) {
-    try {
-      return await html2canvas(target, {
-        scale,
-        useCORS: true,
-        imageTimeout: 0,
-        backgroundColor: "#FFFFFF",
-        logging: false,
-      });
-    } catch (error) {
-      lastError = error;
-    }
-  }
-  throw lastError ?? new Error("Cattura canvas non riuscita");
-}
-
-// ─── Main PDF generator ─────────────────────────────────────────────────────
-
 async function generateBrochurePDF() {
   const appRoot = document.querySelector("#root > div") as HTMLElement | null;
-  if (!appRoot) throw new Error("Root della landing non trovato.");
+  if (!appRoot) {
+    throw new Error("Contenuto brochure non trovato");
+  }
 
-  if (document.fonts?.ready) await document.fonts.ready;
+  document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale").forEach((el) => {
+    (el as HTMLElement).classList.add("visible");
+  });
 
-  // Patch oklch colours before any html2canvas call.
-  const removeOklchPatch = patchOklchForCapture();
+  // Apriamo subito la tab dal click utente per evitare blocchi popup.
+  const previewWindow = window.open("about:blank", "_blank");
 
-  const host = document.createElement("div");
-  host.style.cssText = `
-    position: fixed;
-    left: -20000px;
-    top: 0;
-    pointer-events: none;
-    background: #FFFFFF;
-    z-index: -1;
-    width: ${appRoot.clientWidth}px;
-  `;
+  const staging = document.createElement("div");
+  staging.id = "__pdf-staging__";
+  staging.style.position = "fixed";
+  staging.style.left = "-10000px";
+  staging.style.top = "0";
+  staging.style.width = "1280px";
+  staging.style.background = "#ffffff";
+  staging.style.zIndex = "-1";
+  staging.style.pointerEvents = "none";
 
-  const clone = appRoot.cloneNode(true) as HTMLElement;
-  host.appendChild(clone);
-  document.body.appendChild(host);
-  const mobileLike = isMobileLikeDevice();
+  const cleanup = () => {
+    staging.remove();
+  };
+
+  document.body.appendChild(staging);
+
+  const blocks = Array.from(appRoot.children).filter((el) => {
+    const htmlEl = el as HTMLElement;
+    return htmlEl.tagName.toLowerCase() !== "header" && !htmlEl.querySelector('[data-pdf-exclude="true"]') && !htmlEl.matches('[data-pdf-exclude="true"]');
+  }) as HTMLElement[];
+
+  if (blocks.length === 0) {
+    cleanup();
+    throw new Error("Nessuna sezione disponibile per il PDF");
+  }
+
+  const pdf = new jsPDF({
+    orientation: "portrait",
+    unit: "mm",
+    format: "a4",
+    compress: true,
+    putOnlyUsedFonts: true,
+  });
+
+  const pageWidth = pdf.internal.pageSize.getWidth();
+  const pageHeight = pdf.internal.pageSize.getHeight();
+  const margin = 8;
+  const contentWidth = pageWidth - margin * 2;
+  const contentHeight = pageHeight - margin * 2;
 
   try {
-    // Make all reveal-animated blocks visible.
-    clone.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale").forEach((node) => {
-      const el = node as HTMLElement;
-      el.classList.add("visible");
-      el.style.opacity = "1";
-      el.style.transform = "none";
-      el.style.transition = "none";
-    });
+    for (let i = 0; i < blocks.length; i += 1) {
+      const clone = blocks[i].cloneNode(true) as HTMLElement;
 
-    // Remove fixed chrome and excluded sections (brochure CTA, Contattaci button).
-    clone.querySelectorAll("header, [class*='fixed'], [class*='sticky']").forEach((n) => n.remove());
-    clone.querySelectorAll("[data-pdf-exclude]").forEach((n) => n.remove());
+      clone.querySelectorAll('[data-pdf-exclude="true"]').forEach((excluded) => excluded.remove());
+      clone.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale").forEach((el) => {
+        const node = el as HTMLElement;
+        node.classList.add("visible");
+        node.style.opacity = "1";
+        node.style.transform = "none";
+        node.style.transition = "none";
+      });
 
-    // Strip animations and interactive elements.
-    clone.querySelectorAll("*").forEach((node) => {
-      const el = node as HTMLElement;
-      el.style.animation  = "none";
-      el.style.transition = "none";
-      if (mobileLike) el.style.backdropFilter = "none";
-    });
-    clone.querySelectorAll("a, button").forEach((node) => {
-      const source = node as HTMLElement;
-      const div = document.createElement("div");
-      div.innerHTML = source.innerHTML;
-      div.className = source.className;
-      const inlineStyle = source.getAttribute("style");
-      if (inlineStyle) div.setAttribute("style", inlineStyle);
-      source.replaceWith(div);
-    });
+      clone.style.width = "1280px";
+      clone.style.maxWidth = "1280px";
+      clone.style.margin = "0";
+      clone.style.background = "#ffffff";
+      clone.style.breakInside = "avoid";
 
-    await prepareImagesForCapture(clone);
+      staging.appendChild(clone);
 
-    const blocks = Array.from(clone.children).filter(
-      (n) => (n as HTMLElement).offsetHeight > 0
-    ) as HTMLElement[];
-    const captureTargets = blocks.length > 0 ? blocks : [clone];
+      const canvas = await html2canvas(clone, {
+        backgroundColor: "#ffffff",
+        useCORS: true,
+        allowTaint: false,
+        scale: Math.min(window.devicePixelRatio || 1, 2),
+        logging: false,
+        windowWidth: 1280,
+        windowHeight: clone.scrollHeight,
+      });
 
-    const doc       = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4", compress: true });
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const pageHeight= doc.internal.pageSize.getHeight();
-    const margin    = 8;
-    const contentW  = pageWidth  - margin * 2;
-    const contentH  = pageHeight - margin * 2;
-    let hasPage     = false;
+      clone.remove();
 
-    for (const target of captureTargets) {
-      const canvas = await captureTarget(target, mobileLike);
-      if (!canvas.width || !canvas.height) continue;
-
-      const pxPerMm    = canvas.width / contentW;
-      const pageSlicePx = Math.floor(contentH * pxPerMm);
-
-      for (let offsetY = 0; offsetY < canvas.height; offsetY += pageSlicePx) {
-        const sliceH = Math.min(pageSlicePx, canvas.height - offsetY);
-        const slice  = document.createElement("canvas");
-        slice.width  = canvas.width;
-        slice.height = sliceH;
-        const ctx = slice.getContext("2d");
-        if (!ctx) continue;
-        ctx.drawImage(canvas, 0, offsetY, canvas.width, sliceH, 0, 0, canvas.width, sliceH);
-
-        const renderedH = sliceH / pxPerMm;
-        if (hasPage) doc.addPage();
-        doc.addImage(slice, "JPEG", margin, margin, contentW, renderedH, undefined, "FAST");
-        hasPage = true;
+      if (i > 0) {
+        pdf.addPage();
       }
+
+      const imgData = canvas.toDataURL("image/jpeg", 0.95);
+      const ratio = Math.min(contentWidth / canvas.width, contentHeight / canvas.height);
+      const renderWidth = canvas.width * ratio;
+      const renderHeight = canvas.height * ratio;
+      const x = (pageWidth - renderWidth) / 2;
+      const y = (pageHeight - renderHeight) / 2;
+
+      pdf.addImage(imgData, "JPEG", x, y, renderWidth, renderHeight, undefined, "FAST");
     }
 
-    if (!hasPage) throw new Error("Nessun contenuto catturato per il PDF.");
+    const blob = pdf.output("blob");
+    const blobUrl = URL.createObjectURL(blob);
+    if (previewWindow) {
+      previewWindow.location.replace(blobUrl);
+    } else {
+      window.open(blobUrl, "_blank");
+    }
 
-    const blobUrl = doc.output("bloburl");
-    window.open(blobUrl, "_blank");
+    // Evita leak di memoria mantenendo il blob disponibile abbastanza a lungo.
+    window.setTimeout(() => URL.revokeObjectURL(blobUrl), 60000);
   } finally {
-    host.remove();
-    removeOklchPatch();
+    cleanup();
   }
 }
 
-// ─── Component ──────────────────────────────────────────────────────────────
+// ─── Component ───────────────────────────────────────────────────────────────
 
 export function BrochureSection() {
   const [isGenerating, setIsGenerating] = useState(false);
@@ -241,16 +126,12 @@ export function BrochureSection() {
   const onGeneratePDF = async () => {
     if (isGenerating) return;
     setIsGenerating(true);
+
     try {
       await generateBrochurePDF();
     } catch (error) {
-      console.error("Errore durante la creazione del PDF", error);
-      if (isMobileLikeDevice()) {
-        window.alert("Il PDF completo su mobile può fallire. Apro la stampa del browser come alternativa.");
-        window.print();
-      } else {
-        window.alert("Impossibile generare il PDF. Riprova tra qualche secondo.");
-      }
+      // Manteniamo il fallback semplice: log diagnostico in console.
+      console.error("Errore durante la generazione PDF:", error);
     } finally {
       setIsGenerating(false);
     }
@@ -295,7 +176,7 @@ export function BrochureSection() {
             </svg>
             <div className="text-left">
               <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 800, color: "#FFFFFF", display: "block", lineHeight: "1.1" }}>
-                {isGenerating ? "Generazione..." : "Scarica PDF"}
+                {isGenerating ? "Generazione PDF..." : "Scarica PDF"}
               </span>
             </div>
           </button>
