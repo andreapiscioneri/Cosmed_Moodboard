@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { P } from "./images";
 
-const PDF_FILE_NAME = "Denani-Cosmed-Proposal_Brochure.pdf";
-const STATIC_BROCHURE_URL = "/assets/Denani-Cosmed-Brochure.pdf";
+const PDF_FILE_NAME = "Denani-Cosmed_proposta.pdf";
+const STATIC_BROCHURE_URL = `/assets/${PDF_FILE_NAME}`;
 
 function openStaticBrochure() {
   const popup = window.open(STATIC_BROCHURE_URL, "_blank", "noopener,noreferrer");

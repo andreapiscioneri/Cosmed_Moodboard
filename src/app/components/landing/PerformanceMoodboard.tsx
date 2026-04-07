@@ -27,8 +27,8 @@ const target = ["Fisiatri ~5.000", "Fisioterapisti ~70.000", "Medici Sport ~5.00
 
 // 3 immagini locali + 1 Unsplash mantenuta in basso a dx
 const mosaicImages = [
-  { url: perfVO2,        label: "Test VO₂ Max",        tag: "REALISTICA · Clinica",   sub: "Misurazione ossigeno in esercizio",    filter: "brightness(0.58) saturate(0.7) hue-rotate(185deg)" },
   { url: perfData,       label: "Flusso Dati",         tag: "ASTRATTA · Data Flow",   sub: "Visualizzazione parametri metabolici", filter: "brightness(0.55) saturate(0.25) hue-rotate(210deg)" },
+  { url: perfVO2,        label: "Test VO₂ Max",        tag: "REALISTICA · Clinica",   sub: "Misurazione ossigeno in esercizio",    filter: "brightness(0.58) saturate(0.7) hue-rotate(185deg)" },
   { url: perfFisio,      label: "Fisioterapia",        tag: "REALISTICA · Clinica",   sub: "Riabilitazione professionale",         filter: "brightness(0.58) saturate(0.7) hue-rotate(185deg)" },
   { url: IMGS.molecular, label: "Struttura Molecolare", tag: "ASTRATTA · Molecolare", sub: "Rappresentazione biochimica",          filter: "brightness(0.58) saturate(0.7) hue-rotate(185deg)" },
 ];

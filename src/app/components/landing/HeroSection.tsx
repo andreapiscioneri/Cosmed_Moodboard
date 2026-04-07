@@ -1,5 +1,14 @@
 import { IMGS, P } from "./images";
 
+function scrollToProposal() {
+  const section = document.getElementById("proposta");
+  if (!section) return;
+
+  const headerOffset = 72;
+  const top = section.getBoundingClientRect().top + window.scrollY - headerOffset;
+  window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+}
+
 export function HeroSection() {
   return (
     <section id="hero" className="relative w-full overflow-hidden flex flex-col" style={{ minHeight: "100vh", background: P.dark }}>
@@ -63,7 +72,13 @@ export function HeroSection() {
 
         {/* Scroll cue only */}
         <div className="flex justify-center md:justify-end">
-          <div className="flex flex-col items-center gap-2">
+          <button
+            type="button"
+            onClick={scrollToProposal}
+            className="flex flex-col items-center gap-2 cursor-pointer"
+            aria-label="Vai agli obiettivi strategici"
+            style={{ background: "transparent", border: "none", padding: 0 }}
+          >
             <span style={{ fontFamily: "'Montserrat', sans-serif", marginBottom: "10px", fontSize: "8px", fontWeight: 700, color: "rgba(255,255,255,0.72)", letterSpacing: "0.1em" }}>SCOPRI</span>
             <div className="flex items-center justify-center h-10 w-10 rounded-full border border-white/20 bg-white/6 shadow-[0_0_0_1px_rgba(255,255,255,0.03)] animate-bounce"
               style={{ backdropFilter: "blur(8px)" }}>
@@ -71,7 +86,7 @@ export function HeroSection() {
                 <path d="M6 9l6 6 6-6" />
               </svg>
             </div>
-          </div>
+          </button>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import { IMGS, P } from "./images";
-import wellLongevity2 from "../../../assets/WELLNESS - LONGEVITY 2.jpg";
 import wellLongevity3 from "../../../assets/WELLNESS - LONGEVITY 3.jpg";
+import wellCuraDiSe from "../../../assets/WELLNESS - CURA DI SE.jpg";
 import wellNatura     from "../../../assets/WELLNESS - NATURA.jpg";
 
 const palette = [
@@ -28,9 +28,9 @@ const target = ["Nutrizionisti ~15.000", "Dietologi ~6.000", "Spa & Centri ~4.00
 // Griglia 2x2: riga top → cibo | fiori/natura — riga bottom → persone | persone
 const mosaicImages = [
   { url: IMGS.food,      label: "Nutrizione",   tag: "Alimentazione Sana",  sub: "Cibo sano e bilanciato" },
-  { url: wellNatura,     label: "Natura",       tag: "Ambiente Naturale",   sub: "Connessione con la natura" },
-  { url: wellLongevity2, label: "Longevity",    tag: "Stile di Vita",       sub: "Longevità e benessere" },
+  { url: wellCuraDiSe,   label: "Cura di Sé",   tag: "Stile di Vita",       sub: "Cura di sé e benessere" },
   { url: wellLongevity3, label: "Longevity",    tag: "Equilibrio Vitale",   sub: "Cura di sé e longevità" },
+  { url: wellNatura,     label: "Natura",       tag: "Ambiente Naturale",   sub: "Connessione con la natura" },
 ];
 
 export function WellnessMoodboard() {
