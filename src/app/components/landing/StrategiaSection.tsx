@@ -71,12 +71,14 @@ function Chip({ label, dark = false }: { label: string; dark?: boolean }) {
 
 function QuoteImageCard({ text, image, dark = false }: { text: string; image: string; dark?: boolean }) {
   return (
-    <div className="overflow-hidden rounded-2xl h-full self-start" style={{ border: `1px solid ${(dark ? P.accentLight : P.accent)}42` }}>
-      <div className="relative h-full min-h-[520px]">
-        <img src={image} alt={text} loading="lazy" className="absolute inset-0 w-full h-full object-cover" style={{ filter: "brightness(0.78) saturate(1.05)", transform: "scale(1.04)", objectPosition: "center 38%" }} />
-        <div className="absolute inset-0" style={{ background: `linear-gradient(160deg, ${P.dark}76 0%, ${P.darkMid}52 45%, ${P.dark}B2 100%)` }} />
-        <div className="absolute inset-0 flex items-end p-6 md:p-7" style={{ borderLeft: `3px solid ${dark ? P.accentLight : P.accent}` }}>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(20px, 1.9vw, 25px)", fontStyle: "italic", fontWeight: 500, color: P.textInv, lineHeight: "1.45", textShadow: "0 2px 10px rgba(0,0,0,0.36)" }}>"{text}"</p>
+    <div className="overflow-hidden h-full self-stretch" style={{ background: P.dark }}>
+      <div className="relative h-full min-h-[600px]">
+        <img src={image} alt={text} loading="lazy" className="absolute inset-0 w-full h-full object-cover" style={{ filter: "brightness(0.72) saturate(1.05)", transform: "scale(1.03)", objectPosition: "center 33%" }} />
+        <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, rgba(8,20,28,0.08) 0%, ${P.dark}18 52%, ${P.dark}B4 100%)` }} />
+        <div className={`absolute inset-0 flex items-end ${dark ? "justify-start" : "justify-end"} p-7 md:p-9`}>
+          <p style={{ maxWidth: "clamp(26ch, 44vw, 36ch)", textAlign: dark ? "left" : "right", fontFamily: "'Inter', sans-serif", fontSize: "clamp(16px, 1.45vw, 22px)", fontStyle: "italic", fontWeight: 600, color: P.textInv, lineHeight: "1.12", textShadow: "0 3px 14px rgba(0,0,0,0.48), 0 1px 0 rgba(0,0,0,0.12)" }}>
+            "{text}"
+          </p>
         </div>
       </div>
     </div>
@@ -84,7 +86,7 @@ function QuoteImageCard({ text, image, dark = false }: { text: string; image: st
 }
 
 function SectionShell({ light = true, children }: { light?: boolean; children: React.ReactNode }) {
-  return <section className="w-full py-10 md:py-14" style={{ background: light ? P.surface : P.dark }}><div className="px-6 md:px-10 lg:px-20"><div className="max-w-7xl mx-auto">{children}</div></div></section>;
+  return <section className="w-full py-10 md:py-14 overflow-hidden" style={{ background: light ? P.surface : P.dark }}><div className="px-6 md:px-10 lg:px-20">{children}</div></section>;
 }
 
 export function StrategiaSection() {
@@ -106,38 +108,40 @@ export function StrategiaSection() {
       </div>
 
       <SectionShell light>
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_420px] gap-6 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.text, letterSpacing: "-0.035em", lineHeight: "0.98" }}>1. Analisi di Mercato</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.textMuted, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: P.textSub, lineHeight: "1.8" }}>Studio dell'attuale comunicazione COSMED, analisi dei competitor internazionali e ricerca delle keyword più rilevanti per il posizionamento SEO/GEO dei nuovi sub-brands.</p></div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">{[{ icon: IconSearch, c: P.accent, t: "Audit Interno", d: "Valutazione dello stato attuale dei canali digitali per definire i parametri di crescita." }, { icon: IconGlobe, c: P.accentLight, t: "Benchmark Competitivo", d: "Analisi del posizionamento e della comunicazione di player internazionali." }, { icon: IconBarChart, c: P.accent, t: "Keyword Research SEO/GEO", d: "Identificazione delle reali intenzioni di ricerca dei professionisti in Italia." }].map((item) => <div key={item.t} className="rounded-2xl p-5 flex flex-col gap-3" style={{ background: P.surfaceAlt, border: `1px solid ${P.border}`, borderTop: `3px solid ${item.c}` }}><div className="flex items-center justify-center w-10 h-10 rounded-xl" style={{ background: `${item.c}14`, color: item.c }}><item.icon size={18} /></div><h4 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 800, color: P.text, letterSpacing: "-0.01em" }}>{item.t}</h4><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12.5px", color: P.textSub, lineHeight: "1.7" }}>{item.d}</p></div>)}</div>
-            <div className="relative rounded-2xl overflow-hidden" style={{ background: P.surfaceAlt, border: `1px solid ${P.border}` }}>
+            <div className="relative overflow-hidden rounded-[24px]" style={{ background: "rgba(255,255,255,0.96)", border: `1px solid ${P.border}` }}>
               <img
                 src={perfData}
                 alt="Data flow"
                 className="absolute inset-0 w-full h-full object-cover"
-                style={{ filter: "brightness(1.05) saturate(0.35) hue-rotate(190deg)", opacity: 0.22, transform: "scale(1.05)" }}
+                style={{ filter: "brightness(1.05) saturate(0.28) hue-rotate(190deg)", opacity: 0.18, transform: "scale(1.04)" }}
               />
-              <div className="relative z-10 p-6" style={{ background: "rgba(255,255,255,0.72)" }}>
-                <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.accent, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: "14px" }}>Focus Tecnico</p>
+              <div className="relative z-10 p-6 md:p-7" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(248,250,252,0.92) 100%)" }}>
+                <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.accent, letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "16px" }}>Focus Tecnico</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accent, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "8px" }}>COSMED Performance</p>
+                    <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accent, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "8px" }}>COSMED Performance</p>
                     <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>Analisi semantica focalizzata su VO2max, soglia anaerobica e test da sforzo.</p>
                   </div>
                   <div>
-                    <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accentLight, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "8px" }}>COSMED Wellbeing</p>
+                    <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accentLight, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "8px" }}>COSMED Wellbeing</p>
                     <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>Focus su dispendio energetico (REE), substrati-macronutrienti e nutrizione clinica.</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <QuoteImageCard text="Odiavo ogni minuto di allenamento, ma dicevo: 'Non mollare. Soffri ora e vivi il resto della tua vita come un campione.'" image={MUHAMMAD_ALI_IMG} dark />
+          <div className="lg:-mr-24 md:-mr-12 -mr-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
+            <QuoteImageCard text="Odiavo ogni minuto di allenamento, ma dicevo: 'Non mollare. Soffri ora e vivi il resto della tua vita come un campione.'" image={MUHAMMAD_ALI_IMG} dark />
+          </div>
         </div>
       </SectionShell>
 
       <SectionShell light={false}>
-        <div className="grid grid-cols-1 lg:grid-cols-[420px_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
           <div className="flex flex-col gap-6 lg:order-2">
             <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.035em", lineHeight: "0.98" }}>2. Target Persona</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: `${P.textInv}60`, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: `${P.textInv}72`, lineHeight: "1.8" }}>Definiamo dei profili fittizi che rappresentino in maniera realistica i nostri utenti target ideali.</p></div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -166,14 +170,14 @@ export function StrategiaSection() {
               ))}
             </div>
           </div>
-          <div className="lg:order-1">
+          <div className="lg:order-1 lg:-ml-24 md:-ml-12 -ml-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
             <QuoteImageCard text="Il medico del futuro non somministrerà medicine, ma istruirà i suoi pazienti sulla cura del corpo umano, sulla dieta e sulle cause e la prevenzione delle malattie." image={THOMAS_EDISON_IMG} />
           </div>
         </div>
       </SectionShell>
 
       <SectionShell light>
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_420px] gap-6 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.text, letterSpacing: "-0.035em", lineHeight: "0.98" }}>3. Brand Identity</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.textMuted, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: P.textSub, lineHeight: "1.8" }}>La brand identity è l'insieme di tutte le caratteristiche visive che definiscono un brand rendendolo riconoscibile sul mercato.</p></div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
@@ -192,12 +196,14 @@ export function StrategiaSection() {
               ))}
             </div>
           </div>
-          <QuoteImageCard text="Le grandi cose derivano dal duro lavoro e dalla perseveranza." image={KOBE_BRYANT_IMG} dark />
+          <div className="lg:-mr-24 md:-mr-12 -mr-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
+            <QuoteImageCard text="Le grandi cose derivano dal duro lavoro e dalla perseveranza." image={KOBE_BRYANT_IMG} dark />
+          </div>
         </div>
       </SectionShell>
 
       <SectionShell light={false}>
-        <div className="grid grid-cols-1 lg:grid-cols-[420px_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
           <div className="flex flex-col gap-6 lg:order-2">
             <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.035em", lineHeight: "0.98" }}>4. Siti Web</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: `${P.textInv}60`, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: `${P.textInv}72`, lineHeight: "1.8" }}>Sviluppo di un'esperienza digitale integrata e coerente con la brand identity, ottimizzata per la lead generation e la gestione centralizzata dei contatti tramite CRM.</p></div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -220,25 +226,27 @@ export function StrategiaSection() {
               <div className="flex-1 flex flex-col gap-4"><div className="rounded-xl p-5" style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${P.darkBorder}` }}><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: "#B05050", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "8px" }}>Soluzione 2 (WordPress + Connettore) — SCONSIGLIATA</p>{["N°2 siti in WordPress collegati con Odoo tramite un connettore", "Costo aggiuntivo del connettore", "Soluzione più instabile e meno integrata"].map((item) => <div key={item} className="flex items-start gap-2 mb-2"><span style={{ color: "#B05050", flexShrink: 0, marginTop: "2px" }}><IconX size={13} /></span><span style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: `${P.textInv}65`, lineHeight: "1.6" }}>{item}</span></div>)}</div><div className="rounded-xl p-5" style={{ background: `${P.accent}12`, border: `1px solid ${P.accent}22` }}><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.accent, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "10px" }}>Vantaggi chiave dell'integrazione Odoo</p>{[{ icon: IconUsers, t: "CRM integrato", d: "Separazione leads Performance vs Well-being automatica" }, { icon: IconMail, t: "Marketing Automation", d: "Email sequenze, lead nurturing, scoring" }, { icon: IconBarChart, t: "Analytics unificata", d: "Dashboard CRM + Web + Vendite in un'unica vista" }, { icon: IconShield, t: "GDPR by design", d: "Framework centralizzato e sicuro per la privacy" }].map((item) => <div key={item.t} className="flex items-start gap-3 mb-3"><div className="flex items-center justify-center w-7 h-7 rounded-lg flex-shrink-0" style={{ background: `${P.accentLight}18`, color: P.accentLight }}><item.icon size={14} /></div><div><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 700, color: P.textInv, letterSpacing: "-0.01em" }}>{item.t}</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10.5px", color: `${P.textInv}60`, lineHeight: "1.55" }}>{item.d}</p></div></div>)}</div></div>
             </div>
           </div>
-          <div className="lg:order-1">
+          <div className="lg:order-1 lg:-ml-24 md:-ml-12 -ml-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
             <QuoteImageCard text="L'arte è 'Io'; la scienza è 'Noi'." image={CLAUDE_BERNARD_IMG} />
           </div>
         </div>
       </SectionShell>
 
       <SectionShell light>
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_420px] gap-6 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.text, letterSpacing: "-0.035em", lineHeight: "0.98" }}>5. SEO / GEO</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.textMuted, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: P.textSub, lineHeight: "1.8" }}>La SEO serve a rendere il sito più visibile su Google quando un utente cerca servizi o informazioni specifiche. La GEO applica la stessa logica ai motori generativi e ai contenuti pensati per l'IA.</p></div>
             <div className="rounded-2xl p-5" style={{ background: P.surfaceAlt, border: `1px solid ${P.border}` }}><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.accent, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "10px" }}>Cosa significa in pratica</p><div className="grid grid-cols-1 sm:grid-cols-3 gap-3">{["Farti trovare da chi cerca già una soluzione simile alla tua.", "Spiegare meglio i servizi, così l'utente capisce subito se sei la scelta giusta.", "Generare contatti più qualificati, riducendo traffico poco utile."].map((item) => <div key={item} className="rounded-xl p-4" style={{ background: `${P.accent}10`, border: `1px solid ${P.accent}24` }}><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12.5px", color: P.textSub, lineHeight: "1.7" }}>{item}</p></div>)}</div></div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5"><div className="rounded-2xl p-5 flex flex-col gap-3" style={{ background: `${P.accent}14`, border: `1px solid ${P.accent}28` }}><div className="flex items-center gap-3"><div className="flex items-center justify-center w-9 h-9 rounded-xl" style={{ background: `${P.accent}22`, color: P.accent }}><IconMapPin size={17} /></div><span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 800, color: P.accent }}>Target Performance</span></div><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>Indicizzazione per parole chiave legate a Strutture Sanitarie Riabilitative, Centri di Medicina dello Sport e Palestre d'élite.</p></div><div className="rounded-2xl p-5 flex flex-col gap-3" style={{ background: `${P.accentLight}12`, border: `1px solid ${P.accentLight}25` }}><div className="flex items-center gap-3"><div className="flex items-center justify-center w-9 h-9 rounded-xl" style={{ background: `${P.accentLight}20`, color: P.accentLight }}><IconMapPin size={17} /></div><span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 800, color: P.accentLight }}>Target Wellbeing</span></div><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>Indicizzazione per termini legati a Studi Nutrizionistici, Cliniche di Dimagrimento, SPA e Centri Benessere.</p></div></div>
           </div>
-          <QuoteImageCard text="Misura ciò che è misurabile e rendi misurabile ciò che non lo è." image={GALILEO_GALILEI_IMG} dark />
+          <div className="lg:-mr-24 md:-mr-12 -mr-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
+            <QuoteImageCard text="Misura ciò che è misurabile e rendi misurabile ciò che non lo è." image={GALILEO_GALILEI_IMG} dark />
+          </div>
         </div>
       </SectionShell>
 
       <SectionShell light={false}>
-        <div className="grid grid-cols-1 lg:grid-cols-[420px_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
           <div className="flex flex-col gap-6 lg:order-2">
             <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.035em", lineHeight: "0.98" }}>6. Social Media</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: `${P.textInv}60`, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: `${P.textInv}72`, lineHeight: "1.8" }}>Creazione ex-novo dei canali COSMED Performance & COSMED Well-being e gestione professionale dei profili Facebook, Instagram e LinkedIn.</p></div>
             <div className="rounded-2xl overflow-hidden" style={{ background: P.dark, border: `1px solid ${P.darkBorder}` }}>
@@ -281,14 +289,14 @@ export function StrategiaSection() {
               </div>
             </div>
           </div>
-          <div className="lg:order-1">
+          <div className="lg:order-1 lg:-ml-24 md:-ml-12 -ml-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
             <QuoteImageCard text="Fidati del processo." image={JOEL_EMBIID_IMG} />
           </div>
         </div>
       </SectionShell>
 
       <SectionShell light>
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_420px] gap-6 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.text, letterSpacing: "-0.035em", lineHeight: "0.98" }}>7. Sponsorizzazioni</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.textMuted, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: P.textSub, lineHeight: "1.8" }}>Selezioniamo contenuti da promuovere in base alle nostre strategie e ai nostri obiettivi, allocando budget in modo efficiente per massimizzare il ritorno sull'investimento.</p></div>
             <div className="rounded-2xl p-5" style={{ background: `${P.accent}10`, border: `1px solid ${P.accent}24` }}>
@@ -321,7 +329,9 @@ export function StrategiaSection() {
               <div><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accentLight, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "5px" }}>Conversione</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>Monitoriamo le performance degli annunci e ottimizziamo continuamente per migliorare il tasso di conversione.</p></div>
             </div>
           </div>
-          <QuoteImageCard text="Non puoi mettere un limite a nulla. Più sogni, più lontano arrivi." image={MICHAEL_PHELPS_IMG} dark />
+          <div className="lg:-mr-24 md:-mr-12 -mr-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
+            <QuoteImageCard text="Non puoi mettere un limite a nulla. Più sogni, più lontano arrivi." image={MICHAEL_PHELPS_IMG} dark />
+          </div>
         </div>
       </SectionShell>
     </section>
