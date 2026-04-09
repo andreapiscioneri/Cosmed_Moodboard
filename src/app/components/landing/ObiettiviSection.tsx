@@ -180,7 +180,7 @@ const products: ProductItem[] = [
   },
   {
     name: "Q",
-    performanceDeclination: "Nel Performance viene raccontato come strumento agile per screening rapidi e continuita operativa nei contesti ad alta rotazione.",
+    performanceDeclination: "Nel Performance viene raccontato come strumento agile per screening rapidi e continuità operativa nei contesti ad alta rotazione.",
     wellBeingDeclination: "Nel Well-being viene raccontato come soluzione accessibile e semplice da integrare nei percorsi quotidiani di valutazione.",
     icon: IconForm,
     c: P.accentLight,
@@ -190,7 +190,7 @@ const products: ProductItem[] = [
   {
     name: "microQuark",
     performanceDeclination: "Comunicazione orientata a praticita e velocita di attivazione per team tecnici che richiedono operativita immediata.",
-    wellBeingDeclination: "Comunicazione orientata a semplicita d'uso e adozione immediata in strutture che vogliono un percorso cliente piu fluido.",
+    wellBeingDeclination: "Comunicazione orientata a semplicità d'uso e adozione immediata in strutture che vogliono un percorso cliente più fluido.",
     icon: IconTarget,
     c: P.accent,
     soft: "rgba(30,122,138,0.10)",
@@ -199,7 +199,7 @@ const products: ProductItem[] = [
   {
     name: "Gamma TANITA",
     performanceDeclination: "Nel Performance viene posizionata come base di lettura compositiva per obiettivi atletici e monitoraggio dei cambiamenti nel tempo.",
-    wellBeingDeclination: "Nel Well-being viene posizionata come strumento di accompagnamento per prevenzione, motivazione e continuita del percorso.",
+    wellBeingDeclination: "Nel Well-being viene posizionata come strumento di accompagnamento per prevenzione, motivazione e continuità del percorso.",
     icon: IconStar,
     c: P.accentLight,
     soft: "rgba(74,159,175,0.08)",

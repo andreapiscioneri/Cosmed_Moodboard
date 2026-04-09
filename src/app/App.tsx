@@ -3,7 +3,7 @@ import { Header } from "./components/landing/Header";
 import { HeroSection } from "./components/landing/HeroSection";
 import { MetodoSection } from "./components/landing/MetodoSection";
 import { ObiettiviSection } from "./components/landing/ObiettiviSection";
-import { BridgeBefore, BridgeAfter } from "./components/landing/BridgeSection";
+import { BridgeBefore } from "./components/landing/BridgeSection";
 import { PerformanceMoodboard } from "./components/landing/PerformanceMoodboard";
 import { WellnessMoodboard } from "./components/landing/WellnessMoodboard";
 import { StrategiaSection } from "./components/landing/StrategiaSection";
@@ -110,26 +110,23 @@ export default function App() {
         <ObiettiviSection />
       </Reveal>
 
+
+            {/* 05 · Strategia Brand & Web + Step Operativi */}
+      <Reveal>
+        <StrategiaSection />
+      </Reveal>
+
       {/* Bridge intro to moodboards */}
       <Reveal className="reveal-scale">
         <BridgeBefore />
       </Reveal>
+
 
       {/* 03 · MOODBOARD PERFORMANCE — no reveal (full viewport) */}
       <PerformanceMoodboard />
 
       {/* 04 · MOODBOARD WELLNESS — no reveal */}
       <WellnessMoodboard />
-
-      {/* Bridge out */}
-      <Reveal className="reveal-scale">
-        <BridgeAfter />
-      </Reveal>
-
-      {/* 05 · Strategia Brand & Web + Step Operativi */}
-      <Reveal>
-        <StrategiaSection />
-      </Reveal>
 
       {/* 06 · Piani d'Investimento */}
       <Reveal>
