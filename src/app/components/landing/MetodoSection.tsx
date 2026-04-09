@@ -131,10 +131,10 @@ export function MetodoSection() {
             {/* Pillars */}
             <div className="grid grid-cols-2 gap-3">
               {pillars.map((p) => (
-                <div key={p.n} className="flex flex-col gap-2 rounded-xl p-4" style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${P.darkBorder}`, borderTop: `2px solid ${p.c}` }}>
+                <div key={p.n} className="flex flex-col gap-2 rounded-xl p-4" style={{ background: "rgba(255,255,255,0.04)", border: `1px solid rgba(255,255,255,0.12)`, borderTop: `2px solid ${p.c}` }}>
                   <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", color: p.c, letterSpacing: "0.12em", fontWeight: 700 }}>{p.n}</span>
-                  <h4 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 800, color: P.textInv, lineHeight: "1.25" }}>{p.t}</h4>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10.5px", color: `${P.textInv}66`, lineHeight: "1.6" }}>{p.d}</p>
+                  <h4 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "12px", fontWeight: 800, color: P.textInv, lineHeight: "1.25" }}>{p.t}</h4>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: `${P.textInv}7E`, lineHeight: "1.6", fontWeight: 500 }}>{p.d}</p>
                 </div>
               ))}
             </div>
@@ -182,13 +182,13 @@ export function MetodoSection() {
             {/* Data tools — icon cards */}
             <div className="grid grid-cols-2 gap-3">
               {dataTools.map(({ label, desc, Icon, c }) => (
-                <div key={label} className="flex items-start gap-3 rounded-xl p-4" style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${P.darkBorder}` }}>
+                <div key={label} className="flex items-start gap-3 rounded-xl p-4" style={{ background: "rgba(255,255,255,0.04)", border: `1px solid rgba(255,255,255,0.12)` }}>
                   <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-lg" style={{ background: `${c}18`, color: c }}>
                     <Icon size={16} />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <h4 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 800, color: P.textInv, letterSpacing: "-0.01em" }}>{label}</h4>
-                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "9.5px", color: `${P.textInv}66`, lineHeight: "1.55" }}>{desc}</p>
+                    <h4 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 800, color: P.textInv, letterSpacing: "-0.01em" }}>{label}</h4>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10.5px", color: `${P.textInv}7E`, lineHeight: "1.55", fontWeight: 500 }}>{desc}</p>
                   </div>
                 </div>
               ))}
