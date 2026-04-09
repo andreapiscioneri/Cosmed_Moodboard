@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Header } from "./components/landing/Header";
 import { HeroSection } from "./components/landing/HeroSection";
+import { MetodoSection } from "./components/landing/MetodoSection";
 import { ObiettiviSection } from "./components/landing/ObiettiviSection";
 import { BridgeBefore, BridgeAfter } from "./components/landing/BridgeSection";
 import { PerformanceMoodboard } from "./components/landing/PerformanceMoodboard";
@@ -98,6 +99,11 @@ export default function App() {
 
       {/* 01 · Hero — no reveal (always visible) */}
       <HeroSection />
+
+      {/* 01b · Metodo DeNani — Artigiani del Digitale */}
+      <Reveal>
+        <MetodoSection />
+      </Reveal>
 
       {/* 02 · La Proposta — Obiettivi */}
       <Reveal>
