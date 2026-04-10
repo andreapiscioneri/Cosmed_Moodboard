@@ -5,7 +5,13 @@ import { MetodoSection } from "./components/landing/MetodoSection";
 import { ObiettiviSection } from "./components/landing/ObiettiviSection";
 import { BridgeBefore } from "./components/landing/BridgeSection";
 import { PerformanceMoodboard } from "./components/landing/PerformanceMoodboard";
+import { PerformanceWebMockup } from "./components/landing/PerformanceWebMockup";
+import { PerformanceLinkedInPost } from "./components/landing/PerformanceLinkedInPost";
+import { PerformanceManifesto } from "./components/landing/PerformanceManifesto";
 import { WellnessMoodboard } from "./components/landing/WellnessMoodboard";
+import { WellnessWebMockup } from "./components/landing/WellnessWebMockup";
+import { WellnessInstagramPost } from "./components/landing/WellnessInstagramPost";
+import { WellnessManifesto } from "./components/landing/WellnessManifesto";
 import { StrategiaSection } from "./components/landing/StrategiaSection";
 import { PacchettiSection } from "./components/landing/PacchettiSection";
 import { ROISection } from "./components/landing/ROISection";
@@ -125,8 +131,34 @@ export default function App() {
       {/* 03 · MOODBOARD PERFORMANCE — no reveal (full viewport) */}
       <PerformanceMoodboard />
 
+      {/* 03b · Performance — Mockup Sito Web */}
+      <Reveal>
+        <PerformanceWebMockup />
+      </Reveal>
+
+      {/* 03c · Performance — Mockup Post LinkedIn */}
+      <Reveal>
+        <PerformanceLinkedInPost />
+      </Reveal>
+
+      {/* 03d · Performance — Brand Manifesto */}
+      <PerformanceManifesto />
+
       {/* 04 · MOODBOARD WELLNESS — no reveal */}
       <WellnessMoodboard />
+
+      {/* 04b · Wellness — Mockup Sito Web */}
+      <Reveal>
+        <WellnessWebMockup />
+      </Reveal>
+
+      {/* 04c · Wellness — Mockup Post Instagram */}
+      <Reveal>
+        <WellnessInstagramPost />
+      </Reveal>
+
+      {/* 04d · Wellness — Brand Manifesto */}
+      <WellnessManifesto />
 
       {/* 06 · Piani d'Investimento */}
       <Reveal>
