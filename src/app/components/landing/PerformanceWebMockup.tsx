@@ -96,11 +96,10 @@ export function PerformanceWebMockup() {
                   MISURA.<br />ANALIZZA.<br /><span style={{ color: P.perfBlue }}>OTTIMIZZA.</span>
                 </h1>
                 <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: "rgba(238,242,255,0.72)", lineHeight: "1.85", maxWidth: "400px", marginBottom: "32px" }}>
-                  La piattaforma clinica per la misurazione metabolica avanzata. Strumenti validati scientificamente per fisiatri, medici dello sport e fisioterapisti.
-                </p>
+                  La piattaforma clinica per la misurazione metabolica avanzata. Strumenti validati scientificamente per fisiatri, medici dello sport e fisioterapisti.” DIVENTA “Strumenti validati scientificamente per la misurazione metabolica avanzata</p>
                 <div className="flex gap-3 flex-wrap">
                   <div className="rounded-lg px-6 py-3" style={{ background: P.perfBlue, display: "inline-flex" }}>
-                    <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 700, color: "#fff", letterSpacing: "0.04em" }}>Scopri la piattaforma →</span>
+                    <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 700, color: "#fff", letterSpacing: "0.04em" }}>Scopri i prodotti →</span>
                   </div>
                   <div className="rounded-lg px-6 py-3" style={{ border: `1px solid rgba(11,111,255,0.4)`, display: "inline-flex" }}>
                     <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 600, color: "rgba(238,242,255,0.8)", letterSpacing: "0.04em" }}>Richiedi Demo</span>
@@ -121,9 +120,9 @@ export function PerformanceWebMockup() {
             {/* Image mosaic — 3 immagini grandi con copy overlay */}
             <div className="grid grid-cols-3" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
               {[
-                { img: performanceAtleti, label: "Atletica", copy: "Preparazione e carico di lavoro", tag: "REALISTICA · ATLETI", position: "center 20%", zoom: "scale(1.01)", brightness: 0.96 },
-                { img: PERFORMANCE_SHOWCASE.tiles[1], label: "Preparatore", copy: "Allenamento guidato e performance", tag: "REALISTICA · TRAINER", flip: true },
-                { img: PERFORMANCE_SHOWCASE.tiles[2], label: "Fisioterapia", copy: "Recupero e prevenzione in campo", tag: "REALISTICA · PHYSIO", flip: true },
+                { img: performanceAtleti, label: "Atletica", copy: "VO₂ Max Testing", tag: "Precisione al 99%", position: "center 20%", zoom: "scale(1.01)", brightness: 0.96 },
+                { img: PERFORMANCE_SHOWCASE.tiles[1], label: "Preparatore", copy: "Calorimetria Indiretta", tag: "REE Clinico", flip: true },
+                { img: PERFORMANCE_SHOWCASE.tiles[2], label: "Fisioterapia", copy: "Validazione Scientifica", tag: "Dati Reali", flip: true },
               ].map(({ img, copy, tag, position, zoom, brightness, flip }, i) => (
                 <div key={i} className="relative overflow-hidden" style={{ height: "200px" }}>
                   <img src={img} alt="" className="w-full h-full object-cover"
@@ -141,23 +140,7 @@ export function PerformanceWebMockup() {
               ))}
             </div>
 
-            {/* Feature bar */}
-            <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderTop: "1px solid rgba(255,255,255,0.05)", background: "#0A0D12" }}>
-              {[
-                { title: "VO₂ Max Testing", sub: "Precisione al 99%", desc: "Protocolli certificati per la valutazione aerobica massimale." },
-                { title: "Calorimetria Indiretta", sub: "REE Clinico", desc: "Standard gold per la misurazione del metabolismo basale." },
-                { title: "Validazione Scientifica", sub: "Dati Reali", desc: "Report certificati integrabili nella documentazione medica." },
-              ].map((f, i) => (
-                <div key={i} className="flex flex-col gap-2 px-7 py-6"
-                  style={{ borderRight: i < 2 ? "1px solid rgba(255,255,255,0.04)" : "none" }}>
-                  <div className="flex items-center gap-2">
-                    <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 800, color: "#EEF2FF" }}>{f.title}</span>
-                    <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "7px", fontWeight: 700, color: P.perfBlue, border: `1px solid ${P.perfBlue}30`, borderRadius: "3px", padding: "2px 5px", letterSpacing: "0.04em" }}>{f.sub}</span>
-                  </div>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", color: "rgba(238,242,255,0.45)", lineHeight: "1.7" }}>{f.desc}</p>
-                </div>
-              ))}
-            </div>
+
           </div>
         </div>
 
@@ -173,9 +156,6 @@ export function PerformanceWebMockup() {
               Mockup illustrativo — Homepage Cosmed Performance
             </span>
           </div>
-          <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 600, color: "rgba(11,111,255,0.5)", letterSpacing: "0.06em" }}>
-            Spunti visivi da @cosmedigers
-          </span>
         </div>
 
         {/* Design specs panel */}
