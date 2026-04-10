@@ -129,10 +129,10 @@ export function WellnessInstagramPost() {
                   image={wellLongevity3}
                   imageFilter="brightness(0.72) saturate(0.9)"
                   label="COSMED WELL-BEING"
-                  quote='"Il piatto<br/>giusto cambia<br/>la giornata."'
-                  subline="Nutrizione · Cibo sano · Vitalità"
-                  caption="Una scelta consapevole a tavola sostiene energia, equilibrio e aderenza al percorso. 🥗"
-                  hashtags="#NutrizioneClinica #HealthyFood #Well-being #COSMED"
+                  quote='"La scienza<br/>della<br/>vitalità."'
+                  subline="Prodotti · Dati oggettivi · Benessere"
+                  caption="Una gamma di prodotti pensati per supportare il lavoro di dietologi, dietisti, endocrinologi, nutrizionisti e centri benessere."
+                  hashtags="#QNRGMAX #Vitalità #Benessere #COSMED"
                   likes="2.847"
                   timeAgo="3 ORE FA"
                 />
@@ -140,10 +140,10 @@ export function WellnessInstagramPost() {
                   image={wellMonitoraggio}
                   imageFilter="brightness(0.7) saturate(0.88)"
                   label="COSMED WELL-BEING"
-                  quote='"La salute<br/>inizia da ciò<br/>che scegli."'
-                  subline="Dietologi · Nutrizionisti · Lifestyle"
-                  caption="Il lavoro del nutrizionista è guidare abitudini semplici, sostenibili e concrete. 🫐"
-                  hashtags="#Dietologia #Nutrizionisti #HealthyLifestyle #COSMED"
+                  quote='"Misurare<br/>per<br/>ottimizzare."'
+                  subline="Q-NRG MAX · Supporto clinico · Dati certi"
+                  caption="Q-NRG MAX aiuta i professionisti a misurare, monitorare e ottimizzare il lavoro clinico con un approccio affidabile e scientifico."
+                  hashtags="#QNRGMAX #Misurare #Monitorare #Ottimizzare #COSMED"
                   likes="3.112"
                   timeAgo="1 GIORNO FA"
                 />
