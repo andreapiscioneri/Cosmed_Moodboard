@@ -122,12 +122,12 @@ export function PerformanceWebMockup() {
             <div className="grid grid-cols-3" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
               {[
                 { img: performanceAtleti, label: "Atletica", copy: "Preparazione e carico di lavoro", tag: "REALISTICA · ATLETI", position: "center 20%", zoom: "scale(1.01)", brightness: 0.96 },
-                { img: PERFORMANCE_SHOWCASE.tiles[1], label: "Preparatore", copy: "Allenamento guidato e performance", tag: "REALISTICA · TRAINER" },
-                { img: PERFORMANCE_SHOWCASE.tiles[2], label: "Fisioterapia", copy: "Recupero e prevenzione in campo", tag: "REALISTICA · PHYSIO" },
-              ].map(({ img, copy, tag, position, zoom, brightness }, i) => (
+                { img: PERFORMANCE_SHOWCASE.tiles[1], label: "Preparatore", copy: "Allenamento guidato e performance", tag: "REALISTICA · TRAINER", flip: true },
+                { img: PERFORMANCE_SHOWCASE.tiles[2], label: "Fisioterapia", copy: "Recupero e prevenzione in campo", tag: "REALISTICA · PHYSIO", flip: true },
+              ].map(({ img, copy, tag, position, zoom, brightness, flip }, i) => (
                 <div key={i} className="relative overflow-hidden" style={{ height: "200px" }}>
                   <img src={img} alt="" className="w-full h-full object-cover"
-                    style={{ filter: `grayscale(1) contrast(1.15) brightness(${brightness ?? 0.88})`, transform: zoom ?? "scale(1.05)", objectPosition: position ?? "center" }} />
+                    style={{ filter: `grayscale(1) contrast(1.15) brightness(${brightness ?? 0.88})`, transform: `${zoom ?? "scale(1.05)"}${flip ? " scaleX(-1)" : ""}`, objectPosition: position ?? "center" }} />
                   <div className="absolute inset-0" style={{ background: "linear-gradient(120deg, rgba(11,15,20,0.68) 0%, rgba(11,15,20,0.22) 50%, rgba(11,15,20,0.05) 100%)" }} />
                   <div className="absolute bottom-0 left-0 right-0 h-16" style={{ background: "linear-gradient(to top, #0B0F14, transparent)" }} />
                   {/* Copy */}

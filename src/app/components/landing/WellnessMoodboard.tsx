@@ -1,6 +1,6 @@
 import { IMGS, P } from "./images";
 import wellLongevity3 from "../../../assets/WELLNESS - LONGEVITY 3.jpg";
-import wellLongevity4 from "../../../assets/WELLNESS - LONGEVITY 4.jpg";
+import wellLongevity4 from "../../../assets/WELLNESS - DA SOSTITUIRE.jpg";
 import wellMonitoraggio from "../../../assets/WELLNESS - MONITORAGGIO.jpg";
 
 const palette = [

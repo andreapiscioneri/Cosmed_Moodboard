@@ -7,7 +7,7 @@ const piani = [
     unatantum: "€ 22.750",
     canone: "€ 2.354",
     canoneRaw: "/ mese",
-    totale: "€ 51.008",
+    totale: "€ 51.000",
     totaleMesi: "12 mesi",
     c: P.accent,
     highlight: false,
