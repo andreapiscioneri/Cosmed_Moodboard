@@ -121,7 +121,7 @@ export function MetodoSection() {
                 Artigiani<br /><span style={{ color: P.accentLight }}>del Digitale</span>
               </h2>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", color: `${P.textInv}8A`, lineHeight: "1.85", maxWidth: "520px" }}>
-                In DeNani non adottiamo <strong style={{ color: P.textInv, fontWeight: 600 }}>soluzioni standardizzate</strong>. Ogni progetto viene modellato sulle specifiche esigenze, sui valori e sulla <strong style={{ color: P.textInv, fontWeight: 600 }}>visione unica del cliente</strong> — proprio come un abito su misura.
+                In DeNani <strong style={{ color: P.textInv, fontWeight: 600 }}>non adottiamo soluzioni standardizzate</strong>. Ogni progetto viene modellato sulle specifiche esigenze, sui valori e sulla <strong style={{ color: P.textInv, fontWeight: 600 }}>visione unica del cliente</strong> — proprio come un abito su misura.
               </p>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: `${P.textInv}74`, lineHeight: "1.85", maxWidth: "520px" }}>
                 Il nostro metodo si fonda su un <strong style={{ color: `${P.textInv}95`, fontWeight: 600 }}>dialogo costante</strong> e uno scambio di valore reale. La strategia che vedrete in questa fase è il <strong style={{ color: `${P.textInv}95`, fontWeight: 600 }}>punto di partenza</strong> di un processo di co-creazione.

@@ -1,7 +1,9 @@
+import vo2Image from "../../../assets/1.png";
+
 // All image URLs for the landing page
 export const IMGS = {
   // Performance — 2 realistiche + 2 astratte
-  vo2test:    "https://images.unsplash.com/photo-1709601414313-17217448a9fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080", // REALISTICA: test VO2/maschera
+  vo2test:    vo2Image, // REALISTICA: test VO2/maschera
   physio:     "https://images.unsplash.com/photo-1709880754445-8ffbd7e6ab3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080", // REALISTICA: fisioterapia clinica
   dataflow:   "https://images.unsplash.com/photo-1762279388956-1c098163a2a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080", // ASTRATTA: data flow blu
   molecular:  "https://images.unsplash.com/photo-1697901785243-c4e233def8af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080", // ASTRATTA: molecolare

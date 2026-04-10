@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { P } from "./images";
 import perfData from "../../../assets/PERFORMANCE - Data Flow.jpg";
 import strategiaHeroBg from "../../../assets/WhatsApp Image 2026-04-09 at 16.38.10.jpeg";
@@ -9,6 +10,9 @@ const CLAUDE_BERNARD_IMG = "https://images.pexels.com/photos/15319016/pexels-pho
 const GALILEO_GALILEI_IMG = "https://images.pexels.com/photos/21923388/pexels-photo-21923388.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const JOEL_EMBIID_IMG = "https://images.pexels.com/photos/4720827/pexels-photo-4720827.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const MICHAEL_PHELPS_IMG = "https://images.pexels.com/photos/13804884/pexels-photo-13804884.jpeg?auto=compress&cs=tinysrgb&w=1200";
+
+const STEP_DARK_BG = "#17313D";
+const STEP_DARK_CARD = "rgba(23,49,61,0.9)";
 
 function IconSearch({ size = 20 }: { size?: number }) {
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.35-4.35" /></svg>;
@@ -69,16 +73,207 @@ function Chip({ label, dark = false }: { label: string; dark?: boolean }) {
   return <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: dark ? P.accentLight : P.accent, border: `1px solid ${dark ? P.accentLight : P.accent}35`, background: `${P.accent}10`, borderRadius: "4px", padding: "4px 10px", letterSpacing: "0.08em", textTransform: "uppercase" }}>{label}</span>;
 }
 
+const EMPHASIS_TERMS = [
+  "COSMED",
+  "Performance",
+  "Well-being",
+  "Wellbeing",
+  "SEO/GEO",
+  "keyword",
+  "target",
+  "Brand Identity",
+  "lead generation",
+  "CRM",
+  "GDPR",
+  "KPI",
+  "Odoo",
+  "conversione",
+  "ROI",
+  "strategia",
+  "VO2max",
+  "Google",
+  "IA",
+  "annunci",
+  "contenuti",
+  "engagement",
+  "awareness",
+  "conversioni",
+  "fiducia",
+  "misurabile",
+  "campione",
+  "processo",
+  "sogni",
+  "lontano",
+  "duro lavoro",
+  "perseveranza",
+  "infortuni",
+  "scientifici",
+  "efficaci",
+  "corpo umano",
+  "prevenzione",
+  "Odiavo",
+  "è 'Io'",
+  "è 'Noi'",
+];
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+const EMPHASIS_REGEX = new RegExp(`(${EMPHASIS_TERMS.map(escapeRegExp).join("|")})`, "gi");
+
+function highlightCopy(text: string, dark = false) {
+  return text.split(EMPHASIS_REGEX).map((part, index) => {
+    const isEmphasis = EMPHASIS_TERMS.some((term) => term.toLowerCase() === part.toLowerCase());
+    if (!isEmphasis) return <span key={`${part}-${index}`}>{part}</span>;
+
+    return (
+      <strong
+        key={`${part}-${index}`}
+        style={{
+          fontWeight: 800,
+          color: dark ? P.accentLight : P.accent,
+          letterSpacing: "0.01em",
+        }}
+      >
+        {part}
+      </strong>
+    );
+  });
+}
+
+function useStepFramerFx() {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let scrollDirection: "up" | "down" = "down";
+    let previousY = window.scrollY;
+
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      scrollDirection = currentY < previousY ? "up" : "down";
+      previousY = currentY;
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const styleId = "step-framer-fx";
+    let style = document.getElementById(styleId) as HTMLStyleElement | null;
+
+    if (!style) {
+      style = document.createElement("style");
+      style.id = styleId;
+      style.textContent = `
+        .step-row {
+          opacity: 0;
+          transform: translateY(42px) scale(0.985);
+          filter: saturate(0.9);
+          transition: opacity 0.58s ease, transform 0.88s cubic-bezier(0.22, 1, 0.36, 1), filter 0.85s ease;
+          will-change: transform, opacity;
+        }
+        .step-row.fx-up {
+          transform: translateY(-42px) scale(0.985);
+        }
+        .step-row.is-visible {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+          filter: saturate(1);
+        }
+        .step-row > .grid > div:first-child,
+        .step-row > .grid > div:last-child {
+          opacity: 0;
+          transform: translateX(28px);
+          transition: opacity 0.75s ease, transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+          will-change: transform, opacity;
+        }
+        .step-row > .grid > div:first-child {
+          transform: translateX(-28px);
+        }
+        .step-row.is-visible > .grid > div:first-child,
+        .step-row.is-visible > .grid > div:last-child {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        .step-row.is-visible > .grid > div:first-child {
+          transition-delay: 90ms;
+        }
+        .step-row.is-visible > .grid > div:last-child {
+          transition-delay: 180ms;
+        }
+        .quote-fx {
+          opacity: 0;
+          transform: translateY(36px);
+          transition: opacity 0.56s ease, transform 0.86s cubic-bezier(0.22, 1, 0.36, 1);
+          will-change: opacity, transform;
+        }
+        .quote-fx.fx-up {
+          transform: translateY(-36px);
+        }
+        .quote-fx.is-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        .quote-fx .quote-fx-img {
+          transform: scale(1.07) translateY(16px);
+          transition: transform 1.05s cubic-bezier(0.22, 1, 0.36, 1), filter 0.85s ease;
+          will-change: transform, filter;
+        }
+        .quote-fx.is-visible .quote-fx-img {
+          transform: scale(1.03) translateY(0);
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("fx-up", "fx-down");
+            entry.target.classList.add(scrollDirection === "up" ? "fx-up" : "fx-down");
+            entry.target.classList.add("is-visible");
+          } else {
+            entry.target.classList.remove("is-visible");
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    const targets = document.querySelectorAll(".step-row, .quote-fx");
+    targets.forEach((target) => observer.observe(target));
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+}
+
 function QuoteImageCard({ text, image, dark = false }: { text: string; image: string; dark?: boolean }) {
   return (
-    <div className="overflow-hidden h-full self-stretch" style={{ background: P.dark }}>
+    <div className="overflow-hidden h-full self-stretch quote-fx" style={{ background: STEP_DARK_BG }}>
       <div className="relative h-full min-h-[600px]">
-        <img src={image} alt={text} loading="lazy" className="absolute inset-0 w-full h-full object-cover" style={{ filter: "brightness(0.72) saturate(1.05)", transform: "scale(1.03)", objectPosition: "center 33%" }} />
-        <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, rgba(8,20,28,0.08) 0%, ${P.dark}18 52%, ${P.dark}B4 100%)` }} />
+        <img src={image} alt={text} loading="lazy" className="absolute inset-0 w-full h-full object-cover quote-fx-img" style={{ filter: "brightness(0.68) saturate(1.02)", objectPosition: "center 33%" }} />
+        <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, rgba(12,28,36,0.16) 0%, ${STEP_DARK_BG}2C 46%, ${STEP_DARK_BG}E2 100%)` }} />
+        <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${STEP_DARK_BG}55 0%, rgba(30,122,138,0.13) 36%, rgba(74,159,175,0.16) 70%, ${STEP_DARK_BG}80 100%)` }} />
+        <div className="absolute inset-0" style={{ background: `radial-gradient(circle at 78% 24%, rgba(74,159,175,0.18) 0%, rgba(74,159,175,0) 42%)` }} />
         <div className={`absolute inset-0 flex items-end ${dark ? "justify-start" : "justify-end"} p-7 md:p-9`}>
-          <p style={{ maxWidth: "clamp(26ch, 44vw, 36ch)", textAlign: dark ? "left" : "right", fontFamily: "'Inter', sans-serif", fontSize: "clamp(16px, 1.45vw, 22px)", fontStyle: "italic", fontWeight: 600, color: P.textInv, lineHeight: "1.12", textShadow: "0 3px 14px rgba(0,0,0,0.48), 0 1px 0 rgba(0,0,0,0.12)" }}>
-            "{text}"
-          </p>
+          <div style={{
+            maxWidth: "clamp(26ch, 44vw, 40ch)",
+            textAlign: dark ? "left" : "right",
+            padding: "16px 18px",
+            borderRadius: "16px",
+            border: "1px solid rgba(255,255,255,0.12)",
+            background: "linear-gradient(135deg, rgba(12,26,34,0.6) 0%, rgba(23,49,61,0.3) 100%)",
+            backdropFilter: "blur(4px)",
+            boxShadow: "0 10px 24px rgba(0,0,0,0.24)",
+          }}>
+            <span style={{ fontFamily: "'Montserrat', sans-serif", display: "block", fontSize: "26px", lineHeight: "0.8", color: P.accentLight, opacity: 0.9, marginBottom: "8px" }}>“</span>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(16px, 1.45vw, 22px)", fontStyle: "italic", fontWeight: 500, color: P.textInv, lineHeight: "1.2", textShadow: "0 3px 14px rgba(0,0,0,0.48), 0 1px 0 rgba(0,0,0,0.12)" }}>
+              {highlightCopy(text, true)}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -86,10 +281,12 @@ function QuoteImageCard({ text, image, dark = false }: { text: string; image: st
 }
 
 function SectionShell({ light = true, children }: { light?: boolean; children: React.ReactNode }) {
-  return <section className="w-full py-10 md:py-14 overflow-hidden" style={{ background: light ? P.surface : P.dark }}><div className="px-6 md:px-10 lg:px-20">{children}</div></section>;
+  return <section className="w-full py-14 md:py-20 overflow-hidden" style={{ background: light ? P.surface : STEP_DARK_BG }}><div className="px-6 md:px-10 lg:px-20 step-row">{children}</div></section>;
 }
 
 export function StrategiaSection() {
+  useStepFramerFx();
+
   return (
     <section id="strategia" className="w-full" style={{ background: P.bg }}>
       <div className="relative w-full overflow-hidden" style={{ minHeight: "420px" }}>
@@ -101,7 +298,7 @@ export function StrategiaSection() {
           <div className="max-w-7xl mx-auto flex flex-col gap-6">
             <div className="flex items-center gap-3"><div style={{ width: "36px", height: "1px", background: `linear-gradient(90deg, ${P.accentLight}, transparent)` }} /><span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accentLight, letterSpacing: "0.14em", textTransform: "uppercase" }}>La Strategia Operativa</span></div>
             <h2 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(28px, 5vw, 64px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.05em", lineHeight: "0.92" }}>Dagli Obiettivi<br /><span style={{ color: P.accentLight }}>Alla Roadmap Strategica</span><br /></h2>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(14px, 1.5vw, 17px)", color: `${P.textInv}72`, lineHeight: "1.8", maxWidth: "56ch" }}>Un percorso strutturato per costruire l'ecosistema digitale di COSMED Performance & COSMED Well-being.</p>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(14px, 1.5vw, 17px)", color: `${P.textInv}72`, lineHeight: "1.8", maxWidth: "56ch" }}>{highlightCopy("Un percorso strutturato per costruire l'ecosistema digitale di COSMED Performance & COSMED Well-being.", true)}</p>
             <div className="flex flex-wrap gap-2 mt-2">{["1. Analisi di Mercato", "2. Target Persona", "3. Brand Identity", "4. Siti Web", "5. SEO / GEO", "6. Social Media", "7. Sponsorizzazioni"].map((label) => <Chip key={label} label={label} dark />)}</div>
           </div>
         </div>
@@ -110,8 +307,8 @@ export function StrategiaSection() {
       <SectionShell light>
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
           <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.text, letterSpacing: "-0.035em", lineHeight: "0.98" }}>1. Analisi di Mercato</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.textMuted, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: P.textSub, lineHeight: "1.8" }}>Studio dell'attuale comunicazione COSMED, analisi dei competitor internazionali e ricerca delle keyword più rilevanti per il posizionamento SEO/GEO dei nuovi sub-brands.</p></div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">{[{ icon: IconSearch, c: P.accent, t: "Audit Interno", d: "Valutazione dello stato attuale dei canali digitali per definire i parametri di crescita." }, { icon: IconGlobe, c: P.accentLight, t: "Benchmark Competitivo", d: "Analisi del posizionamento e della comunicazione di player internazionali." }, { icon: IconBarChart, c: P.accent, t: "Keyword Research SEO/GEO", d: "Identificazione delle reali intenzioni di ricerca dei professionisti in Italia." }].map((item) => <div key={item.t} className="rounded-2xl p-5 flex flex-col gap-3" style={{ background: P.surfaceAlt, border: `1px solid ${P.border}`, borderTop: `3px solid ${item.c}` }}><div className="flex items-center justify-center w-10 h-10 rounded-xl" style={{ background: `${item.c}14`, color: item.c }}><item.icon size={18} /></div><h4 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 800, color: P.text, letterSpacing: "-0.01em" }}>{item.t}</h4><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12.5px", color: P.textSub, lineHeight: "1.7" }}>{item.d}</p></div>)}</div>
+            <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.text, letterSpacing: "-0.035em", lineHeight: "0.98" }}>1. Analisi di Mercato</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.textMuted, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: P.textSub, lineHeight: "1.8" }}>{highlightCopy("Studio dell'attuale comunicazione COSMED, analisi dei competitor internazionali e ricerca delle keyword più rilevanti per il posizionamento SEO/GEO dei nuovi sub-brands.")}</p></div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">{[{ icon: IconSearch, c: P.accent, t: "Audit Interno", d: "Valutazione dello stato attuale dei canali digitali per definire i parametri di crescita." }, { icon: IconGlobe, c: P.accentLight, t: "Benchmark Competitivo", d: "Analisi del posizionamento e della comunicazione di player internazionali." }, { icon: IconBarChart, c: P.accent, t: "Keyword Research SEO/GEO", d: "Identificazione delle reali intenzioni di ricerca dei professionisti in Italia." }].map((item) => <div key={item.t} className="rounded-2xl p-5 flex flex-col gap-3" style={{ background: P.surfaceAlt, border: `1px solid ${P.border}`, borderTop: `3px solid ${item.c}` }}><div className="flex items-center justify-center w-10 h-10 rounded-xl" style={{ background: `${item.c}14`, color: item.c }}><item.icon size={18} /></div><h4 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 800, color: P.text, letterSpacing: "-0.01em" }}>{item.t}</h4><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12.5px", color: P.textSub, lineHeight: "1.7" }}>{highlightCopy(item.d)}</p></div>)}</div>
             <div className="relative overflow-hidden rounded-[24px]" style={{ background: "rgba(255,255,255,0.96)", border: `1px solid ${P.border}` }}>
               <img
                 src={perfData}
@@ -124,11 +321,11 @@ export function StrategiaSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accent, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "8px" }}>COSMED Performance</p>
-                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>Analisi semantica focalizzata su VO2max, soglia anaerobica e test da sforzo.</p>
+                      <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>{highlightCopy("Analisi semantica focalizzata su VO2max, soglia anaerobica e test da sforzo.")}</p>
                   </div>
                   <div>
                     <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accentLight, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "8px" }}>COSMED Wellbeing</p>
-                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>Focus su dispendio energetico (REE), substrati-macronutrienti e nutrizione clinica.</p>
+                      <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>{highlightCopy("Focus su dispendio energetico (REE), substrati-macronutrienti e nutrizione clinica.")}</p>
                   </div>
                 </div>
               </div>
@@ -143,8 +340,8 @@ export function StrategiaSection() {
       <SectionShell light={false}>
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
           <div className="flex flex-col gap-6 lg:order-2">
-            <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.035em", lineHeight: "0.98" }}>2. Target Persona</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: `${P.textInv}60`, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: `${P.textInv}72`, lineHeight: "1.8" }}>Definiamo dei profili fittizi che rappresentino in maniera realistica i nostri utenti target ideali.</p></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.035em", lineHeight: "0.98" }}>2. Target Persona</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: `${P.textInv}60`, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: `${P.textInv}72`, lineHeight: "1.8" }}>{highlightCopy("Definiamo dei profili fittizi che rappresentino in maniera realistica i nostri utenti target ideali.", true)}</p></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8 md:mb-12">
               {[
                 { name: "Dr. Roberto Grossi", role: "Preparatore atletico", accent: P.accent, area: "Area Performance", icon: IconSport, quote: "Mi serve il VO2max reale per personalizzare i carichi e prevenire infortuni." },
                 { name: "Dott.ssa Elena Bianchi", role: "Biologa Nutrizionista", accent: P.accentLight, area: "Area Wellbeing", icon: IconNutrition, quote: "Ho bisogno di misurare i substrati per creare protocolli nutrizionali scientifici ed efficaci per i miei pazienti." },
@@ -163,7 +360,7 @@ export function StrategiaSection() {
                   <div className="rounded-xl p-4" style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${P.darkBorder}` }}>
                     <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: persona.accent, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "8px" }}>Esigenza Chiave</p>
                     <blockquote style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: `${P.textInv}78`, fontStyle: "italic", lineHeight: "1.75", borderLeft: `2px solid ${persona.accent}`, paddingLeft: "12px" }}>
-                      "{persona.quote}"
+                      "{highlightCopy(persona.quote, true)}"
                     </blockquote>
                   </div>
                 </div>
@@ -179,8 +376,8 @@ export function StrategiaSection() {
       <SectionShell light>
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
           <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.text, letterSpacing: "-0.035em", lineHeight: "0.98" }}>3. Brand Identity</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.textMuted, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: P.textSub, lineHeight: "1.8" }}>La brand identity è l'insieme di tutte le caratteristiche visive che definiscono un brand rendendolo riconoscibile sul mercato.</p></div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
+            <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.text, letterSpacing: "-0.035em", lineHeight: "0.98" }}>3. Brand Identity</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.textMuted, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: P.textSub, lineHeight: "1.8" }}>{highlightCopy("La brand identity è l'insieme di tutte le caratteristiche visive che definiscono un brand rendendolo riconoscibile sul mercato.")}</p></div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch mb-8 md:mb-12">
               {[
                 { icon: IconPalette, c: P.accentLight, t: "Logotipi Dedicati", d: "Sviluppo di varianti complete per COSMED Performance e COSMED Well-being." },
                 { icon: IconLayout, c: P.accent, t: "Brand Guidelines", d: "Palette colori, tipografia e Tone of Voice tecnico ma accessibile." },
@@ -191,7 +388,7 @@ export function StrategiaSection() {
                     <item.icon size={20} />
                   </div>
                   <h4 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "15px", fontWeight: 800, color: P.text, lineHeight: "1.2" }}>{item.t}</h4>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>{item.d}</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>{highlightCopy(item.d)}</p>
                 </div>
               ))}
             </div>
@@ -205,7 +402,7 @@ export function StrategiaSection() {
       <SectionShell light={false}>
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
           <div className="flex flex-col gap-6 lg:order-2">
-            <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.035em", lineHeight: "0.98" }}>4. Siti Web</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: `${P.textInv}60`, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: `${P.textInv}72`, lineHeight: "1.8" }}>Sviluppo di un'esperienza digitale integrata e coerente con la brand identity, ottimizzata per la lead generation e la gestione centralizzata dei contatti tramite CRM.</p></div>
+            <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.035em", lineHeight: "0.98" }}>4. Siti Web</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: `${P.textInv}60`, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: `${P.textInv}72`, lineHeight: "1.8" }}>{highlightCopy("Sviluppo di un'esperienza digitale integrata e coerente con la brand identity, ottimizzata per la lead generation e la gestione centralizzata dei contatti tramite CRM.", true)}</p></div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[
                 { icon: IconWebsite, c: P.accent, t: "Siti Web su Odoo", d: "Creazione ex-novo di due portali (Performance e Well-being) integrati nativamente con l'ERP Cosmed." },
@@ -217,13 +414,13 @@ export function StrategiaSection() {
                     <item.icon size={18} />
                   </div>
                   <h4 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 800, color: P.textInv }}>{item.t}</h4>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12.5px", color: `${P.textInv}68`, lineHeight: "1.7" }}>{item.d}</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12.5px", color: `${P.textInv}68`, lineHeight: "1.7" }}>{highlightCopy(item.d, true)}</p>
                 </div>
               ))}
             </div>
-            <div className="flex flex-col lg:flex-row gap-6 rounded-2xl p-6 md:p-8" style={{ background: P.dark }}>
-              <div className="lg:w-2/5 flex flex-col gap-4"><span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accent, letterSpacing: "0.14em", textTransform: "uppercase" }}>Piattaforma Consigliata</span><div className="flex items-center gap-3"><img src="/src/assets/390bef65bfd085818f4e1bb65eea8ad81d8eaef33f8c5cf45179c43543aa9ca8_200.webp" alt="Odoo" loading="lazy" style={{ width: "36px", height: "36px", borderRadius: "8px", objectFit: "contain", background: "#fff", padding: "4px", flexShrink: 0 }} /><h4 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(22px, 2.5vw, 34px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.04em", lineHeight: "1.0" }}>Odoo <span style={{ color: P.accentLight }}>ERP</span></h4></div><div><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.accent, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "8px" }}>Soluzione 1 — CONSIGLIATA</p>{["Creazione di n°2 siti web su piattaforma Odoo", "Acquisto licenza aggiuntiva per conto di Cosmed per consentire l'intervento e la manutenzione a DeNani sui siti installati nel gestionale ERP Odoo", "Valutazione impatto economico della gestione in Odoo dei due siti con subdomain relativo a ciascun settore", "Interfaccia DeNani con Partner Odoo Cosmed affinché i siti vengano realizzati sulla piattaforma e integrati", "Separazione clienti per sorgente effettuata dalla piattaforma Odoo (Performance vs Well-being)"].map((item) => <div key={item} className="flex items-start gap-2 mb-2"><span style={{ color: P.accentLight, flexShrink: 0, marginTop: "2px" }}><IconCheck size={13} /></span><span style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: `${P.textInv}70`, lineHeight: "1.6" }}>{item}</span></div>)}</div></div>
-              <div className="flex-1 flex flex-col gap-4"><div className="rounded-xl p-5" style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${P.darkBorder}` }}><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: "#B05050", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "8px" }}>Soluzione 2 (WordPress + Connettore) — SCONSIGLIATA</p>{["N°2 siti in WordPress collegati con Odoo tramite un connettore", "Costo aggiuntivo del connettore", "Soluzione più instabile e meno integrata"].map((item) => <div key={item} className="flex items-start gap-2 mb-2"><span style={{ color: "#B05050", flexShrink: 0, marginTop: "2px" }}><IconX size={13} /></span><span style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: `${P.textInv}65`, lineHeight: "1.6" }}>{item}</span></div>)}</div><div className="rounded-xl p-5" style={{ background: `${P.accent}12`, border: `1px solid ${P.accent}22` }}><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.accent, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "10px" }}>Vantaggi chiave dell'integrazione Odoo</p>{[{ icon: IconUsers, t: "CRM integrato", d: "Separazione leads Performance vs Well-being automatica" }, { icon: IconMail, t: "Marketing Automation", d: "Email sequenze, lead nurturing, scoring" }, { icon: IconBarChart, t: "Analytics unificata", d: "Dashboard CRM + Web + Vendite in un'unica vista" }, { icon: IconShield, t: "GDPR by design", d: "Framework centralizzato e sicuro per la privacy" }].map((item) => <div key={item.t} className="flex items-start gap-3 mb-3"><div className="flex items-center justify-center w-7 h-7 rounded-lg flex-shrink-0" style={{ background: `${P.accentLight}18`, color: P.accentLight }}><item.icon size={14} /></div><div><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 700, color: P.textInv, letterSpacing: "-0.01em" }}>{item.t}</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10.5px", color: `${P.textInv}60`, lineHeight: "1.55" }}>{item.d}</p></div></div>)}</div></div>
+              <div className="flex flex-col lg:flex-row gap-6 rounded-2xl p-6 md:p-8" style={{ background: STEP_DARK_BG }}>
+              <div className="lg:w-2/5 flex flex-col gap-4"><span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accent, letterSpacing: "0.14em", textTransform: "uppercase" }}>Piattaforma Consigliata</span><div className="flex items-center gap-3"><img src="/src/assets/390bef65bfd085818f4e1bb65eea8ad81d8eaef33f8c5cf45179c43543aa9ca8_200.webp" alt="Odoo" loading="lazy" style={{ width: "36px", height: "36px", borderRadius: "8px", objectFit: "contain", background: "#fff", padding: "4px", flexShrink: 0 }} /><h4 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(22px, 2.5vw, 34px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.04em", lineHeight: "1.0" }}>Odoo <span style={{ color: P.accentLight }}>ERP</span></h4></div><div><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.accent, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "8px" }}>Soluzione 1 — CONSIGLIATA</p>{["Creazione di n°2 siti web su piattaforma Odoo", "Acquisto licenza aggiuntiva per conto di Cosmed per consentire l'intervento e la manutenzione a DeNani sui siti installati nel gestionale ERP Odoo", "Valutazione impatto economico della gestione in Odoo dei due siti con subdomain relativo a ciascun settore", "Interfaccia DeNani con Partner Odoo Cosmed affinché i siti vengano realizzati sulla piattaforma e integrati", "Separazione clienti per sorgente effettuata dalla piattaforma Odoo (Performance vs Well-being)"].map((item) => <div key={item} className="flex items-start gap-2 mb-2"><span style={{ color: P.accentLight, flexShrink: 0, marginTop: "2px" }}><IconCheck size={13} /></span><span style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: `${P.textInv}70`, lineHeight: "1.6" }}>{highlightCopy(item, true)}</span></div>)}</div></div>
+                <div className="flex-1 flex flex-col gap-4"><div className="rounded-xl p-5" style={{ background: STEP_DARK_CARD, border: `1px solid ${P.darkBorder}` }}><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: "#B05050", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "8px" }}>Soluzione 2 (WordPress + Connettore) — SCONSIGLIATA</p>{["N°2 siti in WordPress collegati con Odoo tramite un connettore", "Costo aggiuntivo del connettore", "Soluzione più instabile e meno integrata"].map((item) => <div key={item} className="flex items-start gap-2 mb-2"><span style={{ color: "#B05050", flexShrink: 0, marginTop: "2px" }}><IconX size={13} /></span><span style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: `${P.textInv}65`, lineHeight: "1.6" }}>{highlightCopy(item, true)}</span></div>)}</div><div className="rounded-xl p-5" style={{ background: `${P.accent}12`, border: `1px solid ${P.accent}22` }}><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.accent, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "10px" }}>Vantaggi chiave dell'integrazione Odoo</p>{[{ icon: IconUsers, t: "CRM integrato", d: "Separazione leads Performance vs Well-being automatica" }, { icon: IconMail, t: "Marketing Automation", d: "Email sequenze, lead nurturing, scoring" }, { icon: IconBarChart, t: "Analytics unificata", d: "Dashboard CRM + Web + Vendite in un'unica vista" }, { icon: IconShield, t: "GDPR by design", d: "Framework centralizzato e sicuro per la privacy" }].map((item) => <div key={item.t} className="flex items-start gap-3 mb-3"><div className="flex items-center justify-center w-7 h-7 rounded-lg flex-shrink-0" style={{ background: `${P.accentLight}18`, color: P.accentLight }}><item.icon size={14} /></div><div><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 700, color: P.textInv, letterSpacing: "-0.01em" }}>{item.t}</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10.5px", color: `${P.textInv}60`, lineHeight: "1.55" }}>{highlightCopy(item.d, true)}</p></div></div>)}</div></div>
             </div>
           </div>
           <div className="lg:order-1 lg:-ml-24 md:-ml-12 -ml-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
@@ -235,9 +432,9 @@ export function StrategiaSection() {
       <SectionShell light>
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
           <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.text, letterSpacing: "-0.035em", lineHeight: "0.98" }}>5. SEO / GEO</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.textMuted, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: P.textSub, lineHeight: "1.8" }}>La SEO serve a rendere il sito più visibile su Google quando un utente cerca servizi o informazioni specifiche. La GEO applica la stessa logica ai motori generativi e ai contenuti pensati per l'IA.</p></div>
-            <div className="rounded-2xl p-5" style={{ background: P.surfaceAlt, border: `1px solid ${P.border}` }}><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.accent, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "10px" }}>Cosa significa in pratica</p><div className="grid grid-cols-1 sm:grid-cols-3 gap-3">{["Farti trovare da chi cerca già una soluzione simile alla tua.", "Spiegare meglio i servizi, così l'utente capisce subito se sei la scelta giusta.", "Generare contatti più qualificati, riducendo traffico poco utile."].map((item) => <div key={item} className="rounded-xl p-4" style={{ background: `${P.accent}10`, border: `1px solid ${P.accent}24` }}><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12.5px", color: P.textSub, lineHeight: "1.7" }}>{item}</p></div>)}</div></div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5"><div className="rounded-2xl p-5 flex flex-col gap-3" style={{ background: `${P.accent}14`, border: `1px solid ${P.accent}28` }}><div className="flex items-center gap-3"><div className="flex items-center justify-center w-9 h-9 rounded-xl" style={{ background: `${P.accent}22`, color: P.accent }}><IconMapPin size={17} /></div><span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 800, color: P.accent }}>Target Performance</span></div><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>Indicizzazione per parole chiave legate a Strutture Sanitarie Riabilitative, Centri di Medicina dello Sport e Palestre d'élite.</p></div><div className="rounded-2xl p-5 flex flex-col gap-3" style={{ background: `${P.accentLight}12`, border: `1px solid ${P.accentLight}25` }}><div className="flex items-center gap-3"><div className="flex items-center justify-center w-9 h-9 rounded-xl" style={{ background: `${P.accentLight}20`, color: P.accentLight }}><IconMapPin size={17} /></div><span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 800, color: P.accentLight }}>Target Wellbeing</span></div><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>Indicizzazione per termini legati a Studi Nutrizionistici, Cliniche di Dimagrimento, SPA e Centri Benessere.</p></div></div>
+            <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.text, letterSpacing: "-0.035em", lineHeight: "0.98" }}>5. SEO / GEO</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.textMuted, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: P.textSub, lineHeight: "1.8" }}>{highlightCopy("La SEO serve a rendere il sito più visibile su Google quando un utente cerca servizi o informazioni specifiche. La GEO applica la stessa logica ai motori generativi e ai contenuti pensati per l'IA.")}</p></div>
+            <div className="rounded-2xl p-5" style={{ background: P.surfaceAlt, border: `1px solid ${P.border}` }}><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.accent, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "10px" }}>Cosa significa in pratica</p><div className="grid grid-cols-1 sm:grid-cols-3 gap-3">{["Farti trovare da chi cerca già una soluzione simile alla tua.", "Spiegare meglio i servizi, così l'utente capisce subito se sei la scelta giusta.", "Generare contatti più qualificati, riducendo traffico poco utile."].map((item) => <div key={item} className="rounded-xl p-4" style={{ background: `${P.accent}10`, border: `1px solid ${P.accent}24` }}><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12.5px", color: P.textSub, lineHeight: "1.7" }}>{highlightCopy(item)}</p></div>)}</div></div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5"><div className="rounded-2xl p-5 flex flex-col gap-3" style={{ background: `${P.accent}14`, border: `1px solid ${P.accent}28` }}><div className="flex items-center gap-3"><div className="flex items-center justify-center w-9 h-9 rounded-xl" style={{ background: `${P.accent}22`, color: P.accent }}><IconMapPin size={17} /></div><span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 800, color: P.accent }}>Target Performance</span></div><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>{highlightCopy("Indicizzazione per parole chiave legate a Strutture Sanitarie Riabilitative, Centri di Medicina dello Sport e Palestre d'élite.")}</p></div><div className="rounded-2xl p-5 flex flex-col gap-3" style={{ background: `${P.accentLight}12`, border: `1px solid ${P.accentLight}25` }}><div className="flex items-center gap-3"><div className="flex items-center justify-center w-9 h-9 rounded-xl" style={{ background: `${P.accentLight}20`, color: P.accentLight }}><IconMapPin size={17} /></div><span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 800, color: P.accentLight }}>Target Wellbeing</span></div><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>{highlightCopy("Indicizzazione per termini legati a Studi Nutrizionistici, Cliniche di Dimagrimento, SPA e Centri Benessere.")}</p></div></div>
           </div>
           <div className="lg:-mr-24 md:-mr-12 -mr-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
             <QuoteImageCard text="Misura ciò che è misurabile e rendi misurabile ciò che non lo è." image={GALILEO_GALILEI_IMG} dark />
@@ -248,8 +445,8 @@ export function StrategiaSection() {
       <SectionShell light={false}>
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
           <div className="flex flex-col gap-6 lg:order-2">
-            <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.035em", lineHeight: "0.98" }}>6. Social Media</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: `${P.textInv}60`, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: `${P.textInv}72`, lineHeight: "1.8" }}>Creazione ex-novo dei canali COSMED Performance & COSMED Well-being e gestione professionale dei profili Facebook, Instagram e LinkedIn.</p></div>
-            <div className="rounded-2xl overflow-hidden" style={{ background: P.dark, border: `1px solid ${P.darkBorder}` }}>
+            <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.035em", lineHeight: "0.98" }}>6. Social Media</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: `${P.textInv}60`, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: `${P.textInv}72`, lineHeight: "1.8" }}>{highlightCopy("Creazione ex-novo dei canali COSMED Performance & COSMED Well-being e gestione professionale dei profili Facebook, Instagram e LinkedIn.", true)}</p></div>
+              <div className="rounded-2xl overflow-hidden" style={{ background: STEP_DARK_BG, border: `1px solid ${P.darkBorder}` }}>
               <div className="p-6 flex flex-col gap-5">
                 <div className="rounded-xl p-4" style={{ background: `${P.accent}10`, border: `1px solid ${P.accent}24` }}>
                   <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accentLight, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "8px" }}>Rotazione Contenuti (Proposta)</p>
@@ -261,7 +458,7 @@ export function StrategiaSection() {
                     ].map((item) => (
                       <div key={item.t} className="rounded-lg p-3" style={{ background: "rgba(255,255,255,0.04)", border: `1px solid ${P.darkBorder}` }}>
                         <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accent, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "6px" }}>{item.t}</p>
-                        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: `${P.textInv}70`, lineHeight: "1.65" }}>{item.d}</p>
+                        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: `${P.textInv}70`, lineHeight: "1.65" }}>{highlightCopy(item.d, true)}</p>
                       </div>
                     ))}
                   </div>
@@ -277,14 +474,14 @@ export function StrategiaSection() {
                   ].map((item) => (
                     <div key={item.t} className="rounded-xl p-4" style={{ background: "rgba(255,255,255,0.04)", border: `1px solid ${P.darkBorder}`, borderTop: `2px solid ${item.c}` }}>
                       <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: item.c, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "8px" }}>{item.t}</p>
-                      <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12.5px", color: `${P.textInv}68`, lineHeight: "1.7" }}>{item.d}</p>
+                      <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12.5px", color: `${P.textInv}68`, lineHeight: "1.7" }}>{highlightCopy(item.d, true)}</p>
                     </div>
                   ))}
                 </div>
 
                 <div className="rounded-xl p-4" style={{ background: `${P.accent}12`, border: `1px solid ${P.accent}28` }}>
                   <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accentLight, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "6px" }}>Obiettivo Finale</p>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12.5px", color: `${P.textInv}72`, lineHeight: "1.7" }}>Trasformare i social da semplice vetrina a canale che educa, crea fiducia e porta richieste concrete.</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12.5px", color: `${P.textInv}72`, lineHeight: "1.7" }}>{highlightCopy("Trasformare i social da semplice vetrina a canale che educa, crea fiducia e porta richieste concrete.", true)}</p>
                 </div>
               </div>
             </div>
@@ -298,7 +495,7 @@ export function StrategiaSection() {
       <SectionShell light>
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
           <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.text, letterSpacing: "-0.035em", lineHeight: "0.98" }}>7. Sponsorizzazioni</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.textMuted, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: P.textSub, lineHeight: "1.8" }}>Selezioniamo contenuti da promuovere in base alle nostre strategie e ai nostri obiettivi, allocando budget in modo efficiente per massimizzare il ritorno sull'investimento.</p></div>
+            <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.text, letterSpacing: "-0.035em", lineHeight: "0.98" }}>7. Sponsorizzazioni</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.textMuted, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: P.textSub, lineHeight: "1.8" }}>{highlightCopy("Selezioniamo contenuti da promuovere in base alle nostre strategie e ai nostri obiettivi, allocando budget in modo efficiente per massimizzare il ritorno sull'investimento.")}</p></div>
             <div className="rounded-2xl p-5" style={{ background: `${P.accent}10`, border: `1px solid ${P.accent}24` }}>
               <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accentLight, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "10px" }}>Come Funziona</p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -309,7 +506,7 @@ export function StrategiaSection() {
                 ].map((item) => (
                   <div key={item.t} className="rounded-lg p-3" style={{ background: P.surfaceAlt, border: `1px solid ${P.border}` }}>
                     <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accent, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "6px" }}>{item.t}</p>
-                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: P.textSub, lineHeight: "1.65" }}>{item.d}</p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: P.textSub, lineHeight: "1.65" }}>{highlightCopy(item.d)}</p>
                   </div>
                 ))}
               </div>
@@ -317,16 +514,16 @@ export function StrategiaSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div className="rounded-2xl p-5 flex flex-col gap-4" style={{ background: P.surfaceAlt, border: `1px solid ${P.border}`, borderTop: `2px solid ${P.accent}` }}>
                 <div className="flex items-center gap-3"><div className="flex items-center justify-center w-10 h-10 rounded-xl" style={{ background: `${P.accent}20`, color: P.accent }}><IconLinkedIn size={18} /></div><div><h4 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 800, color: P.text }}>LinkedIn</h4><span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", color: P.accent, letterSpacing: "0.1em", textTransform: "uppercase" }}>Area Performance</span></div></div>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>Annunci rivolti a medici dello sport, fisioterapisti e preparatori.</p>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>{highlightCopy("Annunci rivolti a medici dello sport, fisioterapisti e preparatori.")}</p>
               </div>
               <div className="rounded-2xl p-5 flex flex-col gap-4" style={{ background: P.surfaceAlt, border: `1px solid ${P.border}`, borderTop: `2px solid ${P.accentLight}` }}>
                 <div className="flex items-center gap-3"><div className="flex items-center justify-center w-10 h-10 rounded-xl" style={{ background: `${P.accentLight}20`, color: P.accentLight }}><IconInstagram size={18} /></div><div><h4 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 800, color: P.text }}>Facebook e Instagram</h4><span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", color: P.accentLight, letterSpacing: "0.1em", textTransform: "uppercase" }}>Area Well-being</span></div></div>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>Annunci rivolti a nutrizionisti, dietologi e centri benessere o SPA.</p>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>{highlightCopy("Annunci rivolti a nutrizionisti, dietologi e centri benessere o SPA.")}</p>
               </div>
             </div>
             <div className="rounded-2xl px-6 py-5 flex items-start gap-4" style={{ background: `${P.accent}18`, border: `1px solid ${P.accent}35` }}>
               <div className="flex items-center justify-center w-10 h-10 rounded-xl flex-shrink-0" style={{ background: `${P.accentLight}20`, color: P.accentLight }}><IconTrendUp size={19} /></div>
-              <div><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accentLight, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "5px" }}>Conversione</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>Monitoriamo le performance degli annunci e ottimizziamo continuamente per migliorare il tasso di conversione.</p></div>
+              <div><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accentLight, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "5px" }}>Conversione</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>{highlightCopy("Monitoriamo le performance degli annunci e ottimizziamo continuamente per migliorare il tasso di conversione.")}</p></div>
             </div>
           </div>
           <div className="lg:-mr-24 md:-mr-12 -mr-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
