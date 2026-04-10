@@ -69,7 +69,7 @@ export function WellnessWebMockup() {
                   <span key={item} style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 600, color: "#526A7A", letterSpacing: "0.04em" }}>{item}</span>
                 ))}
               </div>
-              <div className="rounded-full px-5 py-2 hidden md:block" style={{ background: P.wellTeal }}>
+              <div className="rounded-full px-5 py-2 hidden md:flex md:items-center md:justify-center" style={{ background: P.wellTeal }}>
                 <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: "#fff", letterSpacing: "0.06em" }}>Contatti</span>
               </div>
             </div>
