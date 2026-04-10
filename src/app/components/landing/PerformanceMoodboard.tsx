@@ -92,7 +92,7 @@ export function PerformanceMoodboard() {
           </div>
 
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: "rgba(238,242,255,0.72)", lineHeight: "1.85", maxWidth: "420px" }}>
-            Brand identity dedicata al professionista clinico: fisiatri, fisioterapisti, medici dello sport. Il visual system comunica rigore scientifico, validazione clinica e precisione nella misurazione metabolica. Ogni elemento è progettato per instaurare fiducia in un contesto B2B altamente specializzato.
+            Brand identity dedicata al professionista dello sport: fisiatri, fisioterapisti, medici dello sport, personal trainers. Il visual system comunica rigore scientifico, validazione clinica e precisione nella misurazione metabolica. Ogni elemento è progettato per instaurare fiducia in un contesto B2B altamente specializzato.
           </p>
 
           <div className="flex flex-col gap-2">

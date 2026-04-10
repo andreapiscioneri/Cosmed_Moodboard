@@ -96,7 +96,7 @@ export function PerformanceWebMockup() {
                   MISURA.<br />ANALIZZA.<br /><span style={{ color: P.perfBlue }}>OTTIMIZZA.</span>
                 </h1>
                 <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: "rgba(238,242,255,0.72)", lineHeight: "1.85", maxWidth: "400px", marginBottom: "32px" }}>
-                  La piattaforma clinica per la misurazione metabolica avanzata. Strumenti validati scientificamente per fisiatri, medici dello sport e fisioterapisti.” DIVENTA “Strumenti validati scientificamente per la misurazione metabolica avanzata</p>
+                  La piattaforma per la misurazione metabolica avanzata. Strumenti validati scientificamente per fisiatri, medici dello sport e fisioterapisti.” DIVENTA “Strumenti validati scientificamente per la misurazione metabolica avanzata</p>
                 <div className="flex gap-3 flex-wrap">
                   <div className="rounded-lg px-6 py-3" style={{ background: P.perfBlue, display: "inline-flex" }}>
                     <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 700, color: "#fff", letterSpacing: "0.04em" }}>Scopri i prodotti →</span>

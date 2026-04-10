@@ -18,7 +18,7 @@ export function BridgeBefore() {
         </h3>
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: `${P.textInv}72`, lineHeight: "1.8" }}>
           Due sub-brand distinti, due estetiche precise, un unico sistema di brand coerente.<br />
-          <strong style={{ color: `${P.textInv}88`, fontWeight: 700 }}>Performance</strong> utilizza un linguaggio tecnico e scientifico, rivolto al professionista clinico.<br />
+          <strong style={{ color: `${P.textInv}88`, fontWeight: 700 }}>Performance</strong> utilizza un linguaggio tecnico e scientifico, rivolto al professionista dello sport.<br />
           <strong style={{ color: `${P.textInv}88`, fontWeight: 700 }}>Well-being</strong> ha un approccio legato alla cura di sé, al mantenersi in forma, al nutrirsi correttamente e a uno stile di vita salutare.
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">

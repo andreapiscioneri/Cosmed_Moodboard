@@ -2,8 +2,7 @@ import { PERFORMANCE_SHOWCASE, P } from "./images";
 import performanceVittoria2 from "../../../assets/PERFORMANCE - VITTORIA 2.jpg";
 
 const manifestoLines = [
-  { text: "\"Se vuoi vincere, devi avere gli strumenti giusti\".", highlight: true },
-  { text: "", highlight: false },
+
   { text: "Crediamo che il talento sia solo l'inizio.", highlight: false },
   { text: "Che il sudore, da solo, non basti a fare la differenza tra un buon piazzamento e un record.", highlight: false },
   { text: "", highlight: false },
