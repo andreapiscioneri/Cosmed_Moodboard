@@ -4,7 +4,7 @@ import imageB from "../../../assets/b.jpg";
 import imageC from "../../../assets/c.jpg";
 import imageD from "../../../assets/d.jpg";
 import imageE from "../../../assets/e.jpg";
-import performanceVittoria from "../../../assets/PERFORMANCE - VITTORIA.jpg";
+import performanceVittoria from "../../../assets/PERFORMANCE - DA SOSTITUIRE.jpg";
 import wellnessHeroD2 from "../../../assets/d2.jpg";
 import wellnessTileD1 from "../../../assets/d1.jpg";
 import wellnessTileD3 from "../../../assets/d3.jpg";
@@ -37,7 +37,7 @@ export const PERFORMANCE_SHOWCASE = {
   tiles: [
     imageA,
     imageB,
-    imageC,
+    performanceVittoria,
     "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=85",
   ],
   post: [

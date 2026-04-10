@@ -1,5 +1,8 @@
-import { P, WELLNESS_SHOWCASE } from "./images";
+import { P } from "./images";
 import odooLogo from "../../../assets/logo odoo.svg";
+import wellLongevity from "../../../assets/WELLNESS - LONGEVITY.jpg";
+import wellLongevity3 from "../../../assets/WELLNESS - LONGEVITY 3.jpg";
+import wellMonitoraggio from "../../../assets/WELLNESS - MONITORAGGIO.jpg";
 
 export function WellnessWebMockup() {
   return (
@@ -73,12 +76,12 @@ export function WellnessWebMockup() {
 
             {/* HERO — immagine full-width dominante, testo in overlay */}
             <div className="relative overflow-hidden" style={{ minHeight: "520px" }}>
-              <img src={WELLNESS_SHOWCASE.hero} alt="Nutrizionista con alimenti sani" className="absolute inset-0 w-full h-full object-cover"
-                style={{ filter: "brightness(0.78) saturate(0.8)" }} />
+              <img src={wellLongevity} alt="Nutrizionista con alimenti sani" className="absolute inset-0 w-full h-full object-cover"
+                style={{ filter: "brightness(0.78) saturate(0.8)", transform: "scaleX(-1)" }} />
               {/* Soft warm overlay */}
               <div className="absolute inset-0" style={{ background: "linear-gradient(110deg, rgba(10,31,31,0.72) 0%, rgba(10,31,31,0.35) 55%, rgba(10,31,31,0.1) 100%)" }} />
               {/* Bottom fade */}
-              <div className="absolute bottom-0 left-0 right-0 h-28" style={{ background: "linear-gradient(to top, #F4F7F5, transparent)" }} />
+              <div className="absolute bottom-0 left-0 right-0 h-20" style={{ background: "linear-gradient(to top, rgba(244,247,245,0.62), rgba(244,247,245,0))" }} />
               {/* Gold accent bar top */}
               <div className="absolute top-0 left-0 right-0 h-1" style={{ background: `linear-gradient(90deg, transparent, ${P.wellGold}70, transparent)` }} />
 
@@ -117,13 +120,13 @@ export function WellnessWebMockup() {
             {/* Image mosaic — 3 immagini grandi con copy overlay */}
             <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderTop: `1px solid ${P.border}` }}>
               {[
-                { img: WELLNESS_SHOWCASE.tiles[0], tag: "ALIMENTAZIONE SANA", copy: "Piatti bilanciati e colori naturali" },
-                { img: WELLNESS_SHOWCASE.tiles[1], tag: "NUTRIZIONE CLINICA", copy: "Consulenza e ascolto del paziente" },
-                { img: WELLNESS_SHOWCASE.tiles[2], tag: "DIETETICA", copy: "Scelta consapevole degli alimenti" },
-              ].map(({ img, tag, copy }, i) => (
+                { img: wellMonitoraggio, tag: "ALIMENTAZIONE SANA", copy: "Piatti bilanciati e colori naturali", position: "center 23%" },
+                { img: "https://images.unsplash.com/photo-1535229398509-70179087ac75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080", tag: "NUTRIZIONE CLINICA", copy: "Consulenza e ascolto del paziente" },
+                { img: wellLongevity3, tag: "DIETETICA", copy: "Scelta consapevole degli alimenti", position: "center 63%" },
+              ].map(({ img, tag, copy, position }, i) => (
                 <div key={i} className="relative overflow-hidden" style={{ height: "180px" }}>
                   <img src={img} alt="" className="w-full h-full object-cover"
-                    style={{ filter: "brightness(0.7) saturate(0.75)", transform: "scale(1.06)" }} />
+                    style={{ filter: "brightness(0.7) saturate(0.75)", transform: "scale(1.06)", objectPosition: position ?? "center" }} />
                   <div className="absolute inset-0" style={{ background: `linear-gradient(to top, rgba(10,31,31,0.85) 0%, rgba(10,31,31,0.15) 100%)` }} />
                   {/* Gold top line on hover */}
                   <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: `${P.wellGold}60` }} />

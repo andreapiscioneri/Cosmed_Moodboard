@@ -1,6 +1,7 @@
 import { P, WELLNESS_SHOWCASE } from "./images";
 import instagramIcon from "../../../assets/instagram-logo-instagram-icon-transparent-free-png.webp";
 import cosmedLogo from "../../../assets/cffaa0cb0f7ab92966e997ad7cded19cf46e55a0.png";
+import wellLongevity4 from "../../../assets/WELLNESS - LONGEVITY 4.jpg";
 
 function IGPost({
   image, imageFilter, label, quote, subline, caption, hashtags, likes, timeAgo,
@@ -170,7 +171,7 @@ export function WellnessInstagramPost() {
                   timeAgo="3 ORE FA"
                 />
                 <IGPost
-                  image={WELLNESS_SHOWCASE.post[1]}
+                  image={wellLongevity4}
                   imageFilter="brightness(0.7) saturate(0.88)"
                   label="COSMED WELL-BEING"
                   quote='"La salute<br/>inizia da ciò<br/>che scegli."'

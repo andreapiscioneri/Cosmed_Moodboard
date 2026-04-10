@@ -28,9 +28,9 @@ const target = ["Nutrizionisti ~15.000", "Dietologi ~6.000", "Spa & Centri ~4.00
 // Griglia 2x2: riga top → cibo | fiori/natura — riga bottom → persone | persone
 const mosaicImages = [
   { url: IMGS.food,      label: "Nutrizione",   tag: "Alimentazione Sana",  sub: "Cibo sano e bilanciato" },
-  { url: wellLongevity4, label: "Cura di Sé",   tag: "Stile di Vita",       sub: "Cura di sé e benessere", position: "44% center" },
-  { url: wellLongevity3, label: "Longevity",    tag: "Equilibrio Vitale",   sub: "Cura di sé e longevità" },
   { url: wellMonitoraggio, label: "Natura",       tag: "Ambiente Naturale",   sub: "Connessione con la natura" },
+  { url: wellLongevity3, label: "Longevity",    tag: "Equilibrio Vitale",   sub: "Cura di sé e longevità" },
+  { url: wellLongevity4, label: "Cura di Sé",   tag: "Stile di Vita",       sub: "Cura di sé e benessere", position: "44% center" },
 ];
 
 export function WellnessMoodboard() {
