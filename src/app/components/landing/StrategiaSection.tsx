@@ -258,11 +258,11 @@ function useStepFramerFx() {
   }, []);
 }
 
-function QuoteImageCard({ text, image, dark = false }: { text: string; image: string; dark?: boolean }) {
+function QuoteImageCard({ text, image, dark = false, roundLeft = true }: { text: string; image: string; dark?: boolean; roundLeft?: boolean }) {
   return (
-    <div className="overflow-hidden h-full self-stretch quote-fx" style={{ background: STEP_DARK_BG }}>
+    <div className="overflow-hidden h-full self-stretch quote-fx" style={{ background: STEP_DARK_BG, borderTopLeftRadius: roundLeft ? "16px" : "0", borderBottomLeftRadius: roundLeft ? "16px" : "0", borderTopRightRadius: !roundLeft ? "16px" : "0", borderBottomRightRadius: !roundLeft ? "16px" : "0" }}>
       <div className="relative h-full min-h-[600px]">
-        <img src={image} alt={text} loading="lazy" className="absolute inset-0 w-full h-full object-cover quote-fx-img" style={{ filter: "brightness(0.68) saturate(1.02)", objectPosition: "center 33%" }} />
+        <img src={image} alt={text} loading="lazy" className="absolute inset-0 w-full h-full object-cover quote-fx-img" style={{ filter: "brightness(0.68) saturate(1.02)", objectPosition: "center 33%", borderTopLeftRadius: roundLeft ? "16px" : "0", borderBottomLeftRadius: roundLeft ? "16px" : "0", borderTopRightRadius: !roundLeft ? "16px" : "0", borderBottomRightRadius: !roundLeft ? "16px" : "0" }} />
         <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, rgba(12,28,36,0.16) 0%, ${STEP_DARK_BG}2C 46%, ${STEP_DARK_BG}E2 100%)` }} />
         <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${STEP_DARK_BG}55 0%, rgba(30,122,138,0.13) 36%, rgba(74,159,175,0.16) 70%, ${STEP_DARK_BG}80 100%)` }} />
         <div className="absolute inset-0" style={{ background: `radial-gradient(circle at 78% 24%, rgba(74,159,175,0.18) 0%, rgba(74,159,175,0) 42%)` }} />
@@ -340,7 +340,7 @@ export function StrategiaSection() {
             </div>
           </div>
           <div className="lg:-mr-24 md:-mr-12 -mr-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <QuoteImageCard text="Odiavo ogni minuto di allenamento, ma dicevo: 'Non mollare. Soffri ora e vivi il resto della tua vita come un campione.'" image={MUHAMMAD_ALI_IMG} dark />
+            <QuoteImageCard text="Odiavo ogni minuto di allenamento, ma dicevo: 'Non mollare. Soffri ora e vivi il resto della tua vita come un campione.'" image={MUHAMMAD_ALI_IMG} dark roundLeft />
           </div>
         </div>
       </SectionShell>
@@ -376,7 +376,7 @@ export function StrategiaSection() {
             </div>
           </div>
           <div className="lg:order-1 lg:-ml-24 md:-ml-12 -ml-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <QuoteImageCard text="Il medico del futuro non somministrerà medicine, ma istruirà i suoi pazienti sulla cura del corpo umano, sulla dieta e sulle cause e la prevenzione delle malattie." image={THOMAS_EDISON_IMG} />
+            <QuoteImageCard text="Il medico del futuro non somministrerà medicine, ma istruirà i suoi pazienti sulla cura del corpo umano, sulla dieta e sulle cause e la prevenzione delle malattie." image={THOMAS_EDISON_IMG} roundLeft={false} />
           </div>
         </div>
       </SectionShell>
@@ -402,7 +402,7 @@ export function StrategiaSection() {
             </div>
           </div>
           <div className="lg:-mr-24 md:-mr-12 -mr-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <QuoteImageCard text="Le grandi cose derivano dal duro lavoro e dalla perseveranza." image={KOBE_BRYANT_IMG} dark />
+            <QuoteImageCard text="Le grandi cose derivano dal duro lavoro e dalla perseveranza." image={KOBE_BRYANT_IMG} dark roundLeft />
           </div>
         </div>
       </SectionShell>
@@ -432,7 +432,7 @@ export function StrategiaSection() {
             </div>
           </div>
           <div className="lg:order-1 lg:-ml-24 md:-ml-12 -ml-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <QuoteImageCard text="L'arte è 'Io'; la scienza è 'Noi'." image={CLAUDE_BERNARD_IMG} />
+            <QuoteImageCard text="L'arte è 'Io'; la scienza è 'Noi'." image={CLAUDE_BERNARD_IMG} roundLeft={false} />
           </div>
         </div>
       </SectionShell>
@@ -445,7 +445,7 @@ export function StrategiaSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5"><div className="rounded-2xl p-5 flex flex-col gap-3" style={{ background: `${P.accent}14`, border: `1px solid ${P.accent}28` }}><div className="flex items-center gap-3"><div className="flex items-center justify-center w-9 h-9 rounded-xl" style={{ background: `${P.accent}22`, color: P.accent }}><IconMapPin size={17} /></div><span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 800, color: P.accent }}>Target Performance</span></div><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>{highlightCopy("Indicizzazione per parole chiave legate a Strutture Sanitarie Riabilitative, Centri di Medicina dello Sport e Palestre d'élite.")}</p></div><div className="rounded-2xl p-5 flex flex-col gap-3" style={{ background: `${P.accentLight}12`, border: `1px solid ${P.accentLight}25` }}><div className="flex items-center gap-3"><div className="flex items-center justify-center w-9 h-9 rounded-xl" style={{ background: `${P.accentLight}20`, color: P.accentLight }}><IconMapPin size={17} /></div><span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 800, color: P.accentLight }}>Target Wellbeing</span></div><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>{highlightCopy("Indicizzazione per termini legati a Studi Nutrizionistici, Cliniche di Dimagrimento, SPA e Centri Benessere.")}</p></div></div>
           </div>
           <div className="lg:-mr-24 md:-mr-12 -mr-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <QuoteImageCard text="Misura ciò che è misurabile e rendi misurabile ciò che non lo è." image={GALILEO_GALILEI_IMG} dark />
+            <QuoteImageCard text="Misura ciò che è misurabile e rendi misurabile ciò che non lo è." image={GALILEO_GALILEI_IMG} dark roundLeft />
           </div>
         </div>
       </SectionShell>
@@ -495,7 +495,7 @@ export function StrategiaSection() {
             </div>
           </div>
           <div className="lg:order-1 lg:-ml-24 md:-ml-12 -ml-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <QuoteImageCard text="Fidati del processo." image={JOEL_EMBIID_IMG} />
+            <QuoteImageCard text="Fidati del processo." image={JOEL_EMBIID_IMG} roundLeft={false} />
           </div>
         </div>
       </SectionShell>
@@ -535,7 +535,7 @@ export function StrategiaSection() {
             </div>
           </div>
           <div className="lg:-mr-24 md:-mr-12 -mr-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <QuoteImageCard text="Non puoi mettere un limite a nulla. Più sogni, più lontano arrivi." image={MICHAEL_PHELPS_IMG} dark />
+            <QuoteImageCard text="Non puoi mettere un limite a nulla. Più sogni, più lontano arrivi." image={MICHAEL_PHELPS_IMG} dark roundLeft />
           </div>
         </div>
       </SectionShell>
