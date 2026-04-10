@@ -65,15 +65,15 @@ function useScrollReveal() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const el = entry.target as HTMLElement;
           if (entry.isIntersecting) {
-            // Staggered delay for children
-            const el = entry.target as HTMLElement;
-            const delay = el.dataset.delay ?? "0";
-            setTimeout(() => el.classList.add("visible"), parseInt(delay));
+            el.classList.add("visible");
+          } else {
+            el.classList.remove("visible");
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -20px 0px" }
     );
 
     const els = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale");
@@ -127,12 +127,11 @@ export default function App() {
         <BridgeBefore />
       </Reveal>
 
-
-      {/* 03d · Performance — Brand Manifesto */}
-      <PerformanceManifesto />
-
       {/* 03 · MOODBOARD PERFORMANCE — no reveal (full viewport) */}
       <PerformanceMoodboard />
+
+  {/* 03d · Performance — Brand Manifesto */}
+  <PerformanceManifesto />
 
       {/* 03b · Performance — Mockup Sito Web */}
       <Reveal>
@@ -143,12 +142,11 @@ export default function App() {
       <Reveal>
         <PerformanceLinkedInPost />
       </Reveal>
-
-      {/* 04d · Wellness — Brand Manifesto */}
-      <WellnessManifesto />
-
       {/* 04 · MOODBOARD WELLNESS — no reveal */}
       <WellnessMoodboard />
+
+  {/* 04d · Wellness — Brand Manifesto */}
+  <WellnessManifesto />
 
       {/* 04b · Wellness — Mockup Sito Web */}
       <Reveal>

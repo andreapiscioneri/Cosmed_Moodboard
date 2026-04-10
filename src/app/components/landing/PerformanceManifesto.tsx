@@ -145,7 +145,19 @@ export function PerformanceManifesto() {
             textTransform: "uppercase",
             lineHeight: "1.45",
           }}>
-            "Non misurare per sapere. Misura per <span style={{ color: P.perfBlue, textShadow: `0 6px 16px ${P.perfBlue}44` }}>agire</span>."
+            "Odiavo ogni minuto di allenamento, ma dicevo: <span style={{ color: P.perfBlue, textShadow: `0 6px 16px ${P.perfBlue}44` }}>non mollare. soffri ora e vivi il resto della tua vita come un campione</span>."
+          </p>
+          <p style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: "10px",
+            fontWeight: 700,
+            color: P.perfBlue,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            textAlign: "center",
+            marginTop: "10px",
+          }}>
+            Muhammad Ali
           </p>
         </div>
 

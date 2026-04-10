@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { P } from "./images";
 import perfData from "../../../assets/PERFORMANCE - Data Flow.jpg";
 import strategiaHeroBg from "../../../assets/WhatsApp Image 2026-04-09 at 16.38.10.jpeg";
@@ -150,119 +149,11 @@ function highlightCopy(text: string, dark = false) {
   });
 }
 
-function useStepFramerFx() {
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    let scrollDirection: "up" | "down" = "down";
-    let previousY = window.scrollY;
-
-    const onScroll = () => {
-      const currentY = window.scrollY;
-      scrollDirection = currentY < previousY ? "up" : "down";
-      previousY = currentY;
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-
-    const styleId = "step-framer-fx";
-    let style = document.getElementById(styleId) as HTMLStyleElement | null;
-
-    if (!style) {
-      style = document.createElement("style");
-      style.id = styleId;
-      style.textContent = `
-        .step-row {
-          opacity: 0;
-          transform: translateY(42px) scale(0.985);
-          filter: saturate(0.9);
-          transition: opacity 0.58s ease, transform 0.88s cubic-bezier(0.22, 1, 0.36, 1), filter 0.85s ease;
-          will-change: transform, opacity;
-        }
-        .step-row.fx-up {
-          transform: translateY(-42px) scale(0.985);
-        }
-        .step-row.is-visible {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-          filter: saturate(1);
-        }
-        .step-row > .grid > div:first-child,
-        .step-row > .grid > div:last-child {
-          opacity: 0;
-          transform: translateX(28px);
-          transition: opacity 0.75s ease, transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
-          will-change: transform, opacity;
-        }
-        .step-row > .grid > div:first-child {
-          transform: translateX(-28px);
-        }
-        .step-row.is-visible > .grid > div:first-child,
-        .step-row.is-visible > .grid > div:last-child {
-          opacity: 1;
-          transform: translateX(0);
-        }
-        .step-row.is-visible > .grid > div:first-child {
-          transition-delay: 90ms;
-        }
-        .step-row.is-visible > .grid > div:last-child {
-          transition-delay: 180ms;
-        }
-        .quote-fx {
-          opacity: 0;
-          transform: translateY(36px);
-          transition: opacity 0.56s ease, transform 0.86s cubic-bezier(0.22, 1, 0.36, 1);
-          will-change: opacity, transform;
-        }
-        .quote-fx.fx-up {
-          transform: translateY(-36px);
-        }
-        .quote-fx.is-visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        .quote-fx .quote-fx-img {
-          transform: scale(1.07) translateY(16px);
-          transition: transform 1.05s cubic-bezier(0.22, 1, 0.36, 1), filter 0.85s ease;
-          will-change: transform, filter;
-        }
-        .quote-fx.is-visible .quote-fx-img {
-          transform: scale(1.03) translateY(0);
-        }
-      `;
-      document.head.appendChild(style);
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.remove("fx-up", "fx-down");
-            entry.target.classList.add(scrollDirection === "up" ? "fx-up" : "fx-down");
-            entry.target.classList.add("is-visible");
-          } else {
-            entry.target.classList.remove("is-visible");
-          }
-        });
-      },
-      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
-    );
-
-    const targets = document.querySelectorAll(".step-row, .quote-fx");
-    targets.forEach((target) => observer.observe(target));
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, []);
-}
-
 function QuoteImageCard({ text, image, dark = false, roundLeft = true }: { text: string; image: string; dark?: boolean; roundLeft?: boolean }) {
   return (
-    <div className="overflow-hidden h-full self-stretch quote-fx" style={{ background: "transparent", borderTopLeftRadius: roundLeft ? "16px" : "0", borderBottomLeftRadius: roundLeft ? "16px" : "0", borderTopRightRadius: !roundLeft ? "16px" : "0", borderBottomRightRadius: !roundLeft ? "16px" : "0" }}>
+    <div className="overflow-hidden h-full self-stretch" style={{ background: "transparent", borderTopLeftRadius: roundLeft ? "16px" : "0", borderBottomLeftRadius: roundLeft ? "16px" : "0", borderTopRightRadius: !roundLeft ? "16px" : "0", borderBottomRightRadius: !roundLeft ? "16px" : "0" }}>
       <div className="relative h-full min-h-[600px]">
-        <img src={image} alt={text} loading="lazy" className="absolute inset-0 w-full h-full object-cover quote-fx-img" style={{ filter: "brightness(0.68) saturate(1.02)", objectPosition: "center 33%", borderTopLeftRadius: roundLeft ? "16px" : "0", borderBottomLeftRadius: roundLeft ? "16px" : "0", borderTopRightRadius: !roundLeft ? "16px" : "0", borderBottomRightRadius: !roundLeft ? "16px" : "0" }} />
+        <img src={image} alt={text} loading="lazy" className="absolute inset-0 w-full h-full object-cover" style={{ filter: "brightness(0.68) saturate(1.02)", objectPosition: "center 33%", borderTopLeftRadius: roundLeft ? "16px" : "0", borderBottomLeftRadius: roundLeft ? "16px" : "0", borderTopRightRadius: !roundLeft ? "16px" : "0", borderBottomRightRadius: !roundLeft ? "16px" : "0" }} />
         <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, rgba(12,28,36,0.16) 0%, ${STEP_DARK_BG}2C 46%, ${STEP_DARK_BG}E2 100%)` }} />
         <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${STEP_DARK_BG}55 0%, rgba(30,122,138,0.13) 36%, rgba(74,159,175,0.16) 70%, ${STEP_DARK_BG}80 100%)` }} />
         <div className="absolute inset-0" style={{ background: `radial-gradient(circle at 78% 24%, rgba(74,159,175,0.18) 0%, rgba(74,159,175,0) 42%)` }} />
@@ -289,12 +180,10 @@ function QuoteImageCard({ text, image, dark = false, roundLeft = true }: { text:
 }
 
 function SectionShell({ light = true, children }: { light?: boolean; children: React.ReactNode }) {
-  return <section className="w-full py-14 md:py-20 overflow-hidden" style={{ background: light ? P.surface : STEP_DARK_BG }}><div className="px-6 md:px-10 lg:px-20 step-row">{children}</div></section>;
+  return <section className="w-full py-14 md:py-20 overflow-hidden" style={{ background: light ? P.surface : STEP_DARK_BG }}><div className="px-6 md:px-10 lg:px-20">{children}</div></section>;
 }
 
 export function StrategiaSection() {
-  useStepFramerFx();
-
   return (
     <section id="strategia" className="w-full" style={{ background: P.bg }}>
       <div className="relative w-full overflow-hidden" style={{ minHeight: "420px" }}>

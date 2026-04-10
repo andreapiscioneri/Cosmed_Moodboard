@@ -78,7 +78,7 @@ function PostCard({
         </div>
 
         <div className="absolute bottom-3 right-4 flex items-center">
-          <img src={cosmedLogo} alt="Cosmed" style={{ height: "50px", width: "auto", objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.92 }} />
+          <img src={cosmedLogo} alt="Cosmed" style={{ height: "35px", width: "auto", objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.92 }} />
         </div>
       </div>
 

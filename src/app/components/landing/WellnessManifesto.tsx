@@ -142,9 +142,24 @@ export function WellnessManifesto() {
             letterSpacing: "0.02em",
             textAlign: "center",
             lineHeight: "1.5",
-            whiteSpace: "nowrap",
+            whiteSpace: "normal",
           }}>
-            "La salute più profonda nasce dal rispetto del proprio <span style={{ color: P.wellTeal, fontWeight: 800 }}>equilibrio</span>."
+            "Il medico del futuro non somministrerà medicine, ma istruirà i suoi pazienti sulla
+            <span style={{ color: P.wellTeal, fontWeight: 800 }}> cura del corpo umano</span>, sulla
+            <span style={{ color: P.wellTeal, fontWeight: 800 }}> dieta</span> e sulle cause e la
+            <span style={{ color: P.wellTeal, fontWeight: 800 }}> prevenzione delle malattie</span>."
+          </p>
+          <p style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: "10px",
+            fontWeight: 700,
+            color: P.wellTeal,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            textAlign: "center",
+            marginTop: "10px",
+          }}>
+            Thomas Edison
           </p>
         </div>
 
