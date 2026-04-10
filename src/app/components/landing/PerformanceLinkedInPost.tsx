@@ -60,7 +60,7 @@ function PostCard({
       </div>
 
       {/* Post image */}
-      <div className="relative overflow-hidden" style={{ aspectRatio: "1.91/1" }}>
+      <div className="relative overflow-hidden" style={{ aspectRatio: "3/4" }}>
         <img src={visual} alt="" className="w-full h-full object-cover" style={{ filter: visualFilter }} />
         <div className="absolute inset-0" style={{
           backgroundImage: `linear-gradient(${P.perfBlue}08 1px, transparent 1px), linear-gradient(90deg, ${P.perfBlue}08 1px, transparent 1px)`,
@@ -108,10 +108,50 @@ function PostCard({
 
       {/* Action buttons */}
       <div className="flex items-center justify-around px-2 py-1">
-        {[{ icon: "👍", label: "Mi piace" }, { icon: "💬", label: "Commenta" }, { icon: "🔁", label: "Condividi" }, { icon: "📤", label: "Invia" }].map(({ icon, label }) => (
-          <button key={label} className="flex items-center gap-1.5 px-3 py-2 rounded-md" style={{ background: "transparent", border: "none", cursor: "pointer" }}>
-            <span style={{ fontSize: "14px" }}>{icon}</span>
-            <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", fontWeight: 600, color: "#666" }}>{label}</span>
+        {[
+          {
+            label: "Consiglia",
+            icon: (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M8 11V5a2 2 0 0 1 2-2h1l1 6" />
+                <path d="M11 9h6.5a1.5 1.5 0 0 1 1.45 1.1l1.05 4.2A2 2 0 0 1 18 17h-4.5" />
+                <path d="M8 11H4v10h4" />
+                <path d="M8 11v10" />
+              </svg>
+            ),
+          },
+          {
+            label: "Commenta",
+            icon: (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 15a3 3 0 0 1-3 3H9l-4 4v-4H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3z" />
+              </svg>
+            ),
+          },
+          {
+            label: "Diffondi il post",
+            icon: (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M4 12a8 8 0 0 1 14-5" />
+                <path d="M18 7v4h-4" />
+                <path d="M20 12a8 8 0 0 1-14 5" />
+                <path d="M6 17v-4h4" />
+              </svg>
+            ),
+          },
+          {
+            label: "Invia",
+            icon: (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M22 2 11 13" />
+                <path d="M22 2 15 22l-4-9-9-4 20-7z" />
+              </svg>
+            ),
+          },
+        ].map(({ icon, label }) => (
+          <button key={label} className="flex flex-col items-center gap-1 px-3 py-2 rounded-md" style={{ background: "transparent", border: "none", cursor: "pointer", color: "#4B4B4B" }}>
+            <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{icon}</span>
+            <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", fontWeight: 600, color: "#4B4B4B" }}>{label}</span>
           </button>
         ))}
       </div>
@@ -120,7 +160,7 @@ function PostCard({
 }
 
 const specs = [
-  { label: "Formato", value: "1200 × 628px", sub: "Ratio 1.91:1 — Standard LinkedIn" },
+  { label: "Formato", value: "1080 × 1440px", sub: "Ratio 3:4 — Vertical feed format" },
   { label: "Tipografia Heading", value: "Inter ExtraBold", sub: "Peso 900 · Tracking −0.04em · All Caps" },
   { label: "Tipografia Label", value: "Montserrat Bold", sub: "Peso 700 · All Caps · Tracking +0.2em" },
   { label: "Palette Visual", value: "#0B6FFF Tech Blue", sub: "#0B0F14 Anthracite · #EEF2FF Ice White" },
