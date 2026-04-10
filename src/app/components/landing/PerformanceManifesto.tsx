@@ -32,7 +32,7 @@ export function PerformanceManifesto() {
       {/* Background image — very dark */}
       <div className="absolute inset-0">
         <img src={perfVO2} alt="" className="w-full h-full object-cover"
-          style={{ filter: "brightness(0.08) saturate(0.2) hue-rotate(200deg)", transform: "scale(1.04)" }} />
+          style={{ filter: "brightness(0.25) saturate(0.5) hue-rotate(200deg)", transform: "scale(1.04)" }} />
         {/* Grid overlay */}
         <div className="absolute inset-0" style={{
           backgroundImage: `linear-gradient(${P.perfBlue}04 1px, transparent 1px), linear-gradient(90deg, ${P.perfBlue}04 1px, transparent 1px)`,
@@ -132,19 +132,23 @@ export function PerformanceManifesto() {
 
         {/* Bottom quote band */}
         <div className="mt-20 w-full max-w-2xl rounded-xl px-8 py-6" style={{
-          background: `linear-gradient(135deg, ${P.perfBlue}12, ${P.perfBlue}06)`,
-          border: `1px solid ${P.perfBlue}20`,
+          background: `linear-gradient(135deg, ${P.perfBlue}20, ${P.perfBlue}10)`,
+          border: `1px solid ${P.perfBlue}40`,
+          backdropFilter: "blur(12px)",
+          boxShadow: `0 20px 60px ${P.perfBlue}15`,
         }}>
           <p style={{
             fontFamily: "'Montserrat', sans-serif",
-            fontSize: "clamp(11px, 1.4vw, 14px)",
-            fontWeight: 700,
-            color: "rgba(238,242,255,0.6)",
-            letterSpacing: "0.06em",
+            fontSize: "clamp(18px, 2.2vw, 28px)",
+            fontWeight: 800,
+            color: "#EEF2FF",
+            letterSpacing: "0.04em",
             textAlign: "center",
             textTransform: "uppercase",
+            lineHeight: "1.4",
+            textShadow: "0 8px 24px rgba(0,0,0,0.5)",
           }}>
-            "Non misurare per sapere. Misura per <span style={{ color: P.perfBlue }}>agire</span>."
+            "Non misurare per sapere. Misura per <span style={{ color: P.perfBlue, textShadow: `0 6px 16px ${P.perfBlue}44` }}>agire</span>."
           </p>
         </div>
 

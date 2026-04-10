@@ -128,6 +128,9 @@ export default function App() {
       </Reveal>
 
 
+      {/* 03d · Performance — Brand Manifesto */}
+      <PerformanceManifesto />
+
       {/* 03 · MOODBOARD PERFORMANCE — no reveal (full viewport) */}
       <PerformanceMoodboard />
 
@@ -141,8 +144,8 @@ export default function App() {
         <PerformanceLinkedInPost />
       </Reveal>
 
-      {/* 03d · Performance — Brand Manifesto */}
-      <PerformanceManifesto />
+      {/* 04d · Wellness — Brand Manifesto */}
+      <WellnessManifesto />
 
       {/* 04 · MOODBOARD WELLNESS — no reveal */}
       <WellnessMoodboard />
@@ -156,9 +159,6 @@ export default function App() {
       <Reveal>
         <WellnessInstagramPost />
       </Reveal>
-
-      {/* 04d · Wellness — Brand Manifesto */}
-      <WellnessManifesto />
 
       {/* 06 · Piani d'Investimento */}
       <Reveal>

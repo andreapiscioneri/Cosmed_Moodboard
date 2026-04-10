@@ -1,4 +1,5 @@
 import { P } from "./images";
+import geminiHero from "../../../assets/Gemini_Generated_Image_ua8a6uua8a6uua8a.png";
 import perfVO2 from "../../../assets/PERFORMANCE - VO2 Max Cosmed.jpg";
 import perfData from "../../../assets/PERFORMANCE - Data Flow.jpg";
 import perfFisio from "../../../assets/PERFORMANCE - Fisioterapia.jpg";
@@ -76,8 +77,8 @@ export function PerformanceWebMockup() {
 
             {/* HERO — immagine dominante full-width, testo in overlay */}
             <div className="relative overflow-hidden" style={{ minHeight: "520px" }}>
-              <img src={perfVO2} alt="VO2 Max Test" className="absolute inset-0 w-full h-full object-cover"
-                style={{ filter: "brightness(0.68) saturate(0.8) hue-rotate(195deg)" }} />
+              <img src={geminiHero} alt="Performance Hero" className="absolute inset-0 w-full h-full object-cover"
+                style={{ filter: "grayscale(1) contrast(1.15) brightness(0.88)" }} />
               {/* Grid overlay */}
               <div className="absolute inset-0" style={{
                 backgroundImage: `linear-gradient(${P.perfBlue}07 1px, transparent 1px), linear-gradient(90deg, ${P.perfBlue}07 1px, transparent 1px)`,
@@ -194,7 +195,7 @@ export function PerformanceWebMockup() {
               </div>
               {/* Hero */}
               <div style={{ position: "relative", height: "150px", overflow: "hidden" }}>
-                <img src={perfVO2} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.62) saturate(0.75) hue-rotate(195deg)" }} />
+                <img src={perfVO2} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(1) contrast(1.15) brightness(0.9)" }} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(120deg, rgba(11,15,20,0.78) 0%, rgba(11,15,20,0.18) 100%)" }} />
                 <div style={{ position: "absolute", inset: 0, padding: "14px 16px", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                   <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "6px", fontWeight: 700, color: P.perfBlue, letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "4px", display: "block" }}>The Precision Lab</span>
