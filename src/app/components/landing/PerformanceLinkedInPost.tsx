@@ -1,6 +1,7 @@
 import { PERFORMANCE_SHOWCASE, P } from "./images";
 import linkedinIcon from "../../../assets/linkedin-icon-free-png.webp";
 import cosmedLogo from "../../../assets/cffaa0cb0f7ab92966e997ad7cded19cf46e55a0.png";
+import performanceAtleti from "../../../assets/1.png";
 
 function PostCard({
   visual,
@@ -210,35 +211,35 @@ export function PerformanceLinkedInPost() {
                   visual={PERFORMANCE_SHOWCASE.post[0]}
                   visualFilter="grayscale(1) contrast(1.15) brightness(0.88)"
                   eyebrow="COSMED Performance"
-                  headline="ATLETI"
-                  headlineAccent="SEGUITI BENE."
-                  subline="Preparazione atletica · performance · recupero"
+                  headline="RIABILITAZIONE"
+                  headlineAccent="SPORTIVA SICURA."
+                  subline="Fisioterapia · Sport Medicine · Recovery"
                   bodyText={
                     <>
-                      Ogni atleta ha bisogno di un supporto misurabile e continuo.<br /><br />
-                      <strong>Preparatore atletico, fisioterapista e team clinico</strong>: quando lavorano sullo stesso protocollo, il risultato diventa più preciso e più replicabile.
+                      Nella riabilitazione sportiva sono i dati oggettivi a garantire un recupero da un infortunio sicuro ed efficace.<br /><br />
+                      <strong>Q-NRG MAX misura la risposta cardiopolmonare durante il recupero.</strong> Fisioterapisti e medici dello sport lo usano per monitorare progressi, prevenire ricadute e ottimizzare il ritorno alla performance.
                     </>
                   }
-                  hashtags="#Performance #PreparazioneAtletica #Fisioterapia #COSMED"
+                  hashtags="#QNRGMAX #Fisioterapia #SportMedicine #Recovery #COSMED"
                   likes="167"
                   comments="41"
                   shares="9"
                   timeAgo="Oggi"
                 />
                 <PostCard
-                  visual={PERFORMANCE_SHOWCASE.post[1]}
+                  visual={performanceAtleti}
                   visualFilter="grayscale(1) contrast(1.15) brightness(0.88)"
                   eyebrow="COSMED Performance"
-                  headline="FISIOTERAPIA"
-                  headlineAccent="NELLA PERFORMANCE."
-                  subline="Fisioterapisti · medici dello sport · recovery"
+                  headline="OTTIMIZZA"
+                  headlineAccent="L'ALLENAMENTO."
+                  subline="Performance · Test da sforzo · Dati certi"
                   bodyText={
                     <>
-                      La fase di recupero non è un dettaglio.<br /><br />
-                      Un intervento fisioterapico ben inserito nel flusso di lavoro migliora continuità, sicurezza e aderenza al programma.
+                      Ogni fase dell'allenamento richiede tracciamento della risposta cardiopolmonare.<br /><br />
+                      <strong>Q-NRG MAX è il test da sforzo validato scientificamente</strong> che aiuta i professionisti dello sport a ottimizzare carichi, intensità e progressione con dati certi, non con impressioni.
                     </>
                   }
-                  hashtags="#Fisioterapia #SportMedicine #Recovery #COSMED"
+                  hashtags="#QNRGMAX #Performance #Allenamento #SportScience #COSMED"
                   likes="204"
                   comments="48"
                   shares="11"
