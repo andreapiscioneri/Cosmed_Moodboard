@@ -120,7 +120,15 @@ function escapeRegExp(value: string) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-const EMPHASIS_REGEX = new RegExp(`(${EMPHASIS_TERMS.map(escapeRegExp).join("|")})`, "gi");
+function buildWholeWordRegex(terms: string[]) {
+  const pattern = terms
+    .map((term) => `(?<![\\p{L}\\p{N}])${escapeRegExp(term)}(?![\\p{L}\\p{N}])`)
+    .join("|");
+
+  return new RegExp(`(${pattern})`, "giu");
+}
+
+const EMPHASIS_REGEX = buildWholeWordRegex(EMPHASIS_TERMS);
 
 function highlightCopy(text: string, dark = false) {
   return text.split(EMPHASIS_REGEX).map((part, index) => {
@@ -339,7 +347,7 @@ export function StrategiaSection() {
 
       <SectionShell light={false}>
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
-          <div className="flex flex-col gap-6 lg:order-2">
+          <div className="flex flex-col gap-6 lg:order-2 lg:min-h-[600px] lg:justify-start">
             <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.035em", lineHeight: "0.98" }}>2. Target Persona</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: `${P.textInv}60`, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: `${P.textInv}72`, lineHeight: "1.8" }}>{highlightCopy("Definiamo dei profili fittizi che rappresentino in maniera realistica i nostri utenti target ideali.", true)}</p></div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8 md:mb-12">
               {[
@@ -375,7 +383,7 @@ export function StrategiaSection() {
 
       <SectionShell light>
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 lg:min-h-[600px] lg:justify-start">
             <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.text, letterSpacing: "-0.035em", lineHeight: "0.98" }}>3. Brand Identity</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.textMuted, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: P.textSub, lineHeight: "1.8" }}>{highlightCopy("La brand identity è l'insieme di tutte le caratteristiche visive che definiscono un brand rendendolo riconoscibile sul mercato.")}</p></div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch mb-8 md:mb-12">
               {[
