@@ -30,7 +30,7 @@ const mosaicImages = [
   { url: perfData,       label: "Flusso Dati",         tag: "ASTRATTA · Data Flow",   sub: "Visualizzazione parametri metabolici", filter: "grayscale(1) contrast(1.15) brightness(0.88)" },
   { url: perfVo2,        label: "Test VO₂ Max",        tag: "REALISTICA · Clinica",   sub: "Misurazione ossigeno in esercizio",    filter: "grayscale(1) contrast(1.15) brightness(0.88)" },
   { url: perfFisio,      label: "Fisioterapia",        tag: "REALISTICA · Clinica",   sub: "Riabilitazione professionale",         filter: "grayscale(1) contrast(1.15) brightness(0.88)" },
-  { url: IMGS.molecular, label: "Struttura Molecolare", tag: "ASTRATTA · Molecolare", sub: "Rappresentazione biochimica",          filter: "grayscale(1) contrast(1.15) brightness(0.88)" },
+  { url: IMGS.molecular, label: "Struttura Molecolare", tag: "ASTRATTA · Molecolare", sub: "Rappresentazione biochimica",          filter: "grayscale(1) contrast(1.15) brightness(0.88)", position: "30% center" },
 ];
 
 export function PerformanceMoodboard() {
@@ -69,7 +69,7 @@ export function PerformanceMoodboard() {
             {mosaicImages.map((img, i) => (
               <div key={i} className="relative overflow-hidden" style={{ minHeight: "220px" }}>
                 <img src={img.url} alt={img.label} className="w-full h-full object-cover"
-                  style={{ filter: img.filter, transform: "scale(1.04)" }} />
+                  style={{ filter: img.filter, transform: "scale(1.04)", objectPosition: img.position ?? "center" }} />
                 <div className="absolute bottom-0 left-0 right-0 h-10" style={{ background: "linear-gradient(to top, rgba(11,15,20,0.56), transparent)" }} />
               </div>
             ))}
