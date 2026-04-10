@@ -1,28 +1,65 @@
 import { PERFORMANCE_SHOWCASE, P } from "./images";
 
 const manifestoLines = [
-  { text: "Crediamo che ogni corpo abbia un linguaggio", highlight: false },
-  { text: "preciso.", highlight: true },
-  { text: "Che il metabolismo non menta,", highlight: false },
-  { text: "se sai ascoltarlo davvero.", highlight: false },
+  { text: "\"Se vuoi vincere, devi avere gli strumenti giusti\".", highlight: true },
   { text: "", highlight: false },
-  { text: "Crediamo nella scienza come strumento di fiducia.", highlight: false },
-  { text: "Nei dati come fondamento di ogni", highlight: false },
-  { text: "protocollo clinico.", highlight: true },
-  { text: "Nei professionisti che scelgono", highlight: false },
-  { text: "la misura al posto dell'intuizione.", highlight: false },
+  { text: "Crediamo che il talento sia solo l'inizio.", highlight: false },
+  { text: "Che il sudore, da solo, non basti a fare la differenza tra un buon piazzamento e un record.", highlight: false },
   { text: "", highlight: false },
-  { text: "COSMED Performance nasce per chi", highlight: false },
-  { text: "non si accontenta di approssimare.", highlight: false },
-  { text: "Per chi vuole sapere — davvero —", highlight: false },
-  { text: "come risponde un corpo sotto sforzo.", highlight: false },
-  { text: "Per chi trasforma una calorimetria in una diagnosi.", highlight: false },
-  { text: "Un test VO₂ in un piano d'azione.", highlight: false },
-  { text: "Un dato grezzo in una risposta clinica.", highlight: false },
+  { text: "Crediamo nella scienza come motore del risultato.", highlight: false },
+  { text: "Nei dati come fondamenta di ogni strategia vincente.", highlight: false },
+  { text: "Nei professionisti che rifiutano l'approssimazione per abbracciare la certezza.", highlight: false },
   { text: "", highlight: false },
-  { text: "Precisione non è una caratteristica.", highlight: false },
+  { text: "COSMED Performance nasce per chi vuole trasformare un dato di precisione nella chiave per sbloccare il potenziale di un atleta.", highlight: false },
+  { text: "Perché allenarsi tanto è di tutti.", highlight: false },
+  { text: "Allenarsi meglio è solo di chi sa esattamente cosa sta facendo.", highlight: false },
+  { text: "", highlight: false },
+  { text: "La performance non è un caso.", highlight: false },
   { text: "È la nostra promessa.", highlight: true },
 ];
+
+const MANIFESTO_KEYWORDS = [
+  "strumenti giusti",
+  "talento",
+  "scienza",
+  "dati",
+  "strategia vincente",
+  "approssimazione",
+  "certezza",
+  "dato di precisione",
+  "potenziale",
+  "allenarsi meglio",
+  "performance",
+  "è la nostra",
+  "promessa",
+];
+
+function escapeRegex(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function highlightManifestoKeywords(text: string) {
+  const sorted = [...MANIFESTO_KEYWORDS].sort((a, b) => b.length - a.length);
+  const regex = new RegExp(`(${sorted.map(escapeRegex).join("|")})`, "gi");
+
+  return text.split(regex).map((part, i) => {
+    const isKeyword = MANIFESTO_KEYWORDS.some((keyword) => keyword.toLowerCase() === part.toLowerCase());
+    if (!isKeyword) return <span key={`${part}-${i}`}>{part}</span>;
+
+    return (
+      <strong
+        key={`${part}-${i}`}
+        style={{
+          color: P.perfBlue,
+          fontWeight: 700,
+          letterSpacing: "0.01em",
+        }}
+      >
+        {part}
+      </strong>
+    );
+  });
+}
 
 export function PerformanceManifesto() {
   return (
@@ -48,7 +85,7 @@ export function PerformanceManifesto() {
           <div style={{ width: "2px", height: "40px", background: `linear-gradient(180deg, ${P.perfBlue}, transparent)` }} />
           <div>
             <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8px", fontWeight: 700, color: "rgba(255,255,255,0.45)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "2px" }}>Concept 01 / 02</p>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.perfBlue, letterSpacing: "0.08em", textTransform: "uppercase" }}>Brand Manifesto · Cosmed Performance</p>
+            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.perfBlue, letterSpacing: "0.08em", textTransform: "uppercase" }}>Se vuoi vincere, devi avere gli strumenti giusti</p>
           </div>
         </div>
         <span className="hidden md:block" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: "rgba(255,255,255,0.35)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
@@ -82,8 +119,8 @@ export function PerformanceManifesto() {
           textAlign: "center",
           marginBottom: "56px",
         }}>
-          Una Promessa<br />
-          <span style={{ color: P.perfBlue }}>di Precisione.</span>
+          Se vuoi vincere,<br />
+          <span style={{ color: P.perfBlue }}>devi avere gli strumenti giusti.</span>
         </h2>
 
         {/* Manifesto text */}
@@ -102,8 +139,8 @@ export function PerformanceManifesto() {
                 display: "inline",
               }}>
                 {line.highlight
-                  ? <span style={{ color: "#EEF2FF", borderBottom: `1px solid ${P.perfBlue}60` }}>{line.text}</span>
-                  : line.text
+                  ? <span style={{ color: "#EEF2FF", borderBottom: `1px solid ${P.perfBlue}60` }}>{highlightManifestoKeywords(line.text)}</span>
+                  : highlightManifestoKeywords(line.text)
                 }
                 {" "}
               </p>
