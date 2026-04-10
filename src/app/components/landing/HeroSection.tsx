@@ -1,8 +1,8 @@
 import molecularBg from "../../../assets/Gemini_Generated_Image_ua8a6uua8a6uua8a.png";
 import { P } from "./images";
 
-function scrollToProposal() {
-  const section = document.getElementById("proposta");
+function scrollToMetodo() {
+  const section = document.getElementById("metodo");
   if (!section) return;
 
   const headerOffset = 72;
@@ -73,9 +73,9 @@ export function HeroSection() {
         <div className="flex justify-center md:justify-end">
           <button
             type="button"
-            onClick={scrollToProposal}
+            onClick={scrollToMetodo}
             className="flex flex-col items-center gap-2 cursor-pointer"
-            aria-label="Vai agli obiettivi strategici"
+            aria-label="Vai ad Artigiani del Digitale"
             style={{ background: "transparent", border: "none", padding: 0 }}
           >
             <span style={{ fontFamily: "'Montserrat', sans-serif", marginBottom: "10px", fontSize: "8px", fontWeight: 700, color: "rgba(255,255,255,0.72)", letterSpacing: "0.1em" }}>SCOPRI</span>
