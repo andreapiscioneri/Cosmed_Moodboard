@@ -80,8 +80,6 @@ export function WellnessWebMockup() {
                 style={{ filter: "brightness(0.78) saturate(0.8)", transform: "scaleX(-1)" }} />
               {/* Soft warm overlay */}
               <div className="absolute inset-0" style={{ background: "linear-gradient(110deg, rgba(10,31,31,0.72) 0%, rgba(10,31,31,0.35) 55%, rgba(10,31,31,0.1) 100%)" }} />
-              {/* Bottom fade */}
-              <div className="absolute bottom-0 left-0 right-0 h-20" style={{ background: "linear-gradient(to top, rgba(244,247,245,0.62), rgba(244,247,245,0))" }} />
               {/* Gold accent bar top */}
               <div className="absolute top-0 left-0 right-0 h-1" style={{ background: `linear-gradient(90deg, transparent, ${P.wellGold}70, transparent)` }} />
 
