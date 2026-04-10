@@ -129,21 +129,20 @@ export function WellnessManifesto() {
 
         {/* Bottom quote band */}
         <div className="mt-20 w-full max-w-2xl rounded-2xl px-8 py-6" style={{
-          background: "rgba(255,255,255,0.85)",
-          border: `1px solid ${P.wellTeal}40`,
-          backdropFilter: "blur(12px)",
-          boxShadow: `0 20px 60px ${P.wellTeal}20`,
+          background: "rgba(255,255,255,0.34)",
+          border: `1px solid ${P.wellTeal}18`,
+          boxShadow: `inset 0 0 0 1px rgba(255,255,255,0.28)`,
         }}>
           <p style={{
             fontFamily: "'Playfair Display', Georgia, serif",
-            fontSize: "clamp(20px, 2.4vw, 32px)",
-            fontWeight: 700,
+            fontSize: "clamp(12px, 1.3vw, 18px)",
+            fontWeight: 600,
             fontStyle: "italic",
             color: "#0A1F1F",
             letterSpacing: "0.02em",
             textAlign: "center",
-            lineHeight: "1.45",
-            textShadow: "0 2px 8px rgba(0,0,0,0.08)",
+            lineHeight: "1.5",
+            whiteSpace: "nowrap",
           }}>
             "La salute più profonda nasce dal rispetto del proprio <span style={{ color: P.wellTeal, fontWeight: 800 }}>equilibrio</span>."
           </p>

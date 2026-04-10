@@ -132,21 +132,19 @@ export function PerformanceManifesto() {
 
         {/* Bottom quote band */}
         <div className="mt-20 w-full max-w-2xl rounded-xl px-8 py-6" style={{
-          background: `linear-gradient(135deg, ${P.perfBlue}20, ${P.perfBlue}10)`,
-          border: `1px solid ${P.perfBlue}40`,
-          backdropFilter: "blur(12px)",
-          boxShadow: `0 20px 60px ${P.perfBlue}15`,
+          background: "rgba(11,111,255,0.03)",
+          border: `1px solid ${P.perfBlue}20`,
+          boxShadow: `inset 0 0 0 1px ${P.perfBlue}08`,
         }}>
           <p style={{
             fontFamily: "'Montserrat', sans-serif",
-            fontSize: "clamp(18px, 2.2vw, 28px)",
-            fontWeight: 800,
+            fontSize: "clamp(14px, 1.8vw, 20px)",
+            fontWeight: 700,
             color: "#EEF2FF",
-            letterSpacing: "0.04em",
+            letterSpacing: "0.03em",
             textAlign: "center",
             textTransform: "uppercase",
-            lineHeight: "1.4",
-            textShadow: "0 8px 24px rgba(0,0,0,0.5)",
+            lineHeight: "1.45",
           }}>
             "Non misurare per sapere. Misura per <span style={{ color: P.perfBlue, textShadow: `0 6px 16px ${P.perfBlue}44` }}>agire</span>."
           </p>

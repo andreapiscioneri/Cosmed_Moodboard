@@ -260,7 +260,7 @@ function useStepFramerFx() {
 
 function QuoteImageCard({ text, image, dark = false, roundLeft = true }: { text: string; image: string; dark?: boolean; roundLeft?: boolean }) {
   return (
-    <div className="overflow-hidden h-full self-stretch quote-fx" style={{ background: STEP_DARK_BG, borderTopLeftRadius: roundLeft ? "16px" : "0", borderBottomLeftRadius: roundLeft ? "16px" : "0", borderTopRightRadius: !roundLeft ? "16px" : "0", borderBottomRightRadius: !roundLeft ? "16px" : "0" }}>
+    <div className="overflow-hidden h-full self-stretch quote-fx" style={{ background: "transparent", borderTopLeftRadius: roundLeft ? "16px" : "0", borderBottomLeftRadius: roundLeft ? "16px" : "0", borderTopRightRadius: !roundLeft ? "16px" : "0", borderBottomRightRadius: !roundLeft ? "16px" : "0" }}>
       <div className="relative h-full min-h-[600px]">
         <img src={image} alt={text} loading="lazy" className="absolute inset-0 w-full h-full object-cover quote-fx-img" style={{ filter: "brightness(0.68) saturate(1.02)", objectPosition: "center 33%", borderTopLeftRadius: roundLeft ? "16px" : "0", borderBottomLeftRadius: roundLeft ? "16px" : "0", borderTopRightRadius: !roundLeft ? "16px" : "0", borderBottomRightRadius: !roundLeft ? "16px" : "0" }} />
         <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, rgba(12,28,36,0.16) 0%, ${STEP_DARK_BG}2C 46%, ${STEP_DARK_BG}E2 100%)` }} />
@@ -268,17 +268,17 @@ function QuoteImageCard({ text, image, dark = false, roundLeft = true }: { text:
         <div className="absolute inset-0" style={{ background: `radial-gradient(circle at 78% 24%, rgba(74,159,175,0.18) 0%, rgba(74,159,175,0) 42%)` }} />
         <div className={`absolute inset-0 flex items-end ${dark ? "justify-start" : "justify-end"} p-7 md:p-9`}>
           <div style={{
-            maxWidth: "clamp(26ch, 44vw, 40ch)",
+            maxWidth: "clamp(24ch, 40vw, 36ch)",
             textAlign: dark ? "left" : "right",
-            padding: "16px 18px",
-            borderRadius: "16px",
-            border: "1px solid rgba(255,255,255,0.12)",
-            background: "linear-gradient(135deg, rgba(12,26,34,0.6) 0%, rgba(23,49,61,0.3) 100%)",
-            backdropFilter: "blur(4px)",
-            boxShadow: "0 10px 24px rgba(0,0,0,0.24)",
+            padding: "12px 14px",
+            borderRadius: "14px",
+            border: "1px solid rgba(255,255,255,0.08)",
+            background: "rgba(12,26,34,0.22)",
+            backdropFilter: "blur(2px)",
+            boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.04)",
           }}>
-            <span style={{ fontFamily: "'Montserrat', sans-serif", display: "block", fontSize: "26px", lineHeight: "0.8", color: P.accentLight, opacity: 0.9, marginBottom: "8px" }}>“</span>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(16px, 1.45vw, 22px)", fontStyle: "italic", fontWeight: 500, color: P.textInv, lineHeight: "1.2", textShadow: "0 3px 14px rgba(0,0,0,0.48), 0 1px 0 rgba(0,0,0,0.12)" }}>
+            <span style={{ fontFamily: "'Montserrat', sans-serif", display: "block", fontSize: "18px", lineHeight: "0.8", color: P.accentLight, opacity: 0.72, marginBottom: "6px" }}>“</span>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(14px, 1.25vw, 18px)", fontStyle: "italic", fontWeight: 500, color: P.textInv, lineHeight: "1.25", textShadow: "0 2px 8px rgba(0,0,0,0.28)" }}>
               {highlightCopy(text, true)}
             </p>
           </div>
@@ -367,7 +367,7 @@ export function StrategiaSection() {
                   </div>
                   <div className="rounded-xl p-4" style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${P.darkBorder}` }}>
                     <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: persona.accent, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "8px" }}>Esigenza Chiave</p>
-                    <blockquote style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: `${P.textInv}78`, fontStyle: "italic", lineHeight: "1.75", borderLeft: `2px solid ${persona.accent}`, paddingLeft: "12px" }}>
+                    <blockquote style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: `${P.textInv}70`, fontStyle: "italic", lineHeight: "1.7", borderLeft: `1px solid ${persona.accent}66`, paddingLeft: "10px" }}>
                       "{highlightCopy(persona.quote, true)}"
                     </blockquote>
                   </div>

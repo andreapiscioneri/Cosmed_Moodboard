@@ -195,7 +195,7 @@ export function PerformanceWebMockup() {
               </div>
               {/* Hero */}
               <div style={{ position: "relative", height: "150px", overflow: "hidden" }}>
-                <img src={perfVO2} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(1) contrast(1.15) brightness(0.9)" }} />
+                <img src={geminiHero} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(1) contrast(1.15) brightness(0.88)" }} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(120deg, rgba(11,15,20,0.78) 0%, rgba(11,15,20,0.18) 100%)" }} />
                 <div style={{ position: "absolute", inset: 0, padding: "14px 16px", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                   <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "6px", fontWeight: 700, color: P.perfBlue, letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "4px", display: "block" }}>The Precision Lab</span>
