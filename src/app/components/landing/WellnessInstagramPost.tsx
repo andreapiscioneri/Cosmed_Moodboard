@@ -83,7 +83,6 @@ const specs = [
   { label: "Tipografia Label", value: "Montserrat Bold", sub: "Peso 700 · All Caps · Tracking +0.18em" },
   { label: "Palette Visual", value: "#0E6B6B Deep Teal", sub: "#B8922E Satin Gold · #FFFFFF overlay text" },
   { label: "Tono Comunicativo", value: "Ispirazionale, poetico", sub: "Citazione dominante · copy morbido · natura" },
-  { label: "Best Posting Time", value: "Mer–Ven · 18:00–20:00", sub: "Target: nutrizionisti, Well-being enthusiast B2C" },
 ];
 
 export function WellnessInstagramPost() {
