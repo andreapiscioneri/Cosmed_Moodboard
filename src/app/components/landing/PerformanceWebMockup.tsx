@@ -73,7 +73,7 @@ export function PerformanceWebMockup() {
 
             {/* HERO — immagine dominante full-width, testo in overlay */}
             <div className="relative overflow-hidden" style={{ minHeight: "520px" }}>
-              <img src={PERFORMANCE_SHOWCASE.hero} alt="Atleta in preparazione" className="absolute inset-0 w-full h-full object-cover"
+              <img src={PERFORMANCE_SHOWCASE.hero} alt="Atleta in preparazione" className="absolute inset-0 w-full h-full object-cover object-[90%_center] sm:object-[42%_center] md:object-center"
                 style={{ filter: "grayscale(1) contrast(1.15) brightness(0.88)" }} />
               {/* Grid overlay */}
               <div className="absolute inset-0" style={{

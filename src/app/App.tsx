@@ -117,10 +117,8 @@ export default function App() {
       </Reveal>
 
 
-            {/* 05 · Strategia Brand & Web + Step Operativi */}
-      <Reveal>
-        <StrategiaSection />
-      </Reveal>
+  {/* 05 · Strategia Brand & Web + Step Operativi */}
+  <StrategiaSection />
 
       {/* Bridge intro to moodboards */}
       <Reveal className="reveal-scale">

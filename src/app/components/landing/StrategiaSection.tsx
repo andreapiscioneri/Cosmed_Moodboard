@@ -6,10 +6,10 @@ import brandIdentityImg from "../../../assets/brand identity.jpg";
 import sitiWebImg from "../../../assets/siti web.jpg";
 import seoImg from "../../../assets/SEO.jpg";
 import socialMediaImg from "../../../assets/social media.jpg";
-import sponsorizzazioniImg from "../../../assets/sponsorizzazioni.webp";
+import sponsorizzazioniImg from "../../../assets/sponsorizzazioni.png";
 
 const TARGET_PERSONAS_IMG = "https://images.pexels.com/photos/15319035/pexels-photo-15319035.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const MEDILINE_PROJECT_URL = "https://www.mediline.it";
+const MEDILINE_PROJECT_URL = "https://www.instagram.com/mediline_torino/";
 
 const STEP_DARK_BG = "#17313D";
 const STEP_DARK_CARD = "rgba(23,49,61,0.9)";
@@ -431,7 +431,7 @@ export function StrategiaSection() {
               image={sponsorizzazioniImg}
               roundLeft
               bannerText="© COPIRIGHT DENANI S.R.L."
-              projectLink={{ href: MEDILINE_PROJECT_URL, label: "Caso studio Mediline" }}
+              projectLink={{ href: MEDILINE_PROJECT_URL, label: "Caso studio Mediline Torino" }}
             />
           </div>
         </div>
