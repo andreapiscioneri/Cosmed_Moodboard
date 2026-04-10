@@ -2,28 +2,70 @@ import { P } from "./images";
 import wellNatura from "../../../assets/WELLNESS - NATURA.jpg";
 
 const manifestoLines = [
-  { text: "Crediamo che la salute sia una scelta", highlight: false },
-  { text: "quotidiana.", highlight: true },
-  { text: "Che il benessere non si compri,", highlight: false },
-  { text: "ma si costruisca — giorno per giorno.", highlight: false },
+  { text: "\"La bellezza della longevità non sta nel contare gli anni sulla carta, ma nel viverli con tutta l'energia possibile.\"", highlight: true },
   { text: "", highlight: false },
-  { text: "Crediamo nel cibo come medicina.", highlight: false },
-  { text: "Nel movimento come linguaggio del corpo.", highlight: false },
-  { text: "Nella longevità come arte di vivere bene.", highlight: true },
+  { text: "Crediamo che la salute non sia una speranza, ma un progetto.", highlight: false },
+  { text: "Che la longevità non sia un colpo di fortuna, ma il risultato di scelte quotidiane, lucide e consapevoli.", highlight: false },
   { text: "", highlight: false },
-  { text: "COSMED Well-being nasce per chi", highlight: false },
-  { text: "accompagna le persone verso la migliore versione di sé.", highlight: false },
-  { text: "Per il nutrizionista che vede la persona", highlight: false },
-  { text: "oltre il piano alimentare.", highlight: false },
-  { text: "Per il professionista del benessere che crede", highlight: false },
-  { text: "nell'equilibrio come filosofia di vita.", highlight: false },
-  { text: "Per chi sa che il vero cambiamento", highlight: false },
-  { text: "inizia dall'interno.", highlight: true },
+  { text: "Crediamo nella conoscenza come forma più alta di cura.", highlight: false },
+  { text: "Nei dati metabolici come bussola per ritrovare l'equilibrio.", highlight: false },
+  { text: "Nei professionisti che hanno il coraggio di rifiutare i consigli generalisti per scegliere protocolli cuciti sull'unicità di chi hanno di fronte.", highlight: false },
   { text: "", highlight: false },
-  { text: "Vitalità non è energia. È armonia.", highlight: false },
-  { text: "È il flusso naturale di un corpo", highlight: false },
-  { text: "che si conosce.", highlight: true },
+  { text: "COSMED Well-being nasce per chi ha smesso di dare risposte standard e converte un dato clinico in uno stile di vita personalizzato, sostenibile e orientato al benessere.", highlight: false },
+  { text: "", highlight: false },
+  { text: "Stare bene non è un'aspirazione lontana.", highlight: false },
+  { text: "È la conseguenza naturale di un percorso disegnato su misura per ogni singola persona.", highlight: false },
+  ];
+
+const WELLNESS_KEYWORDS = [
+  "salute",
+  "progetto",
+  "longevità",
+  "scelte quotidiane",
+  "conoscenza",
+  "cura",
+  "dati metabolici",
+  "equilibrio",
+  "protocolli",
+  "unicità",
+  "dato clinico",
+  "stile di vita personalizzato",
+  "benessere",
+  "stare bene",
+  "percorso",
+  "su misura",
+  "energia",
 ];
+
+function escapeRegex(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function highlightWellnessKeywords(text: string) {
+  const sorted = [...WELLNESS_KEYWORDS].sort((a, b) => b.length - a.length);
+  const regex = new RegExp(`(${sorted.map(escapeRegex).join("|")})`, "gi");
+
+  return text.split(regex).map((part, i) => {
+    const isKeyword = WELLNESS_KEYWORDS.some((keyword) => keyword.toLowerCase() === part.toLowerCase());
+    if (!isKeyword) return <span key={`${part}-${i}`}>{part}</span>;
+
+    return (
+      <strong
+        key={`${part}-${i}`}
+        style={{
+          color: P.wellTeal,
+          fontWeight: 600,
+          fontStyle: "italic",
+          textDecoration: "underline",
+          textUnderlineOffset: "2px",
+          letterSpacing: "0.01em",
+        }}
+      >
+        {part}
+      </strong>
+    );
+  });
+}
 
 export function WellnessManifesto() {
   return (
@@ -80,8 +122,8 @@ export function WellnessManifesto() {
           textAlign: "center",
           marginBottom: "56px",
         }}>
-          Una Promessa<br />
-          <span style={{ color: P.wellTeal }}>di Vitalità.</span>
+          La scienza<br />
+          <span style={{ color: P.wellTeal }}>della vitalità.</span>
         </h2>
 
         {/* Manifesto text */}
@@ -100,8 +142,8 @@ export function WellnessManifesto() {
                 letterSpacing: line.highlight ? "0.01em" : "0.01em",
               }}>
                 {line.highlight
-                  ? <span style={{ borderBottom: `1px solid ${P.wellTeal}50` }}>{line.text}</span>
-                  : line.text
+                  ? <span style={{ borderBottom: `1px solid ${P.wellTeal}50` }}>{highlightWellnessKeywords(line.text)}</span>
+                  : highlightWellnessKeywords(line.text)
                 }
                 {" "}
               </span>
@@ -145,9 +187,9 @@ export function WellnessManifesto() {
             whiteSpace: "normal",
           }}>
             "Il medico del futuro non somministrerà medicine, ma istruirà i suoi pazienti sulla
-            <span style={{ color: P.wellTeal, fontWeight: 800 }}> cura del corpo umano</span>, sulla
-            <span style={{ color: P.wellTeal, fontWeight: 800 }}> dieta</span> e sulle cause e la
-            <span style={{ color: P.wellTeal, fontWeight: 800 }}> prevenzione delle malattie</span>."
+            <span style={{ color: P.wellTeal, fontWeight: 700, fontStyle: "italic", textDecoration: "underline", textUnderlineOffset: "2px" }}> cura del corpo umano</span>, sulla
+            <span style={{ color: P.wellTeal, fontWeight: 700, fontStyle: "italic", textDecoration: "underline", textUnderlineOffset: "2px" }}> dieta</span> e sulle cause e la
+            <span style={{ color: P.wellTeal, fontWeight: 700, fontStyle: "italic", textDecoration: "underline", textUnderlineOffset: "2px" }}> prevenzione delle malattie</span>."
           </p>
           <p style={{
             fontFamily: "'Montserrat', sans-serif",
