@@ -1,8 +1,8 @@
 import { P, WELLNESS_SHOWCASE } from "./images";
 import instagramIcon from "../../../assets/instagram-logo-instagram-icon-transparent-free-png.webp";
 import cosmedLogo from "../../../assets/cffaa0cb0f7ab92966e997ad7cded19cf46e55a0.png";
-import wellDaSostituire from "../../../assets/WELLNESS - DA SOSTITUIRE.jpg";
-import wellLongevity4 from "../../../assets/WELLNESS - LONGEVITY 4.jpg";
+import wellLongevity3 from "../../../assets/WELLNESS - LONGEVITY 3.jpg";
+import wellMonitoraggio from "../../../assets/WELLNESS - MONITORAGGIO.jpg";
 
 function IGPost({
   image, imageFilter, label, quote, subline, caption, hashtags, likes, timeAgo,
@@ -123,45 +123,10 @@ export function WellnessInstagramPost() {
           {/* Phone frame */}
           <div className="flex-1 min-w-0">
             <div className="rounded-3xl overflow-hidden" style={{ background: "#FAFAFA", border: "1px solid #D8D4CB", boxShadow: "0 30px 80px rgba(14,107,107,0.15)" }}>
-
-              {/* Status bar */}
-              <div className="flex items-center justify-between px-5 py-2" style={{ background: "#FAFAFA" }}>
-                <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", fontWeight: 600, color: "#333" }}>9:41</span>
-                <div style={{ width: "14px", height: "8px", border: "1.5px solid #333", borderRadius: "2px", position: "relative" }}>
-                  <div style={{ position: "absolute", top: "1px", left: "1px", bottom: "1px", background: "#333", borderRadius: "1px", width: "75%" }} />
-                </div>
-              </div>
-
-              {/* IG top bar */}
-              <div className="flex items-center justify-between px-4 py-2" style={{ background: "#FAFAFA", borderBottom: "1px solid #E8E4DC" }}>
-                <div className="flex items-center gap-2">
-                  <img src={instagramIcon} alt="Instagram" style={{ width: "24px", height: "24px", objectFit: "contain" }} />
-                  <span style={{ fontFamily: "'Georgia', serif", fontSize: "18px", color: "#262626", fontStyle: "italic" }}>Instagram</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#262626" strokeWidth="1.8" strokeLinecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#262626" strokeWidth="1.8" strokeLinecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                </div>
-              </div>
-
-              {/* Stories */}
-              <div className="flex items-center gap-3 px-4 py-3 overflow-x-auto" style={{ background: "#FAFAFA", borderBottom: "1px solid #E8E4DC" }}>
-                {["Il tuo", "nutrizione", "benessere", "longevity", "lifestyle"].map((name, i) => (
-                  <div key={i} className="flex flex-col items-center gap-1 flex-shrink-0">
-                    <div style={{ width: "48px", height: "48px", borderRadius: "50%", background: i === 0 ? "#F0F4F2" : `linear-gradient(45deg, ${P.wellGold}, ${P.wellTeal})`, padding: "2px" }}>
-                      <div style={{ width: "100%", height: "100%", borderRadius: "50%", background: i === 0 ? "#fff" : `${P.wellTeal}22`, display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid #FAFAFA" }}>
-                        {i === 0 ? <span style={{ fontSize: "18px", color: "#aaa" }}>+</span> : <span style={{ fontSize: "14px" }}>🌿</span>}
-                      </div>
-                    </div>
-                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "8px", color: "#262626", textAlign: "center", maxWidth: "48px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{name}</span>
-                  </div>
-                ))}
-              </div>
-
               {/* 2 posts */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4" style={{ background: "#F3F3F3" }}>
                 <IGPost
-                  image={wellDaSostituire}
+                  image={wellLongevity3}
                   imageFilter="brightness(0.72) saturate(0.9)"
                   label="COSMED WELL-BEING"
                   quote='"Il piatto<br/>giusto cambia<br/>la giornata."'
@@ -172,7 +137,7 @@ export function WellnessInstagramPost() {
                   timeAgo="3 ORE FA"
                 />
                 <IGPost
-                  image={wellLongevity4}
+                  image={wellMonitoraggio}
                   imageFilter="brightness(0.7) saturate(0.88)"
                   label="COSMED WELL-BEING"
                   quote='"La salute<br/>inizia da ciò<br/>che scegli."'
