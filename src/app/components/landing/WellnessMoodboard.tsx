@@ -28,7 +28,7 @@ const target = ["Nutrizionisti ~15.000", "Dietologi ~6.000", "Spa & Centri ~4.00
 // Griglia 2x2: riga top → cibo | fiori/natura — riga bottom → persone | persone
 const mosaicImages = [
   { url: IMGS.food,      label: "Nutrizione",   tag: "Alimentazione Sana",  sub: "Cibo sano e bilanciato" },
-  { url: wellLongevity4, label: "Cura di Sé",   tag: "Stile di Vita",       sub: "Cura di sé e benessere" },
+  { url: wellLongevity4, label: "Cura di Sé",   tag: "Stile di Vita",       sub: "Cura di sé e benessere", position: "44% center" },
   { url: wellLongevity3, label: "Longevity",    tag: "Equilibrio Vitale",   sub: "Cura di sé e longevità" },
   { url: wellMonitoraggio, label: "Natura",       tag: "Ambiente Naturale",   sub: "Connessione con la natura" },
 ];
@@ -126,7 +126,7 @@ export function WellnessMoodboard() {
             {mosaicImages.map((img, i) => (
               <div key={i} className="relative overflow-hidden" style={{ minHeight: "220px" }}>
                 <img src={img.url} alt={img.label} className="w-full h-full object-cover"
-                  style={{ filter: "brightness(0.82) saturate(0.9)" }} />
+                  style={{ filter: "brightness(0.82) saturate(0.9)", objectPosition: img.position ?? "center" }} />
                 <div className="absolute inset-0" style={{ background: `rgba(14,107,107,${i % 2 === 0 ? 0.04 : 0.025})` }} />
               </div>
             ))}
