@@ -46,7 +46,7 @@ export function BrochureSection() {
               Un documento PDF completo con obiettivi, target, step operativi, piani d'investimento e prospetti ROI per la proposta DeNani per COSMED.
             </p>
             <div className="flex flex-wrap gap-2 mt-1">
-              {["6 sezioni", "3 piani pricing", "Prospetti ROI", "Pronto per la stampa"].map((t) => (
+              {["Obiettivi", "Proposte", "Piano d'investimento", "Prospetto ROI"].map((t) => (
                 <span key={t} style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 600, color: `${P.accentLight}F0`, border: `1px solid ${P.accentLight}50`, background: `${P.accentLight}14`, borderRadius: "5px", padding: "5px 10px", letterSpacing: "0.05em" }}>
                   {t}
                 </span>
