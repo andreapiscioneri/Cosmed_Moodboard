@@ -1,5 +1,6 @@
-import { P, IMGS } from "./images";
+import { P } from "./images";
 import imageDue from "../../../assets/2.jpg";
+import artigianiDigitaleImage from "../../../assets/artigiani del digitale.jpg";
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
 
@@ -145,7 +146,7 @@ export function MetodoSection() {
 
             {/* [B] Visual · Atleta con maschera = riferimento a precisione/performance */}
             <div className="relative rounded-2xl overflow-hidden flex-1" style={{ minHeight: "220px" }}>
-              <img src={IMGS.vo2test} alt="Test VO2 metabolico" className="absolute inset-0 w-full h-full object-cover" style={{ filter: "brightness(0.62) saturate(0.8)" }} />
+              <img src={artigianiDigitaleImage} alt="Artigiani del Digitale" className="absolute inset-0 w-full h-full object-cover" style={{ filter: "brightness(0.62) saturate(0.8)" }} />
               <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, transparent 45%, ${P.dark}A8 100%)` }} />
             </div>
 
