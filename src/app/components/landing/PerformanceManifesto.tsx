@@ -68,14 +68,14 @@ export function PerformanceManifesto() {
       {/* Background image — very dark */}
       <div className="absolute inset-0">
         <img src={PERFORMANCE_SHOWCASE.hero} alt="" className="w-full h-full object-cover"
-          style={{ filter: "brightness(0.25) saturate(0.5) hue-rotate(200deg)", transform: "scale(1.04)" }} />
+          style={{ filter: "grayscale(1) contrast(1.15) brightness(0.42)", transform: "scale(1.04)" }} />
         {/* Grid overlay */}
         <div className="absolute inset-0" style={{
           backgroundImage: `linear-gradient(${P.perfBlue}04 1px, transparent 1px), linear-gradient(90deg, ${P.perfBlue}04 1px, transparent 1px)`,
           backgroundSize: "52px 52px",
         }} />
         {/* Vignette */}
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 80% at 50% 50%, rgba(11,15,20,0.3) 0%, rgba(11,15,20,0.85) 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 80% at 50% 50%, rgba(11,15,20,0.52) 0%, rgba(11,15,20,0.96) 100%)" }} />
       </div>
 
       {/* Slide header */}
