@@ -1,5 +1,4 @@
-import { P } from "./images";
-import perfVO2 from "../../../assets/PERFORMANCE - VO2 Max Cosmed.jpg";
+import { PERFORMANCE_SHOWCASE, P } from "./images";
 
 const manifestoLines = [
   { text: "Crediamo che ogni corpo abbia un linguaggio", highlight: false },
@@ -31,7 +30,7 @@ export function PerformanceManifesto() {
 
       {/* Background image — very dark */}
       <div className="absolute inset-0">
-        <img src={perfVO2} alt="" className="w-full h-full object-cover"
+        <img src={PERFORMANCE_SHOWCASE.hero} alt="" className="w-full h-full object-cover"
           style={{ filter: "brightness(0.25) saturate(0.5) hue-rotate(200deg)", transform: "scale(1.04)" }} />
         {/* Grid overlay */}
         <div className="absolute inset-0" style={{

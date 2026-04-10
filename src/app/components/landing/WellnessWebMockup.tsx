@@ -1,9 +1,5 @@
-import { P } from "./images";
+import { P, WELLNESS_SHOWCASE } from "./images";
 import odooLogo from "../../../assets/logo odoo.svg";
-import wellLongevity3 from "../../../assets/WELLNESS - LONGEVITY 3.jpg";
-import wellCuraDiSe from "../../../assets/WELLNESS - CURA DI SE.jpg";
-import wellNatura from "../../../assets/WELLNESS - NATURA.jpg";
-import wellLongevity2 from "../../../assets/WELLNESS - LONGEVITY 2.jpg";
 
 export function WellnessWebMockup() {
   return (
@@ -16,7 +12,7 @@ export function WellnessWebMockup() {
           <div style={{ width: "2px", height: "40px", background: `linear-gradient(180deg, ${P.wellTeal}, transparent)` }} />
           <div>
             <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8px", fontWeight: 700, color: "#6E8798", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "2px" }}>Concept 02 / 02</p>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.wellTeal, letterSpacing: "0.08em", textTransform: "uppercase" }}>Mockup Sito Web · Cosmed Wellness</p>
+            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.wellTeal, letterSpacing: "0.08em", textTransform: "uppercase" }}>Mockup Sito Web · Cosmed Well-being</p>
           </div>
         </div>
         <span className="hidden md:block" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: "#6E8798", letterSpacing: "0.08em", textTransform: "uppercase" }}>
@@ -51,7 +47,7 @@ export function WellnessWebMockup() {
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6E8798" strokeWidth="2" strokeLinecap="round">
                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
               </svg>
-              <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", color: "#6E8798", letterSpacing: "0.02em" }}>cosmed.com/wellness</span>
+              <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", color: "#6E8798", letterSpacing: "0.02em" }}>cosmed.com/well-being</span>
             </div>
           </div>
 
@@ -63,7 +59,7 @@ export function WellnessWebMockup() {
               <div className="flex items-center gap-2">
                 <div style={{ width: "4px", height: "18px", background: P.wellTeal, borderRadius: "2px" }} />
                 <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 700, color: "#0A1F1F", letterSpacing: "0.04em" }}>COSMED</span>
-                <span style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "13px", fontStyle: "italic", color: P.wellTeal, marginLeft: "4px" }}>Wellness</span>
+                <span style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "13px", fontStyle: "italic", color: P.wellTeal, marginLeft: "4px" }}>Well-being</span>
               </div>
               <div className="hidden md:flex items-center gap-7">
                 {["Nutrizione", "Benessere", "Longevity", "Professionisti"].map(item => (
@@ -77,7 +73,7 @@ export function WellnessWebMockup() {
 
             {/* HERO — immagine full-width dominante, testo in overlay */}
             <div className="relative overflow-hidden" style={{ minHeight: "520px" }}>
-              <img src={wellCuraDiSe} alt="Professionista Wellness" className="absolute inset-0 w-full h-full object-cover"
+              <img src={WELLNESS_SHOWCASE.hero} alt="Nutrizionista con alimenti sani" className="absolute inset-0 w-full h-full object-cover"
                 style={{ filter: "brightness(0.78) saturate(0.8)" }} />
               {/* Soft warm overlay */}
               <div className="absolute inset-0" style={{ background: "linear-gradient(110deg, rgba(10,31,31,0.72) 0%, rgba(10,31,31,0.35) 55%, rgba(10,31,31,0.1) 100%)" }} />
@@ -108,7 +104,7 @@ export function WellnessWebMockup() {
                 </div>
                 {/* Metrics */}
                 <div className="flex gap-10 mt-10 flex-wrap">
-                  {[["15k+", "Nutrizionisti"], ["6k+", "Dietologi"], ["8k+", "Centri Wellness"]].map(([v, l]) => (
+                  {[["15k+", "Nutrizionisti"], ["6k+", "Dietologi"], ["8k+", "Centri Well-being"]].map(([v, l]) => (
                     <div key={l} className="flex flex-col">
                       <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(20px,2.5vw,30px)", fontWeight: 700, fontStyle: "italic", color: P.wellGold }}>{v}</span>
                       <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8px", fontWeight: 600, color: "rgba(255,255,255,0.6)", letterSpacing: "0.12em", textTransform: "uppercase" }}>{l}</span>
@@ -118,13 +114,12 @@ export function WellnessWebMockup() {
               </div>
             </div>
 
-            {/* Image mosaic — 4 immagini grandi con copy overlay */}
-            <div className="grid grid-cols-2 md:grid-cols-4" style={{ borderTop: `1px solid ${P.border}` }}>
+            {/* Image mosaic — 3 immagini grandi con copy overlay */}
+            <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderTop: `1px solid ${P.border}` }}>
               {[
-                { img: wellNatura, tag: "AMBIENTE NATURALE", copy: "Connessione con la Natura" },
-                { img: wellLongevity3, tag: "LONGEVITÀ ATTIVA", copy: "Invecchiare Bene, Vivere Pienamente" },
-                { img: wellLongevity2, tag: "EQUILIBRIO VITALE", copy: "Benessere come Stile di Vita" },
-                { img: wellCuraDiSe, tag: "CURA DI SÉ", copy: "Ogni Giorno una Scelta" },
+                { img: WELLNESS_SHOWCASE.tiles[0], tag: "ALIMENTAZIONE SANA", copy: "Piatti bilanciati e colori naturali" },
+                { img: WELLNESS_SHOWCASE.tiles[1], tag: "NUTRIZIONE CLINICA", copy: "Consulenza e ascolto del paziente" },
+                { img: WELLNESS_SHOWCASE.tiles[2], tag: "DIETETICA", copy: "Scelta consapevole degli alimenti" },
               ].map(({ img, tag, copy }, i) => (
                 <div key={i} className="relative overflow-hidden" style={{ height: "180px" }}>
                   <img src={img} alt="" className="w-full h-full object-cover"
@@ -137,7 +132,7 @@ export function WellnessWebMockup() {
                     <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "7px", fontWeight: 700, color: P.wellGold, letterSpacing: "0.14em", textTransform: "uppercase", display: "block", marginBottom: "4px" }}>{tag}</span>
                     <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "11px", fontStyle: "italic", fontWeight: 600, color: "#FFFFFF", lineHeight: "1.3" }}>{copy}</span>
                   </div>
-                  {i < 3 && <div className="absolute top-0 right-0 bottom-0 w-px" style={{ background: "rgba(255,255,255,0.08)" }} />}
+                  {i < 2 && <div className="absolute top-0 right-0 bottom-0 w-px" style={{ background: "rgba(255,255,255,0.08)" }} />}
                 </div>
               ))}
             </div>
@@ -171,7 +166,7 @@ export function WellnessWebMockup() {
               <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
             </svg>
             <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 600, color: "#6E8798", letterSpacing: "0.08em" }}>
-              Mockup illustrativo — Homepage Cosmed Wellness
+              Mockup illustrativo — Homepage Cosmed Well-being
             </span>
           </div>
           <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 600, color: `${P.wellTeal}88`, letterSpacing: "0.06em" }}>

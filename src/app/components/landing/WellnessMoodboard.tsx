@@ -35,7 +35,7 @@ const mosaicImages = [
 
 export function WellnessMoodboard() {
   return (
-    <section id="wellness" className="relative w-full overflow-hidden" style={{ background: "#F4F7F5" }}>
+    <section id="well-being" className="relative w-full overflow-hidden" style={{ background: "#F4F7F5" }}>
 
       {/* Intro band */}
       <div className="relative z-10 flex items-center justify-between px-6 md:px-20 py-8"
@@ -48,7 +48,7 @@ export function WellnessMoodboard() {
           </div>
         </div>
         <span className="hidden md:block" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: "#6E8798", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-          Cosmed Wellness · Moodboard Visivo
+          Cosmed Well-being · Moodboard Visivo
         </span>
       </div>
 
@@ -62,7 +62,7 @@ export function WellnessMoodboard() {
           <div className="flex flex-col gap-2">
             <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: "#6E8798", letterSpacing: "0.12em", textTransform: "uppercase" }}>COSMED</span>
             <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(38px, 5vw, 72px)", fontWeight: 700, fontStyle: "italic", color: "#0A1F1F", letterSpacing: "-0.02em", lineHeight: "0.92" }}>
-              Wellness
+              Well-being
             </h2>
             <div style={{ width: "56px", height: "2px", background: `linear-gradient(90deg, ${P.wellGold}, transparent)`, marginTop: "6px" }} />
             <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "12px", color: P.wellGold, letterSpacing: "0.1em", fontStyle: "italic", marginTop: "4px" }}>

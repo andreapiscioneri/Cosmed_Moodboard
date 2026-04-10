@@ -11,7 +11,7 @@ const manifestoLines = [
   { text: "Nel movimento come linguaggio del corpo.", highlight: false },
   { text: "Nella longevità come arte di vivere bene.", highlight: true },
   { text: "", highlight: false },
-  { text: "COSMED Wellness nasce per chi", highlight: false },
+  { text: "COSMED Well-being nasce per chi", highlight: false },
   { text: "accompagna le persone verso la migliore versione di sé.", highlight: false },
   { text: "Per il nutrizionista che vede la persona", highlight: false },
   { text: "oltre il piano alimentare.", highlight: false },
@@ -46,7 +46,7 @@ export function WellnessManifesto() {
           <div style={{ width: "2px", height: "40px", background: `linear-gradient(180deg, ${P.wellTeal}, transparent)` }} />
           <div>
             <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8px", fontWeight: 700, color: "#6E8798", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "2px" }}>Concept 02 / 02</p>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.wellTeal, letterSpacing: "0.08em", textTransform: "uppercase" }}>Brand Manifesto · Cosmed Wellness</p>
+            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.wellTeal, letterSpacing: "0.08em", textTransform: "uppercase" }}>Brand Manifesto · Cosmed Well-being</p>
           </div>
         </div>
         <span className="hidden md:block" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: "#6E8798", letterSpacing: "0.08em", textTransform: "uppercase" }}>
@@ -114,7 +114,7 @@ export function WellnessManifesto() {
           <div style={{ width: "80px", height: "1px", background: `linear-gradient(90deg, transparent, ${P.wellGold}, transparent)` }} />
           <div className="flex flex-col items-center gap-1">
             <span style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "18px", fontStyle: "italic", fontWeight: 600, color: "#0A1F1F" }}>
-              COSMED Wellness
+              COSMED Well-being
             </span>
             <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 600, color: P.wellGold, letterSpacing: "0.15em", textTransform: "uppercase" }}>
               The Metabolic Flow

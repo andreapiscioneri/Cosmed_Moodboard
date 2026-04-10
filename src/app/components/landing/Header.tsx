@@ -8,7 +8,7 @@ const NAV = [
   { label: "La Proposta", href: "#proposta" },
   { label: "Strategia", href: "#strategia" },
   { label: "Performance", href: "#performance" },
-  { label: "Wellness", href: "#wellness" },
+  { label: "Well-being", href: "#well-being" },
   { label: "Pacchetti", href: "#pacchetti" },
 ];
 

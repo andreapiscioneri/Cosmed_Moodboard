@@ -1,9 +1,20 @@
-import vo2Image from "../../../assets/1.png";
+import testImage from "../../../assets/test.png";
+import imageA from "../../../assets/a.jpg";
+import imageB from "../../../assets/b.jpg";
+import imageC from "../../../assets/c.jpg";
+import imageD from "../../../assets/d.jpg";
+import imageE from "../../../assets/e.jpg";
+import wellnessHeroD2 from "../../../assets/d2.jpg";
+import wellnessTileD1 from "../../../assets/d1.jpg";
+import wellnessTileD3 from "../../../assets/d3.jpg";
+import wellnessTileD4 from "../../../assets/d4.jpg";
+import wellnessPostD5 from "../../../assets/d5.jpg";
+import wellnessPostD6 from "../../../assets/d6.jpeg";
 
 // All image URLs for the landing page
 export const IMGS = {
   // Performance — 2 realistiche + 2 astratte
-  vo2test:    vo2Image, // REALISTICA: test VO2/maschera
+  vo2test:    testImage, // REALISTICA: test VO2/maschera
   physio:     "https://images.unsplash.com/photo-1709880754445-8ffbd7e6ab3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080", // REALISTICA: fisioterapia clinica
   dataflow:   "https://images.unsplash.com/photo-1762279388956-1c098163a2a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080", // ASTRATTA: data flow blu
   molecular:  "https://images.unsplash.com/photo-1697901785243-c4e233def8af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080", // ASTRATTA: molecolare
@@ -18,6 +29,33 @@ export const IMGS = {
   fluid:      "https://images.unsplash.com/photo-1770954098074-da95ccdf33e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
   sand:       "https://images.unsplash.com/photo-1566598578758-d4f24d544c29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
   grid:       "https://images.unsplash.com/photo-1703600178903-aed2471a38d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+};
+
+export const PERFORMANCE_SHOWCASE = {
+  hero: testImage,
+  tiles: [
+    imageA,
+    imageB,
+    imageC,
+    "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=85",
+  ],
+  post: [
+    imageD,
+    imageE,
+  ],
+};
+
+export const WELLNESS_SHOWCASE = {
+  hero: wellnessPostD6,
+  tiles: [
+    wellnessTileD1,
+    wellnessTileD3,
+    wellnessPostD5,
+  ],
+  post: [
+    wellnessTileD4,
+    wellnessHeroD2,
+  ],
 };
 
 // ─── Bridged palette (no oro, no nero puro) ─────────────────────────────────

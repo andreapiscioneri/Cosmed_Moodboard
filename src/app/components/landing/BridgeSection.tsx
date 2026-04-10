@@ -19,7 +19,7 @@ export function BridgeBefore() {
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: `${P.textInv}72`, lineHeight: "1.8" }}>
           Due sub-brand distinti, due estetiche precise, un unico sistema di brand coerente.<br />
           <strong style={{ color: `${P.textInv}88`, fontWeight: 700 }}>Performance</strong> utilizza un linguaggio tecnico e scientifico, rivolto al professionista clinico.<br />
-          <strong style={{ color: `${P.textInv}88`, fontWeight: 700 }}>Wellness</strong> ha un approccio legato alla cura di sé, al mantenersi in forma, al nutrirsi correttamente e a uno stile di vita salutare.
+          <strong style={{ color: `${P.textInv}88`, fontWeight: 700 }}>Well-being</strong> ha un approccio legato alla cura di sé, al mantenersi in forma, al nutrirsi correttamente e a uno stile di vita salutare.
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">
           <div className="flex items-center gap-2 rounded-lg px-4 py-2" style={{ border: `1px solid ${P.perfBlue}30`, background: `${P.perfBlue}08` }}>
@@ -29,7 +29,7 @@ export function BridgeBefore() {
           <div style={{ width: "1px", height: "14px", background: `${P.textInv}15` }} className="hidden sm:block" />
           <div className="flex items-center gap-2 rounded-lg px-4 py-2" style={{ border: `1px solid ${P.wellTeal}30`, background: `${P.wellTeal}08` }}>
             <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#4FD5CE" }} />
-            <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8.5px", fontWeight: 700, color: "#4FD5CE", letterSpacing: "0.08em", textTransform: "uppercase" }}>Wellness · Healthy Lifestyle</span>
+            <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8.5px", fontWeight: 700, color: "#4FD5CE", letterSpacing: "0.08em", textTransform: "uppercase" }}>Well-being · Healthy Lifestyle</span>
           </div>
         </div>
         <div style={{ width: "1px", height: "40px", background: `linear-gradient(180deg, ${P.accent}60, transparent)` }} />

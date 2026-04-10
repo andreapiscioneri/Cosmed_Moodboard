@@ -1,6 +1,4 @@
-import { P } from "./images";
-import wellNatura from "../../../assets/WELLNESS - NATURA.jpg";
-import wellCuraDiSe from "../../../assets/WELLNESS - CURA DI SE.jpg";
+import { P, WELLNESS_SHOWCASE } from "./images";
 import instagramIcon from "../../../assets/instagram-logo-instagram-icon-transparent-free-png.webp";
 
 function IGPost({
@@ -19,7 +17,7 @@ function IGPost({
             </div>
           </div>
           <div>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", fontWeight: 700, color: "#262626" }}>cosmedwellness</p>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", fontWeight: 700, color: "#262626" }}>cosmedwellbeing</p>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "9px", color: "#8E8E8E" }}>Milano, Italia</p>
           </div>
         </div>
@@ -63,7 +61,7 @@ function IGPost({
       <div className="px-3 pb-3">
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", fontWeight: 700, color: "#262626", marginBottom: "3px" }}>{likes} mi piace</p>
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "#262626", lineHeight: "1.5" }}>
-          <strong>cosmedwellness</strong> {caption}<br />
+          <strong>cosmedwellbeing</strong> {caption}<br />
           <span style={{ color: P.wellTeal }}>{hashtags}</span>
         </p>
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "9px", color: "#8E8E8E", marginTop: "3px" }}>{timeAgo}</p>
@@ -78,7 +76,7 @@ const specs = [
   { label: "Tipografia Label", value: "Montserrat Bold", sub: "Peso 700 · All Caps · Tracking +0.18em" },
   { label: "Palette Visual", value: "#0E6B6B Deep Teal", sub: "#B8922E Satin Gold · #FFFFFF overlay text" },
   { label: "Tono Comunicativo", value: "Ispirazionale, poetico", sub: "Citazione dominante · copy morbido · natura" },
-  { label: "Best Posting Time", value: "Mer–Ven · 18:00–20:00", sub: "Target: nutrizionisti, wellness enthusiast B2C" },
+  { label: "Best Posting Time", value: "Mer–Ven · 18:00–20:00", sub: "Target: nutrizionisti, Well-being enthusiast B2C" },
 ];
 
 export function WellnessInstagramPost() {
@@ -91,7 +89,7 @@ export function WellnessInstagramPost() {
           <div style={{ width: "2px", height: "40px", background: `linear-gradient(180deg, ${P.wellTeal}, transparent)` }} />
           <div>
             <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8px", fontWeight: 700, color: "#6E8798", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "2px" }}>Concept 02 / 02</p>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.wellTeal, letterSpacing: "0.08em", textTransform: "uppercase" }}>Mockup Post Instagram · Cosmed Wellness</p>
+            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.wellTeal, letterSpacing: "0.08em", textTransform: "uppercase" }}>Mockup Post Instagram · Cosmed Well-being</p>
           </div>
         </div>
         <div className="hidden md:flex items-center gap-2">
@@ -156,24 +154,24 @@ export function WellnessInstagramPost() {
               {/* 2 posts */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4" style={{ background: "#F3F3F3" }}>
                 <IGPost
-                  image={wellNatura}
-                  imageFilter="brightness(0.72) saturate(0.85)"
-                  label="COSMED WELLNESS"
-                  quote='"Ogni giorno è<br/>un&apos;occasione<br/>per fiorire."'
-                  subline="Nutrizione · Equilibrio · Longevità"
-                  caption="Il benessere non è un traguardo. È un modo di stare al mondo. 🌿"
-                  hashtags="#MetabolicFlow #WellnessClinico #Longevity #COSMED"
+                  image={WELLNESS_SHOWCASE.post[0]}
+                  imageFilter="brightness(0.72) saturate(0.9)"
+                  label="COSMED WELL-BEING"
+                  quote='"Il piatto<br/>giusto cambia<br/>la giornata."'
+                  subline="Nutrizione · Cibo sano · Vitalità"
+                  caption="Una scelta consapevole a tavola sostiene energia, equilibrio e aderenza al percorso. 🥗"
+                  hashtags="#NutrizioneClinica #HealthyFood #Well-being #COSMED"
                   likes="2.847"
                   timeAgo="3 ORE FA"
                 />
                 <IGPost
-                  image={wellCuraDiSe}
-                  imageFilter="brightness(0.68) saturate(0.8)"
-                  label="COSMED WELLNESS"
-                  quote='"Prendersi cura<br/>di sé è il primo<br/>atto di salute."'
-                  subline="Cura di Sé · Benessere Attivo · Stile di Vita"
-                  caption="La nutrizione più potente inizia dalla consapevolezza. Conosci il tuo metabolismo. 🌾"
-                  hashtags="#NutrizioneClinica #CuraDiSé #HealthyLifestyle #COSMED"
+                  image={WELLNESS_SHOWCASE.post[1]}
+                  imageFilter="brightness(0.7) saturate(0.88)"
+                  label="COSMED WELL-BEING"
+                  quote='"La salute<br/>inizia da ciò<br/>che scegli."'
+                  subline="Dietologi · Nutrizionisti · Lifestyle"
+                  caption="Il lavoro del nutrizionista è guidare abitudini semplici, sostenibili e concrete. 🫐"
+                  hashtags="#Dietologia #Nutrizionisti #HealthyLifestyle #COSMED"
                   likes="3.112"
                   timeAgo="1 GIORNO FA"
                 />
@@ -185,7 +183,7 @@ export function WellnessInstagramPost() {
               <div className="flex items-center gap-2">
                 <img src={instagramIcon} alt="Instagram" style={{ width: "12px", height: "12px", objectFit: "contain" }} />
                 <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 600, color: "#6E8798", letterSpacing: "0.08em" }}>
-                  Mockup illustrativo — 2 Post Instagram Cosmed Wellness
+                  Mockup illustrativo — 2 Post Instagram Cosmed Well-being
                 </span>
               </div>
               <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 600, color: `${P.wellTeal}88`, letterSpacing: "0.06em" }}>

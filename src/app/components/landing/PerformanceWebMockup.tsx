@@ -1,8 +1,4 @@
-import { P } from "./images";
-import testHero from "../../../assets/test.png";
-import perfVO2 from "../../../assets/PERFORMANCE - VO2 Max Cosmed.jpg";
-import perfData from "../../../assets/PERFORMANCE - Data Flow.jpg";
-import perfFisio from "../../../assets/PERFORMANCE - Fisioterapia.jpg";
+import { PERFORMANCE_SHOWCASE, P } from "./images";
 import odooLogo from "../../../assets/logo odoo.svg";
 
 export function PerformanceWebMockup() {
@@ -77,7 +73,7 @@ export function PerformanceWebMockup() {
 
             {/* HERO — immagine dominante full-width, testo in overlay */}
             <div className="relative overflow-hidden" style={{ minHeight: "520px" }}>
-              <img src={testHero} alt="Performance Hero" className="absolute inset-0 w-full h-full object-cover"
+              <img src={PERFORMANCE_SHOWCASE.hero} alt="Atleta in preparazione" className="absolute inset-0 w-full h-full object-cover"
                 style={{ filter: "grayscale(1) contrast(1.15) brightness(0.88)" }} />
               {/* Grid overlay */}
               <div className="absolute inset-0" style={{
@@ -124,9 +120,9 @@ export function PerformanceWebMockup() {
             {/* Image mosaic — 3 immagini grandi con copy overlay */}
             <div className="grid grid-cols-3" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
               {[
-                { img: perfData, label: "Flusso Dati", copy: "Visualizzazione Parametri Metabolici", tag: "ASTRATTA · DATA FLOW" },
-                { img: perfFisio, label: "Fisioterapia", copy: "Riabilitazione & Protocollo Clinico", tag: "REALISTICA · CLINICA" },
-                { img: perfVO2, label: "VO₂ Max", copy: "Misurazione Ossigeno in Esercizio", tag: "REALISTICA · TEST" },
+                { img: PERFORMANCE_SHOWCASE.tiles[0], label: "Atletica", copy: "Preparazione e carico di lavoro", tag: "REALISTICA · ATLETI" },
+                { img: PERFORMANCE_SHOWCASE.tiles[1], label: "Preparatore", copy: "Allenamento guidato e performance", tag: "REALISTICA · TRAINER" },
+                { img: PERFORMANCE_SHOWCASE.tiles[2], label: "Fisioterapia", copy: "Recupero e prevenzione in campo", tag: "REALISTICA · PHYSIO" },
               ].map(({ img, copy, tag }, i) => (
                 <div key={i} className="relative overflow-hidden" style={{ height: "200px" }}>
                   <img src={img} alt="" className="w-full h-full object-cover"

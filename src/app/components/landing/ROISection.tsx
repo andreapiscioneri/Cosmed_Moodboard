@@ -11,7 +11,7 @@ const prospetti = [
     border: `${P.accent}20`,
     righe: [
       { area: "Performance", canale: "LinkedIn", budget: "€ 540 / mese", leads: "7 – 12", cpl: "€ 45 – 77" },
-      { area: "Wellness",    canale: "Meta (FB/IG)", budget: "€ 293 / mese", leads: "12 – 18", cpl: "€ 16 – 24" },
+      { area: "Well-being",    canale: "Meta (FB/IG)", budget: "€ 293 / mese", leads: "12 – 18", cpl: "€ 16 – 24" },
     ],
     totale: { budget: "€ 833 / mese", leads: "19 – 30", cpl: "~ € 28" },
   },
@@ -25,7 +25,7 @@ const prospetti = [
     highlight: true,
     righe: [
       { area: "Performance", canale: "LinkedIn", budget: "€ 834 / mese", leads: "18 – 28", cpl: "€ 30 – 46" },
-      { area: "Wellness",    canale: "Meta (FB/IG)", budget: "€ 416 / mese", leads: "22 – 36", cpl: "€ 12 – 19" },
+      { area: "Well-being",    canale: "Meta (FB/IG)", budget: "€ 416 / mese", leads: "22 – 36", cpl: "€ 12 – 19" },
     ],
     totale: { budget: "€ 1.250 / mese", leads: "40 – 64", cpl: "~ € 20" },
   },
@@ -38,7 +38,7 @@ const prospetti = [
     border: "rgba(14,107,107,0.2)",
     righe: [
       { area: "Performance", canale: "LinkedIn", budget: "€ 1.212 / mese", leads: "40 – 65", cpl: "€ 19 – 30" },
-      { area: "Wellness",    canale: "Meta (FB/IG)", budget: "€ 455 / mese", leads: "36 – 60", cpl: "€ 8 – 13" },
+      { area: "Well-being",    canale: "Meta (FB/IG)", budget: "€ 455 / mese", leads: "36 – 60", cpl: "€ 8 – 13" },
     ],
     totale: { budget: "€ 1.667 / mese", leads: "76 – 125", cpl: "~ € 13" },
   },

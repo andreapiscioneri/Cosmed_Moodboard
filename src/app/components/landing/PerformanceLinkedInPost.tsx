@@ -1,7 +1,6 @@
-import { P } from "./images";
-import perfData from "../../../assets/PERFORMANCE - Data Flow.jpg";
-import perfFisio from "../../../assets/PERFORMANCE - Fisioterapia.jpg";
+import { PERFORMANCE_SHOWCASE, P } from "./images";
 import linkedinIcon from "../../../assets/linkedin-icon-free-png.webp";
+import cosmedLogo from "../../../assets/cffaa0cb0f7ab92966e997ad7cded19cf46e55a0.png";
 
 function PostCard({
   visual,
@@ -32,7 +31,6 @@ function PostCard({
 }) {
   return (
     <div className="rounded-xl overflow-hidden" style={{ background: "#FFFFFF", border: "1px solid #E0DACE", boxShadow: "0 8px 40px rgba(0,0,0,0.18)" }}>
-      {/* Post header */}
       <div className="flex items-start justify-between gap-3 px-4 pt-4 pb-3">
         <div className="flex items-center gap-3">
           <div className="flex-shrink-0" style={{ width: "48px", height: "48px", borderRadius: "50%", background: "linear-gradient(135deg, #0B0F14 0%, #0B6FFF 100%)", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid #0A66C2" }}>
@@ -53,13 +51,11 @@ function PostCard({
         </div>
       </div>
 
-      {/* Post body text */}
       <div className="px-4 pb-3">
         <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: "#000", lineHeight: "1.7" }}>{bodyText}</div>
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: "#0A66C2", lineHeight: "1.7", marginTop: "6px" }}>{hashtags}</p>
       </div>
 
-      {/* Post image */}
       <div className="relative overflow-hidden" style={{ aspectRatio: "3/4" }}>
         <img src={visual} alt="" className="w-full h-full object-cover" style={{ filter: visualFilter }} />
         <div className="absolute inset-0" style={{
@@ -68,7 +64,6 @@ function PostCard({
         }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(11,15,20,0.65) 0%, rgba(11,15,20,0.22) 55%, rgba(11,15,20,0.5) 100%)" }} />
 
-        {/* COPY */}
         <div className="absolute inset-0 flex flex-col justify-center items-center px-8 text-center">
           <div className="flex items-center gap-3 mb-4">
             <div style={{ width: "28px", height: "1px", background: P.perfBlue }} />
@@ -82,14 +77,11 @@ function PostCard({
           <div style={{ width: "48px", height: "2px", background: `linear-gradient(90deg, transparent, ${P.perfBlue}, transparent)`, marginTop: "16px" }} />
         </div>
 
-        {/* Brand corner */}
-        <div className="absolute bottom-3 right-4 flex items-center gap-2">
-          <div style={{ width: "2px", height: "12px", background: P.perfBlue, borderRadius: "2px" }} />
-          <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8px", fontWeight: 800, color: "rgba(238,242,255,0.75)", letterSpacing: "0.1em" }}>COSMED</span>
+        <div className="absolute bottom-3 right-4 flex items-center">
+          <img src={cosmedLogo} alt="Cosmed" style={{ height: "50px", width: "auto", objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.92 }} />
         </div>
       </div>
 
-      {/* Reactions */}
       <div className="px-4 py-2" style={{ borderBottom: "1px solid #E0DACE" }}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5">
@@ -106,7 +98,6 @@ function PostCard({
         </div>
       </div>
 
-      {/* Action buttons */}
       <div className="flex items-center justify-around px-2 py-1">
         {[
           {
@@ -164,15 +155,13 @@ const specs = [
   { label: "Tipografia Heading", value: "Inter ExtraBold", sub: "Peso 900 · Tracking −0.04em · All Caps" },
   { label: "Tipografia Label", value: "Montserrat Bold", sub: "Peso 700 · All Caps · Tracking +0.2em" },
   { label: "Palette Visual", value: "#0B6FFF Tech Blue", sub: "#0B0F14 Anthracite · #EEF2FF Ice White" },
-  { label: "Tono Comunicativo", value: "Autorevole, clinico", sub: "Dati reali · copy diretto · no rettorica" },
+  { label: "Tono Comunicativo", value: "Autorevole, clinico", sub: "Dati reali · copy diretto · no retorica" },
   { label: "Best Posting Time", value: "Mar–Gio · 8:00–10:00", sub: "Target: professionisti sanitari B2B" },
 ];
 
 export function PerformanceLinkedInPost() {
   return (
     <section className="relative w-full overflow-hidden" style={{ background: "#0D1520", paddingBottom: "80px" }}>
-
-      {/* Slide header */}
       <div className="flex items-center justify-between px-6 md:px-20 py-8" style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div className="flex items-center gap-3">
           <div style={{ width: "2px", height: "40px", background: `linear-gradient(180deg, ${P.perfBlue}, transparent)` }} />
@@ -190,8 +179,6 @@ export function PerformanceLinkedInPost() {
       </div>
 
       <div className="px-6 md:px-20 pt-12">
-
-        {/* Label */}
         <div className="flex items-center gap-3 mb-8">
           <div style={{ width: "28px", height: "1px", background: P.perfBlue }} />
           <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.perfBlue, letterSpacing: "0.12em", textTransform: "uppercase" }}>
@@ -199,19 +186,14 @@ export function PerformanceLinkedInPost() {
           </span>
         </div>
 
-        {/* Two-col layout: LinkedIn UI left + Specs right */}
         <div className="flex flex-col xl:flex-row gap-8 items-start">
-
-          {/* LinkedIn UI */}
           <div className="flex-1 min-w-0">
             <div className="rounded-xl overflow-hidden" style={{ background: "#F3F2EF", border: "1px solid #D6D0C4", boxShadow: "0 20px 60px rgba(0,0,0,0.45)" }}>
-
-              {/* LinkedIn top bar */}
               <div className="flex items-center justify-between px-4 py-3" style={{ background: "#FFFFFF", borderBottom: "1px solid #E0DACE" }}>
                 <div className="flex items-center gap-6">
                   <img src={linkedinIcon} alt="LinkedIn" style={{ width: "28px", height: "28px", objectFit: "contain" }} />
                   <div className="hidden sm:flex items-center gap-5">
-                    {["Home", "Rete", "Lavoro", "Messaggi", "Notifiche"].map(n => (
+                    {["Home", "Rete", "Lavoro", "Messaggi", "Notifiche"].map((n) => (
                       <span key={n} style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", color: "#666" }}>{n}</span>
                     ))}
                   </div>
@@ -221,50 +203,48 @@ export function PerformanceLinkedInPost() {
                 </div>
               </div>
 
-              {/* Feed: 2 posts side by side */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4" style={{ background: "#F3F2EF" }}>
                 <PostCard
-                  visual={perfData}
-                  visualFilter="brightness(0.58) saturate(0.5) hue-rotate(200deg)"
+                  visual={PERFORMANCE_SHOWCASE.post[0]}
+                  visualFilter="brightness(0.62) saturate(0.8) contrast(1.02)"
                   eyebrow="COSMED Performance"
-                  headline="OGNI DATO"
-                  headlineAccent="CONTA."
-                  subline="Calorimetria Indiretta · VO₂ Max · REE"
+                  headline="ATLETI"
+                  headlineAccent="SEGUITI BENE."
+                  subline="Preparazione atletica · performance · recupero"
                   bodyText={
                     <>
-                      Il metabolismo <strong>non mente</strong>. I dati sì, se non li misuri bene.<br /><br />
-                      <strong>VO₂ Max, REE, Calorimetria Indiretta</strong>: non sono semplici parametri. Sono la differenza tra un protocollo efficace e uno generico.
+                      Ogni atleta ha bisogno di un supporto misurabile e continuo.<br /><br />
+                      <strong>Preparatore atletico, fisioterapista e team clinico</strong>: quando lavorano sullo stesso protocollo, il risultato diventa più preciso e più replicabile.
                     </>
                   }
-                  hashtags="#PrecisioneMetabolica #VO2Max #CalorimetriaIndiretta #COSMED"
-                  likes="142"
-                  comments="38"
-                  shares="7"
+                  hashtags="#Performance #PreparazioneAtletica #Fisioterapia #COSMED"
+                  likes="167"
+                  comments="41"
+                  shares="9"
                   timeAgo="Oggi"
                 />
                 <PostCard
-                  visual={perfFisio}
-                  visualFilter="brightness(0.58) saturate(0.55) hue-rotate(190deg)"
+                  visual={PERFORMANCE_SHOWCASE.post[1]}
+                  visualFilter="brightness(0.6) saturate(0.75) contrast(1.05)"
                   eyebrow="COSMED Performance"
-                  headline="IL PROTOCOLLO"
-                  headlineAccent="GIUSTO."
-                  subline="Fisiatri · Medici dello Sport · Fisioterapisti"
+                  headline="FISIOTERAPIA"
+                  headlineAccent="NELLA PERFORMANCE."
+                  subline="Fisioterapisti · medici dello sport · recovery"
                   bodyText={
                     <>
-                      Non tutti i protocolli clinici sono uguali.<br /><br />
-                      Chi lavora con <strong>fisiatri e medici dello sport</strong> sa che la precisione metabolica non è un'opzione — è lo standard. Ogni sessione è un dato.
+                      La fase di recupero non è un dettaglio.<br /><br />
+                      Un intervento fisioterapico ben inserito nel flusso di lavoro migliora continuità, sicurezza e aderenza al programma.
                     </>
                   }
-                  hashtags="#RigoreClinoco #MedicoSport #Fisioterapia #ValidazioneScientifica #COSMED"
-                  likes="217"
-                  comments="54"
-                  shares="12"
+                  hashtags="#Fisioterapia #SportMedicine #Recovery #COSMED"
+                  likes="204"
+                  comments="48"
+                  shares="11"
                   timeAgo="2 giorni fa"
                 />
               </div>
             </div>
 
-            {/* Caption */}
             <div className="flex items-center justify-between mt-4">
               <div className="flex items-center gap-2">
                 <img src={linkedinIcon} alt="LinkedIn" style={{ width: "12px", height: "12px", objectFit: "contain" }} />
@@ -278,14 +258,13 @@ export function PerformanceLinkedInPost() {
             </div>
           </div>
 
-          {/* Specs sidebar */}
           <div className="flex flex-col gap-3 xl:w-64 flex-shrink-0">
             <div className="flex items-center gap-2 mb-2">
               <div style={{ width: "20px", height: "1px", background: P.perfBlue }} />
               <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.perfBlue, letterSpacing: "0.14em", textTransform: "uppercase" }}>Note Creative</span>
             </div>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: "rgba(238,242,255,0.6)", lineHeight: "1.8", marginBottom: "4px" }}>
-              Il visual è l'elemento dominante del post. Il copy in Inter ExtraBold occupa il centro del'immagine su sfondo scuro, garantendo massima leggibilità nel feed LinkedIn.
+              Il visual è l'elemento dominante del post. Il copy in Inter ExtraBold occupa il centro dell'immagine su sfondo scuro, garantendo massima leggibilità nel feed LinkedIn.
             </p>
             {specs.map(({ label, value, sub }) => (
               <div key={label} className="flex flex-col gap-1 py-3" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
@@ -295,9 +274,7 @@ export function PerformanceLinkedInPost() {
               </div>
             ))}
           </div>
-
         </div>
-
       </div>
     </section>
   );
