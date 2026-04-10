@@ -1,14 +1,15 @@
 import { P } from "./images";
 import perfData from "../../../assets/PERFORMANCE - Data Flow.jpg";
 import strategiaHeroBg from "../../../assets/WhatsApp Image 2026-04-09 at 16.38.10.jpeg";
+import analisiMercatoImg from "../../../assets/analisi di mercato.jpg";
+import brandIdentityImg from "../../../assets/brand identity.jpg";
+import sitiWebImg from "../../../assets/siti web.jpg";
+import seoImg from "../../../assets/SEO.jpg";
+import socialMediaImg from "../../../assets/social media.jpg";
+import sponsorizzazioniImg from "../../../assets/sponsorizzazioni.webp";
 
-const MUHAMMAD_ALI_IMG = "https://images.pexels.com/photos/30722612/pexels-photo-30722612.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const THOMAS_EDISON_IMG = "https://images.pexels.com/photos/15319035/pexels-photo-15319035.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const KOBE_BRYANT_IMG = "https://images.pexels.com/photos/32961908/pexels-photo-32961908.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const CLAUDE_BERNARD_IMG = "https://images.pexels.com/photos/15319016/pexels-photo-15319016.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const GALILEO_GALILEI_IMG = "https://images.pexels.com/photos/21923388/pexels-photo-21923388.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const JOEL_EMBIID_IMG = "https://images.pexels.com/photos/4720827/pexels-photo-4720827.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const MICHAEL_PHELPS_IMG = "https://images.pexels.com/photos/13804884/pexels-photo-13804884.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const TARGET_PERSONAS_IMG = "https://images.pexels.com/photos/15319035/pexels-photo-15319035.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const MEDILINE_PROJECT_URL = "https://www.mediline.it";
 
 const STEP_DARK_BG = "#17313D";
 const STEP_DARK_CARD = "rgba(23,49,61,0.9)";
@@ -149,31 +150,33 @@ function highlightCopy(text: string, dark = false) {
   });
 }
 
-function QuoteImageCard({ text, image, dark = false, roundLeft = true }: { text: string; image: string; dark?: boolean; roundLeft?: boolean }) {
+function SideImageCard({ image, roundLeft = true, bannerText, projectLink }: { image: string; roundLeft?: boolean; bannerText?: string; projectLink?: { href: string; label: string } }) {
   return (
     <div className="overflow-hidden h-full self-stretch" style={{ background: "transparent", borderTopLeftRadius: roundLeft ? "16px" : "0", borderBottomLeftRadius: roundLeft ? "16px" : "0", borderTopRightRadius: !roundLeft ? "16px" : "0", borderBottomRightRadius: !roundLeft ? "16px" : "0" }}>
       <div className="relative h-full min-h-[600px]">
-        <img src={image} alt={text} loading="lazy" className="absolute inset-0 w-full h-full object-cover" style={{ filter: "brightness(0.68) saturate(1.02)", objectPosition: "center 33%", borderTopLeftRadius: roundLeft ? "16px" : "0", borderBottomLeftRadius: roundLeft ? "16px" : "0", borderTopRightRadius: !roundLeft ? "16px" : "0", borderBottomRightRadius: !roundLeft ? "16px" : "0" }} />
+        <img src={image} alt="Strategia visual" loading="lazy" className="absolute inset-0 w-full h-full object-cover" style={{ filter: "brightness(0.68) saturate(1.02)", objectPosition: "center 33%", borderTopLeftRadius: roundLeft ? "16px" : "0", borderBottomLeftRadius: roundLeft ? "16px" : "0", borderTopRightRadius: !roundLeft ? "16px" : "0", borderBottomRightRadius: !roundLeft ? "16px" : "0" }} />
         <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, rgba(12,28,36,0.16) 0%, ${STEP_DARK_BG}2C 46%, ${STEP_DARK_BG}E2 100%)` }} />
         <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${STEP_DARK_BG}55 0%, rgba(30,122,138,0.13) 36%, rgba(74,159,175,0.16) 70%, ${STEP_DARK_BG}80 100%)` }} />
         <div className="absolute inset-0" style={{ background: `radial-gradient(circle at 78% 24%, rgba(74,159,175,0.18) 0%, rgba(74,159,175,0) 42%)` }} />
-        <div className={`absolute inset-0 flex items-end ${dark ? "justify-start" : "justify-end"} p-7 md:p-9`}>
-          <div style={{
-            maxWidth: "clamp(24ch, 40vw, 36ch)",
-            textAlign: dark ? "left" : "right",
-            padding: "12px 14px",
-            borderRadius: "14px",
-            border: "1px solid rgba(255,255,255,0.08)",
-            background: "rgba(12,26,34,0.22)",
-            backdropFilter: "blur(2px)",
-            boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.04)",
-          }}>
-            <span style={{ fontFamily: "'Montserrat', sans-serif", display: "block", fontSize: "18px", lineHeight: "0.8", color: P.accentLight, opacity: 0.72, marginBottom: "6px" }}>“</span>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(14px, 1.25vw, 18px)", fontStyle: "italic", fontWeight: 500, color: P.textInv, lineHeight: "1.25", textShadow: "0 2px 8px rgba(0,0,0,0.28)" }}>
-              {highlightCopy(text, true)}
-            </p>
+        {bannerText || projectLink ? (
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-4 py-2 rounded-lg flex flex-col items-center" style={{ background: "rgba(12,26,34,0.45)", border: "1px solid rgba(255,255,255,0.14)", backdropFilter: "blur(2px)" }}>
+            {bannerText ? (
+              <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: "rgba(255,255,255,0.9)", letterSpacing: "0.1em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
+                {bannerText}
+              </span>
+            ) : null}
+            {projectLink ? (
+              <a
+                href={projectLink.href}
+                target="_blank"
+                rel="noreferrer"
+                style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: "rgba(255,255,255,0.96)", letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "underline", textUnderlineOffset: "2px", marginTop: bannerText ? "4px" : "0", whiteSpace: "nowrap" }}
+              >
+                {projectLink.label}
+              </a>
+            ) : null}
           </div>
-        </div>
+        ) : null}
       </div>
     </div>
   );
@@ -196,7 +199,7 @@ export function StrategiaSection() {
             <div className="flex items-center gap-3"><div style={{ width: "36px", height: "1px", background: `linear-gradient(90deg, ${P.accentLight}, transparent)` }} /><span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accentLight, letterSpacing: "0.14em", textTransform: "uppercase" }}>La Strategia Operativa</span></div>
             <h2 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(28px, 5vw, 64px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.05em", lineHeight: "0.92" }}>Dagli Obiettivi<br /><span style={{ color: P.accentLight }}>Alla Roadmap Strategica</span><br /></h2>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(14px, 1.5vw, 17px)", color: `${P.textInv}72`, lineHeight: "1.8", maxWidth: "56ch" }}>{highlightCopy("Un percorso strutturato per costruire l'ecosistema digitale di COSMED Performance & COSMED Well-being.", true)}</p>
-            <div className="flex flex-wrap gap-2 mt-2">{["1. Analisi di Mercato", "2. Target Persona", "3. Brand Identity", "4. Siti Web", "5. SEO / GEO", "6. Social Media", "7. Sponsorizzazioni"].map((label) => <Chip key={label} label={label} dark />)}</div>
+            <div className="flex flex-wrap gap-2 mt-2">{["1. Analisi di Mercato", "2. Target Personas", "3. Brand Identity", "4. Siti Web", "5. SEO / GEO", "6. Social Media", "7. Sponsorizzazioni"].map((label) => <Chip key={label} label={label} dark />)}</div>
           </div>
         </div>
       </div>
@@ -229,7 +232,7 @@ export function StrategiaSection() {
             </div>
           </div>
           <div className="lg:-mr-24 md:-mr-12 -mr-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <QuoteImageCard text="Odiavo ogni minuto di allenamento, ma dicevo: 'Non mollare. Soffri ora e vivi il resto della tua vita come un campione.'" image={MUHAMMAD_ALI_IMG} dark roundLeft />
+            <SideImageCard image={analisiMercatoImg} roundLeft />
           </div>
         </div>
       </SectionShell>
@@ -237,7 +240,7 @@ export function StrategiaSection() {
       <SectionShell light={false}>
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-stretch">
           <div className="flex flex-col gap-6 lg:order-2 lg:min-h-[600px] lg:justify-start">
-            <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.035em", lineHeight: "0.98" }}>2. Target Persona</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: `${P.textInv}60`, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: `${P.textInv}72`, lineHeight: "1.8" }}>{highlightCopy("Definiamo dei profili fittizi che rappresentino in maniera realistica i nostri utenti target ideali.", true)}</p></div>
+            <div className="flex flex-col gap-4"><h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(26px, 3.3vw, 38px)", fontWeight: 900, color: P.textInv, letterSpacing: "-0.035em", lineHeight: "0.98" }}>2. Target Personas</h3><p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: `${P.textInv}60`, letterSpacing: "0.14em", textTransform: "uppercase" }}>Dettaglio Operativo</p><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: `${P.textInv}72`, lineHeight: "1.8" }}>{highlightCopy("Definiamo dei profili fittizi che rappresentino in maniera realistica i nostri utenti target ideali.", true)}</p></div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8 md:mb-12">
               {[
                 { name: "Dr. Roberto Grossi", role: "Preparatore atletico", accent: P.accent, area: "Area Performance", icon: IconSport, quote: "Mi serve il VO2max reale per personalizzare i carichi e prevenire infortuni." },
@@ -265,7 +268,7 @@ export function StrategiaSection() {
             </div>
           </div>
           <div className="lg:order-1 lg:-ml-24 md:-ml-12 -ml-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <QuoteImageCard text="Il medico del futuro non somministrerà medicine, ma istruirà i suoi pazienti sulla cura del corpo umano, sulla dieta e sulle cause e la prevenzione delle malattie." image={THOMAS_EDISON_IMG} roundLeft={false} />
+            <SideImageCard image={TARGET_PERSONAS_IMG} roundLeft={false} />
           </div>
         </div>
       </SectionShell>
@@ -291,7 +294,7 @@ export function StrategiaSection() {
             </div>
           </div>
           <div className="lg:-mr-24 md:-mr-12 -mr-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <QuoteImageCard text="Le grandi cose derivano dal duro lavoro e dalla perseveranza." image={KOBE_BRYANT_IMG} dark roundLeft />
+            <SideImageCard image={brandIdentityImg} roundLeft bannerText="© COPIRIGHT DENANI S.R.L." />
           </div>
         </div>
       </SectionShell>
@@ -321,7 +324,7 @@ export function StrategiaSection() {
             </div>
           </div>
           <div className="lg:order-1 lg:-ml-24 md:-ml-12 -ml-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <QuoteImageCard text="L'arte è 'Io'; la scienza è 'Noi'." image={CLAUDE_BERNARD_IMG} roundLeft={false} />
+            <SideImageCard image={sitiWebImg} roundLeft={false} bannerText="© COPIRIGHT DENANI S.R.L." />
           </div>
         </div>
       </SectionShell>
@@ -334,7 +337,7 @@ export function StrategiaSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5"><div className="rounded-2xl p-5 flex flex-col gap-3" style={{ background: `${P.accent}14`, border: `1px solid ${P.accent}28` }}><div className="flex items-center gap-3"><div className="flex items-center justify-center w-9 h-9 rounded-xl" style={{ background: `${P.accent}22`, color: P.accent }}><IconMapPin size={17} /></div><span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 800, color: P.accent }}>Target Performance</span></div><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>{highlightCopy("Indicizzazione per parole chiave legate a Strutture Sanitarie Riabilitative, Centri di Medicina dello Sport e Palestre d'élite.")}</p></div><div className="rounded-2xl p-5 flex flex-col gap-3" style={{ background: `${P.accentLight}12`, border: `1px solid ${P.accentLight}25` }}><div className="flex items-center gap-3"><div className="flex items-center justify-center w-9 h-9 rounded-xl" style={{ background: `${P.accentLight}20`, color: P.accentLight }}><IconMapPin size={17} /></div><span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 800, color: P.accentLight }}>Target Wellbeing</span></div><p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: P.textSub, lineHeight: "1.75" }}>{highlightCopy("Indicizzazione per termini legati a Studi Nutrizionistici, Cliniche di Dimagrimento, SPA e Centri Benessere.")}</p></div></div>
           </div>
           <div className="lg:-mr-24 md:-mr-12 -mr-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <QuoteImageCard text="Misura ciò che è misurabile e rendi misurabile ciò che non lo è." image={GALILEO_GALILEI_IMG} dark roundLeft />
+            <SideImageCard image={seoImg} roundLeft />
           </div>
         </div>
       </SectionShell>
@@ -384,7 +387,7 @@ export function StrategiaSection() {
             </div>
           </div>
           <div className="lg:order-1 lg:-ml-24 md:-ml-12 -ml-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <QuoteImageCard text="Fidati del processo." image={JOEL_EMBIID_IMG} roundLeft={false} />
+            <SideImageCard image={socialMediaImg} roundLeft={false} bannerText="© COPIRIGHT DENANI S.R.L." />
           </div>
         </div>
       </SectionShell>
@@ -424,7 +427,12 @@ export function StrategiaSection() {
             </div>
           </div>
           <div className="lg:-mr-24 md:-mr-12 -mr-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <QuoteImageCard text="Non puoi mettere un limite a nulla. Più sogni, più lontano arrivi." image={MICHAEL_PHELPS_IMG} dark roundLeft />
+            <SideImageCard
+              image={sponsorizzazioniImg}
+              roundLeft
+              bannerText="© COPIRIGHT DENANI S.R.L."
+              projectLink={{ href: MEDILINE_PROJECT_URL, label: "Caso studio Mediline" }}
+            />
           </div>
         </div>
       </SectionShell>

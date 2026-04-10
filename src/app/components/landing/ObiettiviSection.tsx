@@ -72,16 +72,6 @@ function IconForm({ size = 22 }: { size?: number }) {
   );
 }
 
-function IconSale({ size = 22 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M20 7h-4l-2-3h-4L8 7H4" />
-      <path d="M6 7v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7" />
-      <path d="M9 12h6" />
-    </svg>
-  );
-}
-
 function IconGrowth({ size = 22 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -106,9 +96,9 @@ const objectives: Objective[] = [
   {
     n: "01",
     t: "Comunicare il valore del marchio nelle due aree specifiche",
-    intro: "La proposta parte da una **lettura distinta e rigorosa** delle due anime di Cosmed, così da costruire **messaggi, visual e contenuti** davvero pertinenti per performance e well-being.",
-    performance: "Declinazione su **sport medicine**, **test da sforzo**, screening funzionale e **misurazioni oggettive** per atleti e professionisti della performance.",
-    wellBeing: "Declinazione su **prevenzione**, **composizione corporea**, controllo metabolico e percorsi di benessere con un linguaggio educativo e rassicurante.",
+    intro: "La proposta parte da una **lettura distinta delle due anime di Cosmed**, cosi da costruire messaggi, visual e contenuti davvero pertinenti per performance e well-being.",
+    performance: "Declinazione su sport medicine, test da sforzo e screening funzionale, con focus su **misurazioni oggettive** per atleti e professionisti della performance.",
+    wellBeing: "Declinazione su prevenzione, composizione corporea e controllo metabolico, con focus su **percorsi di benessere personalizzati** e linguaggio educativo.",
     icon: IconTarget,
     visual: "Visual di riferimento: atleta in test, curva metabolica, dashboard dati e schede prodotto per aree distinte.",
     chips: ["Atleta in test", "Curva VO2 / RQ", "Dashboard di misurazione"],
@@ -118,31 +108,31 @@ const objectives: Objective[] = [
   {
     n: "02",
     t: "Instaurare fiducia",
-    intro: "Ogni contenuto deve dimostrare **autorevolezza**. La fiducia nasce dalla capacità di tradurre la complessità tecnica in **beneficio concreto**.",
-    performance: "Per il sub-brand Performance la fiducia nasce da **test ripetibili**, **protocolli solidi** e lettura immediata dei parametri che migliorano la performance atletica in modo concreto e misurabile.",
-    wellBeing: "Per il sub-brand Well-being la fiducia cresce offrendo **risultati chiari e immediatamente utilizzabili**: monitoraggio progressi nel tempo, **personalizzazione dei piani** e comunicazione più efficace con il cliente.",
+    intro: "Ogni contenuto deve dimostrare **autorevolezza concreta**. La fiducia nasce dalla capacita di tradurre la complessita tecnica in beneficio reale.",
+    performance: "Per il sub-brand Performance la fiducia nasce da test ripetibili, protocolli solidi e **parametri leggibili e immediati** per migliorare la performance atletica.",
+    wellBeing: "Per il sub-brand Well-being la fiducia cresce con risultati chiari e subito utilizzabili, grazie a **monitoraggio progressivo e piani personalizzati**.",
     icon: IconShield,
-    visual: "Visual di riferimento: segnale pulito, check di validazione, interfacce chiare e segnali di affidabilità diagnostica.",
+    visual: "Visual di riferimento: segnale pulito, check di validazione, interfacce chiare e segnali di affidabilita diagnostica.",
     chips: ["Validazione", "Dati oggettivi", "Trasparenza diagnostica"],
     c: P.accentLight,
   },
   {
     n: "03",
     t: 'Consolidare il posizionamento "top-of-mind"',
-    intro: "La presenza va resa **riconoscibile e costante**, così che Cosmed venga riconosciuta come leader quando il mercato richiede soluzioni di **misurazione metabolica**, test da sforzo, spirometria e body composition.",
-    performance: "Nel mondo Performance la presenza deve essere continua su **medici dello sport**, centri di training, preparatori e strutture di valutazione atletica.",
-    wellBeing: "Nel mondo Well-being la presenza deve essere costante su **cliniche, nutrizionisti, centri prevenzione** e professionisti che cercano strumenti di misurazione affidabili.",
+    intro: "La presenza va resa **riconoscibile e costante**, cosi che Cosmed sia ricordata come riferimento quando il mercato cerca soluzioni di misurazione metabolica.",
+    performance: "Nel mondo Performance la presenza deve essere continua presso **medici dello sport e centri di training**.",
+    wellBeing: "Nel mondo Well-being la presenza deve essere costante presso **cliniche, nutrizionisti e centri prevenzione**.",
     icon: IconStar,
     visual: "Visual di riferimento: pattern ricorrente, touchpoint multipli, badge di brand e ripetizione coerente dei device.",
-    chips: ["Memorabilità", "Ripetizione coerente", "Presidio canali"],
+    chips: ["Memorabilita", "Ripetizione coerente", "Presidio canali"],
     c: P.accent,
   },
   {
     n: "04",
     t: "Raccogliere contatti qualificati tramite form",
-    intro: "Guidare l'utente verso una richiesta davvero utile, separando i contatti in base all'interesse e aumentando la qualità del **lead raccolto**.",
-    performance: "Form dedicati per **demo**, preventivo e approfondimento tecnico su Q-NRG Max, Q-12 e sistemi per valutazione sportiva.",
-    wellBeing: "Form dedicati per **informazione, valutazione e supporto** su spirometria, composizione corporea e percorsi di screening e prevenzione.",
+    intro: "Guidare l'utente verso una richiesta utile, separando i contatti per interesse e aumentando la qualita del **lead raccolto**.",
+    performance: "Form dedicati per demo, preventivo e approfondimento tecnico su Q-NRG Max, Q-12 e sistemi per **valutazione sportiva**.",
+    wellBeing: "Form dedicati per informazione, valutazione e supporto su spirometria, composizione corporea e percorsi di **screening e prevenzione**.",
     icon: IconForm,
     visual: "Visual di riferimento: form semplificati, CTA molto chiare, funnel lineare e schede di richiesta per area di interesse.",
     chips: ["Lead qualificato", "Form dedicati", "CTA verticale"],
@@ -151,7 +141,7 @@ const objectives: Objective[] = [
   {
     n: "05",
     t: "Implementare strumenti di vendita diretti per ridurre l'intermediazione e il peso provvigionale dei rivenditori",
-    intro: "La proposta deve abilitare **canali più diretti** (siti web, social media, form, advertising) capaci di far emergere il **valore dei prodotti** e di ridurre la dipendenza da passaggi commerciali meno efficienti.",
+    intro: "La proposta deve abilitare **canali di vendita diretti** (siti web, social media, form, advertising) capaci di far emergere il valore dei prodotti e ridurre la dipendenza da passaggi commerciali meno efficienti.",
     icon: IconGrowth,
     visual: "Visual di riferimento: matrix comparativa, funnel di vendita, dashboard commerciale e schede prodotto orientate alla conversione.",
     chips: ["Vendita diretta", "Comparazione tecnica", "Riduzione intermediazione"],
@@ -180,7 +170,7 @@ const products: ProductItem[] = [
   },
   {
     name: "Q",
-    performanceDeclination: "Nel Performance viene raccontato come strumento agile per screening rapidi e continuità operativa nei contesti ad alta rotazione.",
+    performanceDeclination: "Nel Performance viene raccontato come strumento agile per screening rapidi e continuita operativa nei contesti ad alta rotazione.",
     wellBeingDeclination: "Nel Well-being viene raccontato come soluzione accessibile e semplice da integrare nei percorsi quotidiani di valutazione.",
     icon: IconForm,
     c: P.accentLight,
@@ -190,7 +180,7 @@ const products: ProductItem[] = [
   {
     name: "microQuark",
     performanceDeclination: "Comunicazione orientata a praticita e velocita di attivazione per team tecnici che richiedono operativita immediata.",
-    wellBeingDeclination: "Comunicazione orientata a semplicità d'uso e adozione immediata in strutture che vogliono un percorso cliente più fluido.",
+    wellBeingDeclination: "Comunicazione orientata a semplicita d'uso e adozione immediata in strutture che vogliono un percorso cliente piu fluido.",
     icon: IconTarget,
     c: P.accent,
     soft: "rgba(30,122,138,0.10)",
@@ -199,7 +189,7 @@ const products: ProductItem[] = [
   {
     name: "Gamma TANITA",
     performanceDeclination: "Nel Performance viene posizionata come base di lettura compositiva per obiettivi atletici e monitoraggio dei cambiamenti nel tempo.",
-    wellBeingDeclination: "Nel Well-being viene posizionata come strumento di accompagnamento per prevenzione, motivazione e continuità del percorso.",
+    wellBeingDeclination: "Nel Well-being viene posizionata come strumento di accompagnamento per prevenzione, motivazione e continuita del percorso.",
     icon: IconStar,
     c: P.accentLight,
     soft: "rgba(74,159,175,0.08)",
@@ -254,7 +244,6 @@ function ObjectiveCard({ item }: { item: Objective }) {
           </div>
         </div>
       ) : null}
-
     </article>
   );
 }
@@ -307,7 +296,7 @@ export function ObiettiviSection() {
               Obiettivi<br />
             </h2>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: P.textSub, lineHeight: "1.85", maxWidth: "70ch" }}>
-              {renderWithBold("Cinque punti fondamentali che guidano l'architettura di comunicazione, posizionamento e crescita commerciale di Cosmed, con un focus mirato su **Performance** e **Well-being**.")}
+              {renderWithBold("Cinque punti fondamentali che guidano l'architettura di comunicazione, posizionamento e crescita commerciale di Cosmed, con un focus mirato sui **nuovi sub brand**, **Performance** e **Well-being**.")}
             </p>
           </div>
 
@@ -324,7 +313,7 @@ export function ObiettiviSection() {
           <div className="flex items-center gap-3 mb-5">
             <div style={{ width: "28px", height: "1px", background: P.accent }} />
             <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, color: P.accent, letterSpacing: "0.14em", textTransform: "uppercase" }}>
-              Valorizzazione funzionalità di prodotto
+              Valorizzazione funzionalita di prodotto
             </span>
           </div>
 
@@ -333,7 +322,6 @@ export function ObiettiviSection() {
               <ProductCard key={item.name} item={item} />
             ))}
           </div>
-
         </div>
       </div>
     </section>

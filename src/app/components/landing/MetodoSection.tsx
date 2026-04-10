@@ -1,5 +1,4 @@
-import { P } from "./images";
-import imageUno from "../../../assets/1.png";
+import { P, IMGS } from "./images";
 import imageDue from "../../../assets/2.jpg";
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
@@ -71,8 +70,8 @@ function IconHandshake({ size = 22 }: { size?: number }) {
 const pillars = [
   { n: "01", t: "Ascolto Profondo", d: "Nessun template preconfezionato. Ogni progetto parte dall'identità unica del cliente.", c: P.accent },
   { n: "02", t: "Bozza di Alta Precisione", d: "Punto di partenza calibrato, non prodotto finito. Il primo filo di co-creazione.", c: P.accentLight },
-  { n: "03", t: "Co-Creazione Continua", d: "Strategia verificata, validata e rimodulata insieme a voi in ogni fase.", c: P.accent },
-  { n: "04", t: "Validazione sul Campo", d: "Nessuna sorpresa: ogni scelta viene sottoposta alla vostra approvazione.", c: P.accentLight },
+  { n: "03", t: "Dialogo costante", d: "Strategia verificata, e rimodulata insieme a voi in ogni fase.", c: P.accent },
+  { n: "04", t: "Validazione", d: "Nessuna sorpresa: ogni scelta viene sottoposta alla vostra approvazione.", c: P.accentLight },
 ];
 
 const dataTools = [
@@ -125,7 +124,7 @@ export function MetodoSection() {
                 In DeNani <strong style={{ color: P.textInv, fontWeight: 600 }}>non adottiamo soluzioni standardizzate</strong>. Ogni progetto viene modellato sulle specifiche esigenze, sui valori e sulla <strong style={{ color: P.textInv, fontWeight: 600 }}>visione unica del cliente</strong> — proprio come un abito su misura.
               </p>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: `${P.textInv}74`, lineHeight: "1.85", maxWidth: "520px" }}>
-                Il nostro metodo si fonda su un <strong style={{ color: `${P.textInv}95`, fontWeight: 600 }}>dialogo costante</strong> e uno scambio di valore reale. La strategia che vedrete in questa fase è il <strong style={{ color: `${P.textInv}95`, fontWeight: 600 }}>punto di partenza</strong> di un processo di co-creazione.
+                Il nostro metodo si fonda su un <strong style={{ color: `${P.textInv}95`, fontWeight: 600 }}>dialogo costante</strong> e uno scambio di valore reale.
               </p>
             </div>
 
@@ -146,7 +145,7 @@ export function MetodoSection() {
 
             {/* [B] Visual · Atleta con maschera = riferimento a precisione/performance */}
             <div className="relative rounded-2xl overflow-hidden flex-1" style={{ minHeight: "220px" }}>
-              <img src={imageUno} alt="Test VO2 metabolico" className="absolute inset-0 w-full h-full object-cover" style={{ filter: "brightness(0.62) saturate(0.8)" }} />
+              <img src={IMGS.vo2test} alt="Test VO2 metabolico" className="absolute inset-0 w-full h-full object-cover" style={{ filter: "brightness(0.62) saturate(0.8)" }} />
               <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, transparent 45%, ${P.dark}A8 100%)` }} />
             </div>
 
@@ -154,7 +153,7 @@ export function MetodoSection() {
             <div className="rounded-2xl p-6 flex flex-col gap-3" style={{ background: `${P.accent}18`, border: `1px solid ${P.accent}30` }}>
               <div style={{ color: P.accentLight }}><IconHandshake size={22} /></div>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13.5px", color: `${P.textInv}E8`, lineHeight: "1.75", fontWeight: 500 }}>
-                Quello che state visionando oggi è una <strong style={{ color: P.accentLight }}>bozza strategica di alta precisione</strong>. L'analisi di dettaglio — audit SEO, benchmark completo, customer journey — verrà condotta insieme a voi nella fase operativa.
+                Quello che state visionando oggi è una <strong style={{ color: P.accentLight }}>bozza strategica.</strong> Decisioni definitive potranno essere prese esclusivamente a seguito di un'analisi dettagliata — audit SEO, benchmark completo, customer journey — e di un confronto diretto con voi
               </p>
             </div>
           </div>
