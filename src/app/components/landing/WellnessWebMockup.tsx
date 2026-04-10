@@ -65,7 +65,7 @@ export function WellnessWebMockup() {
                 <span style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "13px", fontStyle: "italic", color: P.wellTeal, marginLeft: "4px" }}>Well-being</span>
               </div>
               <div className="hidden md:flex items-center gap-7">
-                {["Nutrizione", "Benessere", "Longevity", "Professionisti"].map(item => (
+                {["Chi siamo", "Prodotti", "Filosofia"].map(item => (
                   <span key={item} style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 600, color: "#526A7A", letterSpacing: "0.04em" }}>{item}</span>
                 ))}
               </div>
@@ -92,27 +92,18 @@ export function WellnessWebMockup() {
                   <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 700, color: P.wellGold, letterSpacing: "0.2em", textTransform: "uppercase" }}>The Metabolic Flow</span>
                 </div>
                 <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(30px, 5vw, 66px)", fontWeight: 700, fontStyle: "italic", color: "#FFFFFF", lineHeight: "1.05", marginBottom: "24px", textShadow: "0 2px 30px rgba(0,0,0,0.3)" }}>
-                  Il tuo corpo<br />merita<br /><span style={{ color: `${P.wellGold}EE` }}>equilibrio.</span>
+                  La scienza<br />della<br /><span style={{ color: `${P.wellGold}EE` }}>vitalità.</span>
                 </h1>
                 <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.8)", lineHeight: "1.85", maxWidth: "380px", marginBottom: "32px" }}>
-                  Nutrizione clinica, benessere attivo e longevità su misura per te. Ogni percorso inizia dalla conoscenza del tuo metabolismo.
+                  Una gamma di prodotti pensati per dietologi, dietisti, endocrinologi, nutrizionisti e centri benessere a supporto di uno stile di vita personalizzato, sostenibile e orientato al benessere.
                 </p>
                 <div className="flex gap-3 flex-wrap">
                   <div className="rounded-full px-6 py-3" style={{ background: P.wellTeal, display: "inline-flex" }}>
-                    <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 700, color: "#fff", letterSpacing: "0.04em" }}>Inizia il tuo percorso →</span>
+                    <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 700, color: "#fff", letterSpacing: "0.04em" }}>Scopri i prodotti →</span>
                   </div>
                   <div className="rounded-full px-6 py-3" style={{ border: "1px solid rgba(255,255,255,0.45)", display: "inline-flex" }}>
-                    <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 600, color: "rgba(255,255,255,0.85)", letterSpacing: "0.04em" }}>Scopri i professionisti</span>
+                    <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 600, color: "rgba(255,255,255,0.85)", letterSpacing: "0.04em" }}>Richiedi demo</span>
                   </div>
-                </div>
-                {/* Metrics */}
-                <div className="flex gap-10 mt-10 flex-wrap">
-                  {[["15k+", "Nutrizionisti"], ["6k+", "Dietologi"], ["8k+", "Centri Well-being"]].map(([v, l]) => (
-                    <div key={l} className="flex flex-col">
-                      <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(20px,2.5vw,30px)", fontWeight: 700, fontStyle: "italic", color: P.wellGold }}>{v}</span>
-                      <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8px", fontWeight: 600, color: "rgba(255,255,255,0.6)", letterSpacing: "0.12em", textTransform: "uppercase" }}>{l}</span>
-                    </div>
-                  ))}
                 </div>
               </div>
             </div>
@@ -120,9 +111,9 @@ export function WellnessWebMockup() {
             {/* Image mosaic — 3 immagini grandi con copy overlay */}
             <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderTop: `1px solid ${P.border}` }}>
               {[
-                { img: wellMonitoraggio, tag: "ALIMENTAZIONE SANA", copy: "Piatti bilanciati e colori naturali", position: "center 23%" },
-                { img: "https://images.unsplash.com/photo-1535229398509-70179087ac75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080", tag: "NUTRIZIONE CLINICA", copy: "Consulenza e ascolto del paziente" },
-                { img: wellLongevity3, tag: "DIETETICA", copy: "Scelta consapevole degli alimenti", position: "center 63%" },
+                { img: wellMonitoraggio, tag: "MISURARE", copy: "Dati oggettivi per personalizzare il percorso", position: "center 23%" },
+                { img: "https://images.unsplash.com/photo-1535229398509-70179087ac75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080", tag: "MONITORARE", copy: "Controllo continuo per decisioni più precise" },
+                { img: wellLongevity3, tag: "SUPPORTO CLINICO", copy: "Strumenti a supporto di professionisti e pazienti", position: "center 63%" },
               ].map(({ img, tag, copy, position }, i) => (
                 <div key={i} className="relative overflow-hidden" style={{ height: "180px" }}>
                   <img src={img} alt="" className="w-full h-full object-cover"
@@ -140,23 +131,6 @@ export function WellnessWebMockup() {
               ))}
             </div>
 
-            {/* Feature bar */}
-            <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderTop: `1px solid ${P.border}`, background: "#FFFFFF" }}>
-              {[
-                { title: "Nutrizione Clinica", sub: "Per ogni fisiologia", desc: "Piani nutrizionali basati sulla misurazione metabolica individuale." },
-                { title: "Metabolic Flow", sub: "Il tuo ritmo vitale", desc: "Comprendi come il tuo metabolismo risponde al cibo e al movimento." },
-                { title: "Longevità Attiva", sub: "Invecchiare bene", desc: "Protocolli integrati per una vita lunga, piena e in salute." },
-              ].map((f, i) => (
-                <div key={i} className="flex flex-col gap-2 px-7 py-6"
-                  style={{ borderRight: i < 2 ? `1px solid ${P.border}` : "none" }}>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 800, color: "#0A1F1F" }}>{f.title}</span>
-                    <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "7px", fontWeight: 700, color: P.wellGold, border: `1px solid ${P.wellGold}40`, borderRadius: "3px", padding: "2px 5px", letterSpacing: "0.04em" }}>{f.sub}</span>
-                  </div>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", color: "#526A7A", lineHeight: "1.7" }}>{f.desc}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
 
@@ -169,11 +143,11 @@ export function WellnessWebMockup() {
               <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
             </svg>
             <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 600, color: "#6E8798", letterSpacing: "0.08em" }}>
-              Mockup illustrativo — Homepage Cosmed Well-being
+              Mockup illustrativo — La scienza della vitalità
             </span>
           </div>
           <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 600, color: `${P.wellTeal}88`, letterSpacing: "0.06em" }}>
-            Visual: professionisti del benessere in azione
+            Prodotti per dietologi, dietisti, endocrinologi e nutrizionisti
           </span>
         </div>
 
@@ -183,7 +157,7 @@ export function WellnessWebMockup() {
             { label: "Tipografia Heading", value: "Playfair Display Italic", sub: "Peso 700 · Serif · Tracking −0.02em" },
             { label: "Tipografia Label", value: "Montserrat Bold", sub: "Peso 700 · All Caps · Tracking +0.12em" },
             { label: "Palette Primaria", value: "#0E6B6B Deep Teal", sub: "#B8922E Satin Gold · #F4F7F5 Oxygen White" },
-            { label: "Strategia Visiva", value: "Immagine dominante", sub: "Hero full-width · Copy in overlay · Mosaico 4 visual con copy editoriale" },
+            { label: "Strategia Visiva", value: "Copy prodotto", sub: "Hero full-width · valore clinico · supporto ai professionisti" },
           ].map(({ label, value, sub }) => (
             <div key={label} className="flex flex-col gap-2 px-5 py-4 rounded-lg" style={{ background: "#FFFFFF", border: `1px solid ${P.border}` }}>
               <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "7px", fontWeight: 700, color: "#6E8798", letterSpacing: "0.15em", textTransform: "uppercase" }}>{label}</span>

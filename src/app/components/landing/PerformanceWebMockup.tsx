@@ -63,7 +63,7 @@ export function PerformanceWebMockup() {
                 <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8px", fontWeight: 700, color: P.perfBlue, letterSpacing: "0.12em", textTransform: "uppercase", marginLeft: "4px" }}>PERFORMANCE</span>
               </div>
               <div className="hidden md:flex items-center gap-7">
-                {["Performance", "Clinica", "VO₂ Max", "Ricerca"].map(item => (
+                {["Chi siamo", "Prodotti", "Filosofia"].map(item => (
                   <span key={item} style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 600, color: "rgba(238,242,255,0.6)", letterSpacing: "0.04em" }}>{item}</span>
                 ))}
               </div>
@@ -96,7 +96,7 @@ export function PerformanceWebMockup() {
                   MISURA.<br />ANALIZZA.<br /><span style={{ color: P.perfBlue }}>OTTIMIZZA.</span>
                 </h1>
                 <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: "rgba(238,242,255,0.72)", lineHeight: "1.85", maxWidth: "400px", marginBottom: "32px" }}>
-                  La piattaforma per la misurazione metabolica avanzata. Strumenti validati scientificamente per la misurazione metabolica avanzata</p>
+                  Strumenti validati scientificamente per la misurazione metabolica avanzata.</p>
                 <div className="flex gap-3 flex-wrap">
                   <div className="rounded-lg px-6 py-3" style={{ background: P.perfBlue, display: "inline-flex" }}>
                     <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 700, color: "#fff", letterSpacing: "0.04em" }}>Scopri i prodotti →</span>
@@ -104,15 +104,6 @@ export function PerformanceWebMockup() {
                   <div className="rounded-lg px-6 py-3" style={{ border: `1px solid rgba(11,111,255,0.4)`, display: "inline-flex" }}>
                     <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 600, color: "rgba(238,242,255,0.8)", letterSpacing: "0.04em" }}>Richiedi Demo</span>
                   </div>
-                </div>
-                {/* KPI */}
-                <div className="flex gap-10 mt-10 flex-wrap">
-                  {[["99%", "Accuratezza"], ["+40k", "Professionisti"], ["ISO", "Certificato"]].map(([v, l]) => (
-                    <div key={l} className="flex flex-col">
-                      <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(20px,2.5vw,30px)", fontWeight: 900, color: P.perfBlue, letterSpacing: "-0.03em" }}>{v}</span>
-                      <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "8px", fontWeight: 600, color: "rgba(238,242,255,0.45)", letterSpacing: "0.12em", textTransform: "uppercase" }}>{l}</span>
-                    </div>
-                  ))}
                 </div>
               </div>
             </div>
