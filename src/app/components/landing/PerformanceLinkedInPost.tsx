@@ -62,7 +62,9 @@ function PostCard({
           backgroundImage: `linear-gradient(${P.perfBlue}08 1px, transparent 1px), linear-gradient(90deg, ${P.perfBlue}08 1px, transparent 1px)`,
           backgroundSize: "36px 36px",
         }} />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(11,15,20,0.65) 0%, rgba(11,15,20,0.22) 55%, rgba(11,15,20,0.5) 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "rgba(11,15,20,0.35)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(120deg, rgba(11,15,20,0.46) 0%, rgba(11,15,20,0.14) 50%, rgba(11,15,20,0.02) 100%)" }} />
+        <div className="absolute bottom-0 left-0 right-0 h-10" style={{ background: "linear-gradient(to top, rgba(11,15,20,0.56), transparent)" }} />
 
         <div className="absolute inset-0 flex flex-col justify-center items-center px-8 text-center">
           <div className="flex items-center gap-3 mb-4">
@@ -206,7 +208,7 @@ export function PerformanceLinkedInPost() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4" style={{ background: "#F3F2EF" }}>
                 <PostCard
                   visual={PERFORMANCE_SHOWCASE.post[0]}
-                  visualFilter="brightness(0.62) saturate(0.8) contrast(1.02)"
+                  visualFilter="grayscale(1) contrast(1.15) brightness(0.88)"
                   eyebrow="COSMED Performance"
                   headline="ATLETI"
                   headlineAccent="SEGUITI BENE."
@@ -225,7 +227,7 @@ export function PerformanceLinkedInPost() {
                 />
                 <PostCard
                   visual={PERFORMANCE_SHOWCASE.post[1]}
-                  visualFilter="brightness(0.6) saturate(0.75) contrast(1.05)"
+                  visualFilter="grayscale(1) contrast(1.15) brightness(0.88)"
                   eyebrow="COSMED Performance"
                   headline="FISIOTERAPIA"
                   headlineAccent="NELLA PERFORMANCE."

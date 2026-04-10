@@ -1,7 +1,7 @@
 import { IMGS, P } from "./images";
-import perfData   from "../../../assets/PERFORMANCE - Data Flow.jpg";
-import perfFisio  from "../../../assets/PERFORMANCE - Fisioterapia.jpg";
-import perfVo2    from "../../../assets/PERFORMANCE - VO2 Max Cosmed.jpg";
+import perfData   from "../../../assets/PERFORMANCE-ALIMENTAZIONE.jpg";
+import perfFisio  from "../../../assets/1.png";
+import perfVo2    from "../../../assets/Gemini_Generated_Image_lygvrhlygvrhlygv.png";
 
 const palette = [
   { hex: "#0B0F14", name: "Anthracite" },
@@ -27,10 +27,10 @@ const target = ["Fisiatri ~5.000", "Fisioterapisti ~70.000", "Medici Sport ~5.00
 
 // 3 immagini locali + 1 Unsplash mantenuta in basso a dx
 const mosaicImages = [
-  { url: perfData,       label: "Flusso Dati",         tag: "ASTRATTA · Data Flow",   sub: "Visualizzazione parametri metabolici", filter: "brightness(0.55) saturate(0.25) hue-rotate(210deg)" },
-  { url: perfVo2,        label: "Test VO₂ Max",        tag: "REALISTICA · Clinica",   sub: "Misurazione ossigeno in esercizio",    filter: "brightness(0.58) saturate(0.7) hue-rotate(185deg)" },
-  { url: perfFisio,      label: "Fisioterapia",        tag: "REALISTICA · Clinica",   sub: "Riabilitazione professionale",         filter: "brightness(0.58) saturate(0.7) hue-rotate(185deg)" },
-  { url: IMGS.molecular, label: "Struttura Molecolare", tag: "ASTRATTA · Molecolare", sub: "Rappresentazione biochimica",          filter: "brightness(0.58) saturate(0.7) hue-rotate(185deg)" },
+  { url: perfData,       label: "Flusso Dati",         tag: "ASTRATTA · Data Flow",   sub: "Visualizzazione parametri metabolici", filter: "grayscale(1) contrast(1.15) brightness(0.88)" },
+  { url: perfVo2,        label: "Test VO₂ Max",        tag: "REALISTICA · Clinica",   sub: "Misurazione ossigeno in esercizio",    filter: "grayscale(1) contrast(1.15) brightness(0.88)" },
+  { url: perfFisio,      label: "Fisioterapia",        tag: "REALISTICA · Clinica",   sub: "Riabilitazione professionale",         filter: "grayscale(1) contrast(1.15) brightness(0.88)" },
+  { url: IMGS.molecular, label: "Struttura Molecolare", tag: "ASTRATTA · Molecolare", sub: "Rappresentazione biochimica",          filter: "grayscale(1) contrast(1.15) brightness(0.88)" },
 ];
 
 export function PerformanceMoodboard() {
@@ -62,15 +62,15 @@ export function PerformanceMoodboard() {
             backgroundSize: "48px 48px",
           }} />
           <div className="absolute inset-0 z-10 pointer-events-none hidden lg:block" style={{
-            background: "linear-gradient(90deg, transparent 55%, #0B0F14 100%)",
+            background: "linear-gradient(90deg, transparent 85%, rgba(11,15,20,0.78) 100%)",
           }} />
 
           <div className="grid h-full grid-cols-1 sm:grid-cols-2" style={{ gridTemplateRows: "repeat(2, minmax(220px, 1fr))" }}>
             {mosaicImages.map((img, i) => (
               <div key={i} className="relative overflow-hidden" style={{ minHeight: "220px" }}>
                 <img src={img.url} alt={img.label} className="w-full h-full object-cover"
-                  style={{ filter: img.filter }} />
-                <div className="absolute inset-0" style={{ background: `rgba(11,111,255,${i % 2 === 0 ? 0.05 : 0.03})` }} />
+                  style={{ filter: img.filter, transform: "scale(1.04)" }} />
+                <div className="absolute bottom-0 left-0 right-0 h-10" style={{ background: "linear-gradient(to top, rgba(11,15,20,0.56), transparent)" }} />
               </div>
             ))}
           </div>

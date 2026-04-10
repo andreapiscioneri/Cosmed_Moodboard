@@ -1,5 +1,6 @@
 import { P, WELLNESS_SHOWCASE } from "./images";
 import instagramIcon from "../../../assets/instagram-logo-instagram-icon-transparent-free-png.webp";
+import cosmedLogo from "../../../assets/cffaa0cb0f7ab92966e997ad7cded19cf46e55a0.png";
 
 function IGPost({
   image, imageFilter, label, quote, subline, caption, hashtags, likes, timeAgo,
@@ -37,6 +38,10 @@ function IGPost({
             dangerouslySetInnerHTML={{ __html: quote }}
           />
           <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "7px", fontWeight: 600, color: "rgba(255,255,255,0.65)", letterSpacing: "0.12em", textTransform: "uppercase" }}>{subline}</p>
+        </div>
+
+        <div className="absolute bottom-3 right-4 flex items-center">
+          <img src={cosmedLogo} alt="Cosmed" style={{ height: "35px", width: "auto", objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.92 }} />
         </div>
       </div>
 

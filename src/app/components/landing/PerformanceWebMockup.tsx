@@ -126,8 +126,9 @@ export function PerformanceWebMockup() {
               ].map(({ img, copy, tag }, i) => (
                 <div key={i} className="relative overflow-hidden" style={{ height: "200px" }}>
                   <img src={img} alt="" className="w-full h-full object-cover"
-                    style={{ filter: "brightness(0.62) saturate(0.6) hue-rotate(195deg)", transform: "scale(1.05)" }} />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(11,15,20,0.78) 0%, rgba(11,15,20,0.1) 100%)" }} />
+                    style={{ filter: "grayscale(1) contrast(1.15) brightness(0.88)", transform: "scale(1.05)" }} />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(120deg, rgba(11,15,20,0.68) 0%, rgba(11,15,20,0.22) 50%, rgba(11,15,20,0.05) 100%)" }} />
+                  <div className="absolute bottom-0 left-0 right-0 h-16" style={{ background: "linear-gradient(to top, #0B0F14, transparent)" }} />
                   {/* Copy */}
                   <div className="absolute bottom-0 left-0 right-0 px-5 py-4">
                     <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "7px", fontWeight: 700, color: P.perfBlue, letterSpacing: "0.14em", textTransform: "uppercase", display: "block", marginBottom: "4px" }}>{tag}</span>

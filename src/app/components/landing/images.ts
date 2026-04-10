@@ -4,6 +4,7 @@ import imageB from "../../../assets/b.jpg";
 import imageC from "../../../assets/c.jpg";
 import imageD from "../../../assets/d.jpg";
 import imageE from "../../../assets/e.jpg";
+import performanceVittoria from "../../../assets/PERFORMANCE - VITTORIA.jpg";
 import wellnessHeroD2 from "../../../assets/d2.jpg";
 import wellnessTileD1 from "../../../assets/d1.jpg";
 import wellnessTileD3 from "../../../assets/d3.jpg";
@@ -17,7 +18,7 @@ export const IMGS = {
   vo2test:    testImage, // REALISTICA: test VO2/maschera
   physio:     "https://images.unsplash.com/photo-1709880754445-8ffbd7e6ab3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080", // REALISTICA: fisioterapia clinica
   dataflow:   "https://images.unsplash.com/photo-1762279388956-1c098163a2a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080", // ASTRATTA: data flow blu
-  molecular:  "https://images.unsplash.com/photo-1697901785243-c4e233def8af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080", // ASTRATTA: molecolare
+  molecular:  performanceVittoria, // ASTRATTA: molecolare
 
   // Wellness — healthy lifestyle
   food:       "https://images.unsplash.com/photo-1535229398509-70179087ac75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080", // cibo sano colorato
