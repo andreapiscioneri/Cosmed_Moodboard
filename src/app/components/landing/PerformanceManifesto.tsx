@@ -67,7 +67,7 @@ export function PerformanceManifesto() {
 
       {/* Background image — very dark */}
       <div className="absolute inset-0">
-        <img src={performanceVittoria2} alt="" className="w-full h-full object-cover"
+        <img src={performanceVittoria2} alt="" className="w-full h-full object-cover object-[30%_center] md:object-center"
           style={{ filter: "grayscale(1) contrast(1.15) brightness(0.42)", transform: "scale(1.04)" }} />
         {/* Grid overlay */}
         <div className="absolute inset-0" style={{

@@ -183,7 +183,7 @@ export function MetodoSection() {
             {/* Data tools — icon cards */}
             <div className="grid grid-cols-2 gap-3">
               {dataTools.map(({ label, desc, Icon, c }) => (
-                <div key={label} className="flex items-start gap-3 rounded-xl p-4" style={{ background: "rgba(255,255,255,0.04)", border: `1px solid rgba(255,255,255,0.12)` }}>
+                <div key={label} className="flex flex-col items-start gap-2 md:flex-row md:items-start md:gap-3 rounded-xl p-4" style={{ background: "rgba(255,255,255,0.04)", border: `1px solid rgba(255,255,255,0.12)` }}>
                   <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-lg" style={{ background: `${c}18`, color: c }}>
                     <Icon size={16} />
                   </div>
