@@ -2,6 +2,7 @@ import { useState } from "react";
 import { P } from "./images";
 
 const PDF_FILE_NAME = "Denani-Cosmed_proposta.pdf";
+// Password PDF: denani123!
 const STATIC_BROCHURE_URL = `/assets/${PDF_FILE_NAME}`;
 
 function openStaticBrochure() {
