@@ -294,7 +294,7 @@ export function StrategiaSection() {
             </div>
           </div>
           <div className="lg:-mr-24 md:-mr-12 -mr-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <SideImageCard image={brandIdentityImg} roundLeft bannerText="© COPIRIGHT DENANI S.R.L." />
+            <SideImageCard image={brandIdentityImg} roundLeft bannerText="© COPYRIGHT DENANI S.R.L." />
           </div>
         </div>
       </SectionShell>
@@ -324,7 +324,7 @@ export function StrategiaSection() {
             </div>
           </div>
           <div className="lg:order-1 lg:-ml-24 md:-ml-12 -ml-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <SideImageCard image={sitiWebImg} roundLeft={false} bannerText="© COPIRIGHT DENANI S.R.L." />
+            <SideImageCard image={sitiWebImg} roundLeft={false} bannerText="© COPYRIGHT DENANI S.R.L." />
           </div>
         </div>
       </SectionShell>
@@ -387,7 +387,7 @@ export function StrategiaSection() {
             </div>
           </div>
           <div className="lg:order-1 lg:-ml-24 md:-ml-12 -ml-8 lg:-my-14 md:-my-14 lg:w-[calc(100%+6rem)] md:w-[calc(100%+3rem)] w-[calc(100%+2rem)]">
-            <SideImageCard image={socialMediaImg} roundLeft={false} bannerText="© COPIRIGHT DENANI S.R.L." />
+            <SideImageCard image={socialMediaImg} roundLeft={false} bannerText="© COPYRIGHT DENANI S.R.L." />
           </div>
         </div>
       </SectionShell>
@@ -430,7 +430,7 @@ export function StrategiaSection() {
             <SideImageCard
               image={sponsorizzazioniImg}
               roundLeft
-              bannerText="© COPIRIGHT DENANI S.R.L."
+              bannerText="© COPYRIGHT DENANI S.R.L."
               projectLink={{ href: MEDILINE_PROJECT_URL, label: "Caso studio Mediline Torino" }}
             />
           </div>
