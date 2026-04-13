@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { P } from "./images";
 import odooLogo from "../../../assets/logo odoo.svg";
 import wellLongevity from "../../../assets/WELLNESS - LONGEVITY.jpg";
@@ -5,6 +6,8 @@ import wellLongevity3 from "../../../assets/WELLNESS - LONGEVITY 3.jpg";
 import wellMonitoraggio from "../../../assets/WELLNESS - MONITORAGGIO.jpg";
 
 export function WellnessWebMockup() {
+  const [isOdooLogoError, setIsOdooLogoError] = useState(false);
+
   return (
     <section className="relative w-full overflow-hidden" style={{ background: "#EDE9E2", paddingBottom: "80px" }}>
 
@@ -167,8 +170,22 @@ export function WellnessWebMockup() {
           <div className="flex flex-col gap-2 px-5 py-4 rounded-lg" style={{ background: "#FFFFFF", border: `1px solid ${P.border}` }}>
             <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "7px", fontWeight: 700, color: "#6E8798", letterSpacing: "0.15em", textTransform: "uppercase" }}>Framework</span>
             <div className="flex items-center gap-2">
-              {/* Odoo logo inline */}
-              <img src={odooLogo} alt="Odoo" style={{ height: "20px", width: "auto", objectFit: "contain", borderRadius: "3px" }} />
+              {/* Odoo logo with visual fallback if the source file fails to load */}
+              {!isOdooLogoError ? (
+                <img
+                  src={odooLogo}
+                  alt="Odoo ERP"
+                  onError={() => setIsOdooLogoError(true)}
+                  style={{ height: "20px", width: "auto", objectFit: "contain", borderRadius: "3px" }}
+                />
+              ) : (
+                <div
+                  className="inline-flex items-center px-2 py-1 rounded"
+                  style={{ background: "#093A53", color: "#E5EEF3", fontFamily: "'Montserrat', sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.04em" }}
+                >
+                  Odoo ERP
+                </div>
+              )}
             </div>
             <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", color: "#526A7A", lineHeight: "1.5" }}>CMS · CRM · Website · Full integration</span>
           </div>
