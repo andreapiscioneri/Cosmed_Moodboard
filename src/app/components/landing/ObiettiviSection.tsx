@@ -108,7 +108,7 @@ const objectives: Objective[] = [
   {
     n: "02",
     t: "Instaurare fiducia",
-    intro: "Ogni contenuto deve dimostrare **autorevolezza concreta**. La fiducia nasce dalla capacita di tradurre la complessita tecnica in beneficio reale.",
+    intro: "Ogni contenuto deve dimostrare **autorevolezza concreta**. La fiducia nasce dalla capacita di tradurre la complessità tecnica in beneficio reale.",
     performance: "Per il sub-brand Performance la fiducia nasce da test ripetibili, protocolli solidi e **parametri leggibili e immediati** per migliorare la performance atletica.",
     wellBeing: "Per il sub-brand Well-being la fiducia cresce con risultati chiari e subito utilizzabili, grazie a **monitoraggio progressivo e piani personalizzati**.",
     icon: IconShield,
